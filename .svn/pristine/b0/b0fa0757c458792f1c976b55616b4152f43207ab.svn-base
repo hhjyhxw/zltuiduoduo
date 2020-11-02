@@ -1,0 +1,3 @@
+1、按功能划分模块
+2、不涉及业务的工具类放到common 或者 basecommon
+3、涉及业务的工具类放到bissinessutil

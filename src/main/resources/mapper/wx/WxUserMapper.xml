@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.wx.dao.WxUserMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.wx.entity.WxUser" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="openid" column="openid"/>
+     <result property="nickname" column="nickname"/>
+     <result property="sex" column="sex"/>
+     <result property="province" column="province"/>
+     <result property="city" column="city"/>
+     <result property="country" column="country"/>
+     <result property="headimgurl" column="headimgurl"/>
+     <result property="privilege" column="privilege"/>
+     <result property="unionid" column="unionid"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="phone" column="phone"/>
+     <result property="xcxopenid" column="xcxopenid"/>
+
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,openid,nickname,sex,province,city,country,headimgurl,privilege,unionid,create_time,modify_time,phone
+    </sql>
+
+    <select id="queryMixList" resultMap="BaseResultMap">
+        select * from t_wx_user t
+        <where>
+            <if test="id != null">
+                and t.id = #{id}
+            </if>
+            <if test="nickname != null and nickname!=''">
+                and t.nickname like CONCAT('%', '${nickname}', '%')
+            </if>
+            <if test="openid != null and openid!=''">
+                and t.openid like CONCAT('%', '${openid}', '%')
+            </if>
+            <if test="xcxopenid != null and xcxopenid!=''">
+                and t.xcxopenid like CONCAT('%', '${xcxopenid}', '%')
+            </if>
+        </where>
+        order by t.create_time desc
+    </select>
+
+</mapper>

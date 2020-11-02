@@ -1,0 +1,25 @@
+真龙链式营销活动
+1、建立数据库
+        test
+            url: jdbc:mysql://gz-cdb-o77g5le8.sql.tencentcdb.com:63194/zltuiduoduo_test?useUnicode=true&characterEncoding=utf8&nullCatalogMeansCurrent=TRUE
+            username: zltuiduoduo_test
+            password: zltuiduoduo_test@yr2020
+        pro
+            url: jdbc:mysql://gz-cdb-o77g5le8.sql.tencentcdb.com:63194/zltuiduoduo?useUnicode=true&characterEncoding=utf8&nullCatalogMeansCurrent=TRUE
+            username: zltuiduoduo_pro
+            password: zltuiduoduo_pro@yr2020
+2、建立pdm数据模型
+3、搭建基础项目
+4、生成代码
+5、后台功能开发
+7、扫码推送逻辑
+
+8、前端功能开发
+    1、登录、同时生产推广参数
+    2、获取用户信息，拍断是否已经是推广用户（同时判断是否是天使用户）
+    3、我的名片
+    4、我的团队
+    5、我的中奖记录
+    6、领取奖品
+
+

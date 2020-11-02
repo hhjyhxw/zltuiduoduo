@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.sys.dao.SysWhiteipMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.sys.entity.SysWhiteip" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="supplierName" column="supplier_name"/>
+     <result property="ipname" column="ipname"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,supplier_name,ipname,status,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_sys_whiteip t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="supplierName != null">
+    and t.supplier_name = #{supplierName}
+</if>
+<if test="ipname != null">
+    and t.ipname = #{ipname}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="createTime != null">
+    and t.create_time = #{createTime}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+</select>
+</mapper>
