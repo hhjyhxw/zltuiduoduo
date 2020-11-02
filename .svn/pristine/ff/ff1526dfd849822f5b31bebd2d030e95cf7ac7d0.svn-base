@@ -1,0 +1,148 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 10
+  port: 9098
+  servlet:
+#    context-path: /zlunionpro
+    context-path: /zltdd
+    session:
+      timeout: 600s
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://gz-cdb-o77g5le8.sql.tencentcdb.com:63194/zltuiduoduo_test?useUnicode=true&characterEncoding=utf8&nullCatalogMeansCurrent=TRUE
+    username: zltuiduoduo_test
+    password: zltuiduoduo_test@yr2020
+    initial-size: 10
+    max-active: level
+    min-idle: 10
+    max-wait: 60000
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    stat-view-servlet:
+      enabled: true
+      url-pattern: /druid/*
+      login-username: admin
+      login-password: admin
+    filter:
+      stat:
+        log-slow-sql: false
+        slow-sql-millis: 1000
+        merge-sql: true
+      wall:
+        config:
+          multi-statement-allow: true
+  redis:
+    open: true  # 是否开启redis缓存  true开启   false关闭
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    #    password: nnyr2018 #84测试
+    #    password: r#3vl8v@ZMtws       # 密码（默认为空）
+    timeout: 5000  # 连接超时时长（毫秒）
+    pool:
+      test-on-create: false #
+      test-on-return: false #
+      test-on-borrow: true #在空闲时检查有效性
+      test-while-idle: true #在获取连接的时候检查有效
+    jedis:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 5       # 连接池中的最小空闲连接
+
+
+  freemarker:
+    #    allow-request-override: false  #req访问request
+    check-template-location: true  #req访问request
+    expose-spring-macro-helpers: true  #req访问request
+    expose-request-attributes: true  #req访问request
+    expose-session-attributes: true  #req访问request
+    request-context-attribute: request  #req访问request
+    #    request-context-attribute: request
+    suffix: .html  #后缀名
+    content-type: text/html
+    enabled: true
+    cache: false #缓存配置
+    template-loader-path: classpath:/templates/ #模板加载路径 按需配置
+    charset: UTF-8 #编码格式
+    settings:
+      template_update_delay: 0      #页面缓存
+    number_format: '0.##'   #数字格式化，无小数
+
+    # slf4j日志配置
+  logging:
+    # 配置级别
+    level:
+      #分包配置级别，即不同的目录下可以使用不同的级别
+      com.icloud: INFO
+      root: INFO
+      org.springframework.web: DEBUG
+
+wx:
+  mp:
+    configs:
+      - appId: wx1f496e899641388f #（#一个公众号的appid）
+        secret: 0c81076168654035d965835a821df214   #（公众号的appsecret）
+        token: zhumeng    #（接口配置里的Token值）
+        aesKey: JQZPEkMG8OQHDbZ7ibzDpyoSR1dGegkJfHoNWMM1zFw  #（接口配置里的EncodingAESKey值）
+#      - appId: 2222   #（另一个公众号的appid，以下同上）
+#        secret: 1111
+#        token: 111
+#        aesKey: 111
+  miniapp:
+    configs:
+      - appid: wx4dd8edaf228fcd18 #微信小程序的appid
+        secret: 5830eae54977b915aa694de3cd2ab68d #微信小程序的Secret
+        token: #微信小程序消息服务器配置的token
+        aesKey: #微信小程序消息服务器配置的EncodingAESKey
+        msgDataFormat: JSON
+  pay:  #微信支付
+      mchid: 1374781102
+      mchkey: 57e7a26588554e36b821b03903c2cb12
+      mchkeyV3: 311d15d656a247f3ab0c7f337cba62e4
+      notifyurl: https://laimai.yunhu168.com/laimaiapi/api/cb/wxpay
+      keypath: /Users/rize/cert/1538757851_20190609_cert/apiclient_cert.p12
+mypros:
+  uploadpath: /uploadpath/ #文件保存目录前缀
+  activein: local #local 本地 dev 开发  pro生产
+  service_domain: http://ld.haiyunzy.com/usercheck/
+  #用户授权获取用户信息签名key
+  userauthorkey: 57C2C03D30DA412A74FF2B461E382317
+  #获取用户是否关注信息 签名key
+  isfollowkey: ka2J9PC326T44D439H6tvcPBY
+  wx: #微信相关参数 （微信基础token 已在其他地方使用，这里只能用户网页授权获取token）
+    appid: wxccb43a09acc5a5c8
+    appsecret: 4ec7b99d2e30af34c51696c6b2e7febb
+    getUserInfo: https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=http://zl.haiyunzy.com/crowdweb/thirdInterface/getUserInfos&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
+    infokey: 57C2C03D30DA412A74FF2B461E382317
+    jssdk_key: jssdkconfigkey
+    imcchost: 211.159.184.84
+    imcchostport: 7003
+    hosttel: 15709
+    hostnumber: gh_3d9742641f8b
+    host: 211.159.184.84:7003
+  session:
+    #spring-session中session过期时间 单位：秒
+    timeout: 3600
+    #spring-session中redis命名空间
+    namespace: zluionpro #
+    #父域名
+    parentDomainName: localhost
+    #cookie名字
+    cookieName: zluionproSessionId
+
+
