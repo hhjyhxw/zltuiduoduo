@@ -58,4 +58,12 @@ public class WxUserService extends BaseServiceImpl<WxUserMapper, WxUser> {
     public List<WxUser> queryMixList(Map<String,Object> map){
         return wxUserMapper.queryMixList(map);
     }
+
+    /**
+     * 顺序获取推广码
+     * @return
+     */
+    public synchronized String getTddNo(){
+       return wxUserMapper.getTddNo();
+    }
 }

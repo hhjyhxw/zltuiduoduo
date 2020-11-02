@@ -1,0 +1,113 @@
+package com.icloud.modules.zltdd.controller;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.icloud.annotation.SysLog;
+import com.icloud.basecommon.model.Query;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import com.icloud.modules.zltdd.entity.ZltddPrize;
+import com.icloud.modules.zltdd.service.ZltddPrizeService;
+import com.icloud.basecommon.model.Query;
+import com.icloud.common.PageUtils;
+import com.icloud.common.R;
+import com.icloud.common.validator.ValidatorUtils;
+import com.icloud.modules.sys.controller.AbstractController;
+
+
+/**
+ * 奖品表
+ *
+ * @author zdh
+ * @email yyyyyy@cm.com
+ * @date 2020-11-02 14:35:33
+ * 菜单主连接： modules/zltdd/zltddprize.html
+ */
+@RestController
+@RequestMapping("zltdd/zltddprize")
+public class ZltddPrizeController extends AbstractController{
+    @Autowired
+    private ZltddPrizeService zltddPrizeService;
+
+
+    /**
+     * 列表
+     */
+    @RequestMapping("/list")
+    @RequiresPermissions("zltdd:zltddprize:list")
+    public R list(@RequestParam Map<String, Object> params){
+        Query query = new Query(params);
+        PageUtils page = zltddPrizeService.findByPage(query.getPageNum(),query.getPageSize(), query);
+
+        return R.ok().put("page", page);
+    }
+
+    @RequestMapping("/prizelist")
+    public R list(){
+        List<ZltddPrize> list = zltddPrizeService.list(new QueryWrapper<ZltddPrize>().eq("status","1"));
+        return R.ok().put("list", list);
+    }
+
+
+    /**
+     * 信息
+     */
+    @RequestMapping("/info/{id}")
+    @RequiresPermissions("zltdd:zltddprize:info")
+    public R info(@PathVariable("id") Long id){
+        ZltddPrize zltddPrize = (ZltddPrize)zltddPrizeService.getById(id);
+
+        return R.ok().put("zltddPrize", zltddPrize);
+    }
+
+    /**
+     * 保存
+     */
+    @SysLog("添加奖品")
+    @RequestMapping("/save")
+    @RequiresPermissions("zltdd:zltddprize:save")
+    public R save(@RequestBody ZltddPrize zltddPrize){
+        zltddPrize.setCreateTime(new Date());
+        zltddPrize.setCreateMan(getUser().getUsername());
+        zltddPrizeService.save(zltddPrize);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改
+     */
+    @SysLog("更新奖品")
+    @RequestMapping("/update")
+    @RequiresPermissions("zltdd:zltddprize:update")
+    public R update(@RequestBody ZltddPrize zltddPrize){
+        ValidatorUtils.validateEntity(zltddPrize);
+        zltddPrize.setModifyTime(new Date());
+        zltddPrize.setModifyMan(getUser().getUsername());
+        zltddPrizeService.updateById(zltddPrize);
+        
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @SysLog("删除奖品")
+    @RequestMapping("/delete")
+    @RequiresPermissions("zltdd:zltddprize:delete")
+    public R delete(@RequestBody Long[] ids){
+        zltddPrizeService.removeByIds(Arrays.asList(ids));
+
+        return R.ok();
+    }
+
+}

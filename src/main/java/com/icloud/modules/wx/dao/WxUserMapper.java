@@ -16,5 +16,8 @@ import java.util.Map;
 public interface WxUserMapper extends BaseMapper<WxUser> {
 
     public List<WxUser> queryMixList(Map<String,Object> map);
-	
+
+     String getTddNo();
+
+
 }

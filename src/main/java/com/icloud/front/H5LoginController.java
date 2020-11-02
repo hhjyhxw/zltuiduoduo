@@ -38,13 +38,7 @@ public class H5LoginController {
                 return "modules/h5login/error";//
             }
             WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
-//            Map<String,String> map = myPropertitys.getThirdloginUrlMap();
-//            if(!map.containsKey(fromType)){
-//                log.info("未授权的请求地址");
-//                return "modules/h5login/error";//
-//            }
             String h5token = new RandomGenerator(12).generate();
-//            redisService.set(MD5Utils.encode2hex(h5token),user,3000L);//兼容h5、APP 前端服务 登陆
             redisService.set(h5token,user,3000L);//兼容h5、APP 前端服务 登陆
             log.info("redirect_url=="+ redirect_url);
             //如果历史连接带上token,去掉

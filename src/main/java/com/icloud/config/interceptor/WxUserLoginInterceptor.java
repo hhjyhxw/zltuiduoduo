@@ -150,6 +150,9 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
 				user.setCity(userObj.getString("city"));
 				user.setCountry(userObj.getString("country"));
 				user.setModifyTime(new Date());
+				if(!StringUtil.checkStr(user.getTddCode())){
+					user.setTddCode("zltdd_"+wxUserService.getTddNo());
+				}
 				wxUserService.updateById(user);
 			}else if(null==user){
 				user = new WxUser();
@@ -164,6 +167,7 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
 				user.setCity(userObj.getString("city"));
 				user.setCountry(userObj.getString("country"));
 				user.setModifyTime(new Date());
+				user.setTddCode("zltdd_"+wxUserService.getTddNo());
 				wxUserService.save(user);
 			}
 			return  user;
