@@ -134,12 +134,12 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
 	 * @return
 	 */
 	private WxUser getUserInfoByCode(String code) {
-		String resultString =	HttpRequest.get(WxConst.OAUTH2_USERINFO_URL.replace("APPID", myPropertitys.getWx().getAppid()).replace("SECRET", myPropertitys.getWx().getAppsecret()).replace("CODE", code)).execute().body();
+		String resultString =	HttpRequest.get(WxConst.OAUTH2_ACCESSTOKEN_URL.replace("APPID", myPropertitys.getWx().getAppid()).replace("SECRET", myPropertitys.getWx().getAppsecret()).replace("CODE", code)).execute().body();
 		log.info("wininfo==="+resultString);
 		//
 		if(StringUtil.checkStr(resultString) && resultString.contains("unionid")){
 			JSONObject jsonObject = JSONObject.parseObject(resultString);
-			String userInfo =	HttpRequest.get(WxConst.USER_INFO.replace("ACCESS_TOKEN", jsonObject.getString("access_token")).replace("OPENID", jsonObject.getString("openid"))).execute().body();
+			String userInfo =	HttpRequest.get(WxConst.OAUTH2_USERINFO_URL.replace("ACCESS_TOKEN", jsonObject.getString("access_token")).replace("OPENID", jsonObject.getString("openid"))).execute().body();
 			JSONObject userObj = JSONObject.parseObject(userInfo);
 			WxUser user = getUserByUnionid(jsonObject.getString("unionid"));
 			if(user!=null){
