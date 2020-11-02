@@ -6,6 +6,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/项目描述.txt" beforeDir="false" afterPath="$PROJECT_DIR$/doc/项目描述.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/BaseMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/ClickMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/LocationMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/MenuButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/MenuSubButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/ScancodeMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/ScancodeWaitmsg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/UrlMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/wxmp/menu/XcxMenu.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/handler" beforeDir="true" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/handler/AbstractHandler.java" beforeDir="false" />
@@ -22,6 +32,50 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/handler/TextMsgHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/handler/UnsubscribeHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/handler/VoiceMsgHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxAppController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxCardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxMenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxMenuController_bak.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxReplyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxReplyKeywordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/controller/MpwxSucaiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao/MpwxAppMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao/MpwxCardMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao/MpwxMenuMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao/MpwxReplyKeywordMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao/MpwxReplyMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/dao/MpwxSucaiMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/MpwxApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/MpwxCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/MpwxMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/MpwxReply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/MpwxReplyKeyword.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/MpwxSucai.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/menu" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/menu/MpwxMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/entity/s.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxAppService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxCardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxMenuService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxReplyKeywordService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxReplyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxSucaiForwikiService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/service/MpwxSucaiService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/util" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/util/MenuConstUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/UrlObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/menu" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/menu/MenuItemVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/menu/SubMenuItemVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/sucai" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/sucai/WebSucaiItemvo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/mpwx/vo/sucai/WebSucaivo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/wiki" beforeDir="true" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/wiki/controller" beforeDir="true" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/wiki/controller/WxwikiController.java" beforeDir="false" />
@@ -54,25 +108,25 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/WxUserLoginInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="333">
-              <caret line="140" column="73" lean-forward="true" selection-start-line="140" selection-start-column="73" selection-end-line="140" selection-end-column="73" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+              <caret line="140" column="73" selection-start-line="140" selection-start-column="73" selection-end-line="140" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/error/ErrorController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="253">
+              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpProperties.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-174">
+              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -90,7 +144,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxPayConfigs.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -116,8 +170,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/builder/ImageBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="506">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-59">
+              <caret line="84" column="26" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -131,15 +197,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/apache-maven-3.3.1/repository/com/github/binarywang/weixin-java-mp/3.9.0/weixin-java-mp-3.9.0.jar!/me/chanjar/weixin/mp/api/impl/WxMpServiceImpl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -148,6 +205,7 @@
       <find>itemStat</find>
       <find>startTime</find>
       <find>wxMpService</find>
+      <find>WxMpService</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -280,7 +338,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="icloud" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="icloud" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
@@ -290,18 +358,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="icloud" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="icloud" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
-              <item name="wx" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
@@ -321,6 +377,38 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="icloud" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="icloud" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="wx" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="icloud" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="wx" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="icloud" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="wx" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
@@ -475,7 +563,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26206434" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -499,7 +586,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.27345845" />
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.27345845" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -700,13 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="84" column="26" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/front/userauthor/WxUserInfoUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -783,13 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxPayProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -860,13 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/builder/ImageBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/builder/TextBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -884,21 +950,45 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxPayConfigs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/interceptor/WxUserLoginInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
-          <caret line="140" column="73" lean-forward="true" selection-start-line="140" selection-start-column="73" selection-end-line="140" selection-end-column="73" />
+          <caret line="140" column="73" selection-start-line="140" selection-start-column="73" selection-end-line="140" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/WxMpProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-174">
+          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/wx/builder/ImageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-59">
+          <caret line="84" column="26" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="26" />
         </state>
       </provider>
     </entry>
