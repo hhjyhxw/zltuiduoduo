@@ -27,7 +27,7 @@ import static me.chanjar.weixin.mp.constant.WxMpEventConstants.POI_CHECK_NOTIFY;
  * @author Binary Wang(https://github.com/binarywang)
  */
 @AllArgsConstructor
-@Configuration
+//@Configuration
 @EnableConfigurationProperties(WxMpProperties.class)
 public class WxMpConfiguration {
     private final LogHandler logHandler;
