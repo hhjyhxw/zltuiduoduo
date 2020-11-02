@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>推广用户表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("zltdd:zltddrecommend:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("zltdd:zltddrecommend:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("zltdd:zltddrecommend:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">用户昵称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.nickname" placeholder="用户昵称"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">openid</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.openid" placeholder="openid"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">头像</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.headimgurl" placeholder="头像"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">活动id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.activityId" placeholder="活动id"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">父类id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.parentId" placeholder="父类id"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">用户类型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.userType" placeholder="用户类型"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">0为无无限发展</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.maxNum" placeholder="0为无无限发展"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">已发展人数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.readyedNum" placeholder="已发展人数"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">场景码(推广参数)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.mysceneId" placeholder="场景码(推广参数)"/>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="col-sm-2 control-label">父类场景码（父类推广参数）</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddRecommend.parentSceneId" placeholder="父类场景码（父类推广参数）"/>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"></div>
+                    <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                    &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+                </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/zltdd/zltddrecommend.js?_${.now?long}"></script>
+</body>
+</html>

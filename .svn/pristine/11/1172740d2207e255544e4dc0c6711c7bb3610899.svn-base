@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.zltdd.dao.ZltddShopMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.zltdd.entity.ZltddShop" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="shopName" column="shop_name"/>
+     <result property="contactMan" column="contact_man"/>
+     <result property="contactPhone" column="contact_phone"/>
+     <result property="licenese" column="licenese"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="createMan" column="create_man"/>
+     <result property="modifyTime" column="modify_time"/>
+     <result property="modifyMan" column="modify_man"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,shop_name,contact_man,contact_phone,licenese,status,create_time,create_man,modify_time,modify_man
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_zltdd_shop t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="shopName != null">
+    and t.shop_name = #{shopName}
+</if>
+<if test="contactMan != null">
+    and t.contact_man = #{contactMan}
+</if>
+<if test="contactPhone != null">
+    and t.contact_phone = #{contactPhone}
+</if>
+<if test="licenese != null">
+    and t.licenese = #{licenese}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="createTime != null">
+    and t.create_time = #{createTime}
+</if>
+<if test="createMan != null">
+    and t.create_man = #{createMan}
+</if>
+<if test="modifyTime != null">
+    and t.modify_time = #{modifyTime}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+ order by ${sidx} ${sord}
+</select>
+</mapper>

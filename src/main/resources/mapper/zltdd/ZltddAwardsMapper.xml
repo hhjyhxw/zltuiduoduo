@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.zltdd.dao.ZltddAwardsMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.zltdd.entity.ZltddAwards" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="userId" column="user_id"/>
+     <result property="invidatedUserId" column="invidated_user_id"/>
+     <result property="prizeId" column="prize_id"/>
+     <result property="status" column="status"/>
+     <result property="createTime" column="create_time"/>
+     <result property="receiveTime" column="receive_time"/>
+     <result property="prizeName" column="prize_name"/>
+     <result property="expireTime" column="expire_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,user_id,invidated_user_id,prize_id,status,create_time,receive_time,prize_name,expire_time,modify_time
+    </sql>
+
+
+<select id="queryMixList"  resultType="com.icloud.modules.zltdd.entity.ZltddAwards">
+select t.*,u.nickname as "user.nickname" from t_zltdd_awards t
+    left join t_wx_user u on t.user_id = u.id
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="userId != null">
+    and t.user_id = #{userId}
+</if>
+<if test="invidatedUserId != null">
+    and t.invidated_user_id = #{invidatedUserId}
+</if>
+<if test="prizeId != null">
+    and t.prize_id = #{prizeId}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="createTime != null">
+    and t.create_time = #{createTime}
+</if>
+<if test="receiveTime != null">
+    and t.receive_time = #{receiveTime}
+</if>
+<if test="prizeName != null">
+    and t.prize_name = #{prizeName}
+</if>
+<if test="expireTime != null">
+    and t.expire_time = #{expireTime}
+</if>
+<if test="startTime != null" >
+    <![CDATA[ and t.create_time  >=  #{startTime}  ]]>
+</if>
+<if test="endTime != null" >
+    <![CDATA[ and t.create_time  <=  #{endTime}  ]]>
+</if>
+<if test="nickname != null">
+    and u.nickname LIKE CONCAT('%', '${nickname}', '%')
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+    <if test="sidx != null and sidx!=''">
+        order by ${sidx} ${sord}
+    </if>
+</select>
+</mapper>

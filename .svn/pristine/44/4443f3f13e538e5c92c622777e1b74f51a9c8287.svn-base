@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>活动配置表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("zltdd:zltddconfig:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("zltdd:zltddconfig:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("zltdd:zltddconfig:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.activityName" placeholder="活动名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.status" placeholder="活动状态"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动开启时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.startTime" placeholder="活动开启时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动结束时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.endTime" placeholder="活动结束时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.createTime" placeholder="活动创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.modifyTime" placeholder="活动修改时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动创建人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.createMan" placeholder="活动创建人"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动修改人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.mofityMan" placeholder="活动修改人"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">奖品id</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.prizeId" placeholder="奖品id"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">最大发展人数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="zltddConfig.maxNum" placeholder="最大发展人数"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/zltdd/zltddconfig.js?_${.now?long}"></script>
+</body>
+</html>
