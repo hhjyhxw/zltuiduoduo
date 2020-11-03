@@ -48,15 +48,15 @@ public class SwaggerConfig{
             //加了ApiOperation注解的类，生成接口文档
             .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
             //包下的类，生成接口文档
-            .apis(RequestHandlerSelectors.basePackage("com.icloud.api.small"))
+            .apis(RequestHandlerSelectors.basePackage("com.icloud.api"))
             .paths(PathSelectors.any())
             .build().globalOperationParameters(pars);
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("微店api接口")
-            .description("微店api接口文档")
+            .title("链式营销api接口")
+            .description("链式营销api接口")
             .termsOfServiceUrl("")
             .version("1.0.0")
             .build();
