@@ -68,9 +68,9 @@ public class CreateQrcodeUtil {
     public   String createMasterCard(String senceId,String nickName) throws IOException {
         Font fontNick  = new Font("宋体", Font.BOLD, 30);
 
-        logger.info("basecardpath="+myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg");
+        logger.info("basecardpath="+myPropertitys.getWx().getQrcodePath()+File.separator+"zltdd/card.jpg");
         BufferedImage loadImage = ImageUtil.pressText(
-                ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg")), "我是"+nickName, Color.WHITE,
+                ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"zltdd/card.jpg")), "我是"+nickName, Color.WHITE,
                 fontNick,
                 -16, -15, 0.8f);
 
@@ -83,7 +83,7 @@ public class CreateQrcodeUtil {
 
         byte[] bytes = this.createQrcode(senceId);
         InputStream is = new ByteArrayInputStream(bytes);
-        String basePath = File.separator+"card"+File.separator;
+        String basePath = File.separator+"zltdd/card"+File.separator;
         String cardName = senceId+".jpg";
         if(!FileUtil.exist(myPropertitys.getWx().getQrcodePath()+basePath)){
             FileUtil.mkdir(myPropertitys.getWx().getQrcodePath()+basePath);
@@ -103,9 +103,9 @@ public class CreateQrcodeUtil {
      */
     public String createMasterCard(WxUser user) throws IOException {
         Font fontNick  = new Font("宋体", Font.BOLD, 30);
-        logger.info("basecardpath="+myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg");
+        logger.info("basecardpath="+myPropertitys.getWx().getQrcodePath()+File.separator+"zltdd/card.jpg");
         BufferedImage loadImage = ImageUtil.pressText(
-                ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg")), "我是"+user.getNickname(), Color.WHITE,
+                ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"zltdd/card.jpg")), "我是"+user.getNickname(), Color.WHITE,
                 fontNick,
                 -16, -15, 0.8f);
 
@@ -129,7 +129,7 @@ public class CreateQrcodeUtil {
 
         byte[] bytes = this.createQrcode(user.getTddCode());
         InputStream is = new ByteArrayInputStream(bytes);
-        String basePath = File.separator+"card"+File.separator;
+        String basePath = File.separator+"zltdd/card"+File.separator;
         String cardName = user.getTddCode()+".jpg";
         if(!FileUtil.exist(myPropertitys.getWx().getQrcodePath()+basePath)){
             FileUtil.mkdir(myPropertitys.getWx().getQrcodePath()+basePath);
