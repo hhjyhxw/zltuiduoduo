@@ -196,8 +196,8 @@ public class IndexController {
      * 绑定成功天使用户
      * @return
      */
-    @ApiOperation(value="绑定成功天使用户", notes="")
-    @RequestMapping(value = "/bindRecomend",method = {RequestMethod.GET})
+    @ApiOperation(value="绑定成为天使用户", notes="")
+    @RequestMapping(value = "/bindRecomend",method = {RequestMethod.POST})
     @ResponseBody
     public R bindRecomend(@LoginUser WxUser user,@RequestBody UserAccount userAccount) {
         ValidatorUtils.validateEntityForFront(userAccount);

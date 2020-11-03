@@ -16,6 +16,9 @@ import java.io.BufferedReader;
 import java.net.URLDecoder;
 import java.util.Map;
 
+/**
+ * http://zl.haiyunzy.com/zltdd/api/scanCode/pushevent
+ */
 @Slf4j
 @RequestMapping("/api/scanCode")
 @Controller
