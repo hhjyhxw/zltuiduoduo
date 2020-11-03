@@ -67,9 +67,10 @@ public class CreateQrcodeUtil {
      */
     public   String createMasterCard(String senceId,String nickName) throws IOException {
         Font fontNick  = new Font("宋体", Font.BOLD, 30);
-        //昵称
+
+        logger.info("basecardpath="+myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg");
         BufferedImage loadImage = ImageUtil.pressText(
-                ImageIO.read(FileUtil.file("card.jpg")), "我是"+nickName, Color.WHITE,
+                ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg")), "我是"+nickName, Color.WHITE,
                 fontNick,
                 -16, -15, 0.8f);
 
@@ -84,10 +85,10 @@ public class CreateQrcodeUtil {
         InputStream is = new ByteArrayInputStream(bytes);
         String basePath = File.separator+"card"+File.separator;
         String cardName = senceId+".jpg";
-        if(!FileUtil.exist(myPropertitys.getCdnPath()+basePath)){
-            FileUtil.mkdir(myPropertitys.getCdnPath()+basePath);
+        if(!FileUtil.exist(myPropertitys.getWx().getQrcodePath()+basePath)){
+            FileUtil.mkdir(myPropertitys.getWx().getQrcodePath()+basePath);
         }
-        String userCardPath = myPropertitys.getCdnPath()+basePath+cardName;
+        String userCardPath = myPropertitys.getWx().getQrcodePath()+basePath+cardName;
         logger.info("名片路径:"+userCardPath);
 
         Image m = ImageUtil.scale(ImageIO.read(is), 0.7f);//压缩尺寸
@@ -102,12 +103,11 @@ public class CreateQrcodeUtil {
      */
     public String createMasterCard(WxUser user) throws IOException {
         Font fontNick  = new Font("宋体", Font.BOLD, 30);
-        //昵称
-        logger.info("card.jpgpath==="+AppContext.baseDirectory()+"/card.jpg");
+        logger.info("basecardpath="+myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg");
         BufferedImage loadImage = ImageUtil.pressText(
-                ImageIO.read(FileUtil.file(AppContext.baseDirectory()+"/card.jpg")), "我是"+user.getNickname(), Color.WHITE,
+                ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"card.jpg")), "我是"+user.getNickname(), Color.WHITE,
                 fontNick,
-                -16, -18, 0.8f);
+                -16, -15, 0.8f);
 
         //过期时间
         StringBuffer dateStr = new StringBuffer("推多多名片有效期:");
@@ -131,8 +131,8 @@ public class CreateQrcodeUtil {
         InputStream is = new ByteArrayInputStream(bytes);
         String basePath = File.separator+"card"+File.separator;
         String cardName = user.getTddCode()+".jpg";
-        if(!FileUtil.exist(myPropertitys.getCdnPath()+basePath)){
-            FileUtil.mkdir(myPropertitys.getCdnPath()+basePath);
+        if(!FileUtil.exist(myPropertitys.getWx().getQrcodePath()+basePath)){
+            FileUtil.mkdir(myPropertitys.getWx().getQrcodePath()+basePath);
         }
         String userCardPath = myPropertitys.getCdnPath()+basePath+cardName;
         logger.info("名片路径:"+userCardPath);
