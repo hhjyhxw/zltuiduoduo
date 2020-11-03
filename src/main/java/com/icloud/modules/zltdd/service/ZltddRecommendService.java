@@ -109,7 +109,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             //4、判断是否已经是推主
             List<ZltddRecommend> invitedlist = zltddRecommendMapper.selectList(new QueryWrapper<ZltddRecommend>().eq("openid",openid).eq("activity_id",activityId));
             if (invitedlist!=null && invitedlist.size()>0) {
-                log.info("openid:"+openid+" 用户已被"+invitedlist.get(0).getParentSceneId()+"邀请");
+                log.info("openid:"+openid+" 用户已被"+invitedlist.get(0).getParentTddCode()+"邀请");
                 result.put("code", "-1");
                 result.put("msg", "已存在唯一推荐人");
                 return result;//无效邀请
@@ -136,9 +136,9 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             invited.setUserType("0");//普通用户
             invited.setMaxNum(config.getMaxNum());//最大可邀请人数
             invited.setReadyedNum(0);//已邀请人数
-            invited.setParentSceneId(user.getTddCode());//我的推广码code
             invited.setUserId(user.getId());
-            invited.setParentSceneId(recommend.getMysceneId());//上级推广码code
+            invited.setMyTddCode(user.getTddCode());
+            invited.setParentTddCode(recommend.getMyTddCode());//上级推广码code
             invited.setParentId(recommend.getId());
             invited.setOpenid(user.getOpenid());
             invited.setActivityId(activityId);

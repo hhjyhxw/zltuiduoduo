@@ -69,9 +69,9 @@ public class ZltddShopService extends BaseServiceImpl<ZltddShopMapper,ZltddShop>
         invited.setUserType("1");//天使用户
         invited.setMaxNum(-1);//最大可邀请人数
         invited.setReadyedNum(0);//已邀请人数
-        invited.setParentSceneId(user.getTddCode());//我的推广码code
         invited.setUserId(user.getId());
-        invited.setParentSceneId("000");//上级推广码code
+        invited.setMyTddCode(user.getTddCode());
+        invited.setParentTddCode("000");//上级推广码code
         invited.setParentId(-1L);
         invited.setOpenid(user.getOpenid());
         invited.setActivityId(config.getId());

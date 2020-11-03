@@ -12,8 +12,8 @@ $(function () {
 			{ label: '用户类型', name: 'userType', index: 'user_type', width: 80 }, 			
 			{ label: '0为无无限发展', name: 'maxNum', index: 'max_num', width: 80 }, 			
 			{ label: '已发展人数', name: 'readyedNum', index: 'readyed_num', width: 80 }, 			
-			{ label: '场景码(推广参数)', name: 'mysceneId', index: 'myscene_id', width: 80 }, 			
-			{ label: '父类场景码（父类推广参数）', name: 'parentSceneId', index: 'parent_scene_id', width: 80 }			
+			{ label: '场景码(推广参数)', name: 'myTddCode', index: 'my_tdd_code', width: 80 },
+			{ label: '父类场景码（父类推广参数）', name: 'parentTddCode', index: 'parent_tdd_code', width: 80 }
         ],
 		viewrecords: true,
         height: 385,

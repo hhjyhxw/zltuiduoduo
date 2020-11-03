@@ -15,14 +15,14 @@
      <result property="userType" column="user_type"/>
      <result property="maxNum" column="max_num"/>
      <result property="readyedNum" column="readyed_num"/>
-     <result property="mysceneId" column="myscene_id"/>
-     <result property="parentSceneId" column="parent_scene_id"/>
+     <result property="myTddCode" column="my_tdd_code"/>
+     <result property="parentTddCode" column="parent_tdd_code"/>
     </resultMap>
 
 
    <!-- 基础字段列 -->
    <sql id="Base_Column_List" >
-id,nickname,openid,headimgurl,activity_id,parent_id,user_type,max_num,readyed_num,myscene_id,parent_scene_id
+id,nickname,openid,headimgurl,activity_id,parent_id,user_type,max_num,readyed_num,my_tdd_code,parent_tdd_code
     </sql>
 
 
@@ -57,8 +57,8 @@ select t.*,u.nickname as "user.nickname",u.headimgurl as "user.headimgurl" from 
 <if test="readyedNum != null">
     and t.readyed_num = #{readyedNum}
 </if>
-<if test="mysceneId != null">
-    and t.myscene_id = #{mysceneId}
+<if test="myTddCode != null">
+    and t.my_tdd_code = #{myTddCode}
 </if>
     <if test="sql_filter != null and sql_filter!=''">
         and ${sql_filter}

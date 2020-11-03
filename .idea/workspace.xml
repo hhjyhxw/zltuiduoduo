@@ -8,6 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddrecommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddrecommend.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="199" column="72" selection-start-line="199" selection-start-column="72" selection-end-line="199" selection-end-column="72" />
+            <state relative-caret-position="548">
+              <caret line="213" column="36" selection-start-line="213" selection-start-column="36" selection-end-line="213" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,13 +40,80 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/apache-maven-3.3.1/repository/com/baomidou/mybatis-plus-extension/3.2.0/mybatis-plus-extension-3.2.0.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="273" column="19" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
+              <folding>
+                <element signature="e#10078#10079#0" expanded="true" />
+                <element signature="e#10141#10142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="71" column="40" lean-forward="true" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/前端错误码整理">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="54" />
+            <state relative-caret-position="63">
+              <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-426">
+              <caret line="140" column="74" lean-forward="true" selection-start-line="139" selection-start-column="12" selection-end-line="140" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="59" column="35" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="59" column="19" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddrecommend.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="15" column="84" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -84,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddConfigMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/template/Dao.xml.vm" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddAwardsMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddPrizeMapper.xml" />
@@ -107,10 +178,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddPrize.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/vo/UserAccount.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddShop.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/ZltddAwards.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/vo/MyPrizeVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/aspect/ApiLogAspect.java" />
@@ -135,6 +202,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddconfig.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddrecommend.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java" />
       </list>
     </option>
   </component>
@@ -181,6 +253,11 @@
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
               <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
@@ -242,19 +319,45 @@
               <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="icloud" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
               <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="icloud" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zltuiduoduo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
+              <item name="zltdd" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -451,7 +554,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.22184986" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22184986" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -460,7 +563,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.43281472" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36209336" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.13295615" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -479,7 +582,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22184986" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22184986" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -488,7 +591,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.43281472" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36209336" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13295615" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -501,7 +604,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.27345845" />
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.27345845" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -513,13 +616,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddShop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/StringUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -538,27 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="15" column="53" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="61" column="71" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="59" selection-start-line="7" selection-start-column="59" selection-end-line="7" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="97" column="39" lean-forward="true" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -597,17 +672,6 @@
           <folding>
             <element signature="e#387#388#0" expanded="true" />
             <element signature="e#425#426#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/apache-maven-3.3.1/repository/com/baomidou/mybatis-plus-extension/3.2.0/mybatis-plus-extension-3.2.0.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="250" column="33" selection-start-line="250" selection-start-column="33" selection-end-line="250" selection-end-column="33" />
-          <folding>
-            <element signature="e#9192#9193#0" expanded="true" />
-            <element signature="e#9245#9246#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -727,24 +791,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/前端错误码整理">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/项目描述.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
           <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -883,23 +933,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/doc/前端错误码整理">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="59" column="19" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddrecommend.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="84" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-426">
+          <caret line="140" column="74" lean-forward="true" selection-start-line="139" selection-start-column="12" selection-end-line="140" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="54" />
+        <state relative-caret-position="63">
+          <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://D:/apache-maven-3.3.1/repository/com/baomidou/mybatis-plus-extension/3.2.0/mybatis-plus-extension-3.2.0.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="273" column="19" selection-start-line="273" selection-start-column="19" selection-end-line="273" selection-end-column="19" />
+          <folding>
+            <element signature="e#10078#10079#0" expanded="true" />
+            <element signature="e#10141#10142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="199" column="72" selection-start-line="199" selection-start-column="72" selection-end-line="199" selection-end-column="72" />
+        <state relative-caret-position="548">
+          <caret line="213" column="36" selection-start-line="213" selection-start-column="36" selection-end-line="213" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddShopService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="71" column="40" lean-forward="true" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
         </state>
       </provider>
     </entry>

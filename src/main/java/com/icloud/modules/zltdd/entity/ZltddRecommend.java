@@ -53,11 +53,11 @@ public class ZltddRecommend implements Serializable {
        @TableField("readyed_num")
        private Integer readyedNum;
    	   	   /* 场景码(推广参数) */
-       @TableField("myscene_id")
-       private String mysceneId;
+       @TableField("my_tdd_code")
+       private String myTddCode;
    	   	   /* 父类场景码（父类推广参数） */
-       @TableField("parent_scene_id")
-       private String parentSceneId;
+       @TableField("parent_tdd_code")
+       private String parentTddCode;
 
        @TableField(exist = false)
        private WxUser user;
