@@ -132,6 +132,8 @@ public class CreateQrcodeUtil {
         InputStream is = new ByteArrayInputStream(bytes);
         String basePath = File.separator+"zltdd/card"+File.separator;
         String cardName = user.getTddCode()+".jpg";
+        //文件绝对路径
+        String fullpath = myPropertitys.getWx().getQrcodePath()+ basePath+cardName;
         if(!FileUtil.exist(myPropertitys.getWx().getQrcodePath()+basePath)){
             FileUtil.mkdir(myPropertitys.getWx().getQrcodePath()+basePath);
         }
@@ -139,7 +141,7 @@ public class CreateQrcodeUtil {
         logger.info("名片访问路径:"+userCardPath);
 
         Image m = ImageUtil.scale(ImageIO.read(is), 0.7f);//压缩尺寸
-        ImageUtil.pressImage(loadImage, FileUtil.file(basePath+cardName),  m, -8, 192, 0.8f);
+        ImageUtil.pressImage(loadImage, FileUtil.file(fullpath),  m, -8, 192, 0.8f);
         return userCardPath;
     }
 
