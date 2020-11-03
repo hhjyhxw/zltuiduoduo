@@ -75,9 +75,6 @@ public class IndexController {
        }else {
            user.setIsbind("0");//还未成为推客
        }
-       if(!StringUtil.checkStr(user.getRecommendUrl())){
-           wxUserService.updateMyCard(user);
-       }
        return R.ok().put("user",user);
     }
 
