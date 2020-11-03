@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.icloud.modules.wx.entity.WxUser;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -58,10 +57,5 @@ public class ZltddRecommend implements Serializable {
    	   	   /* 父类场景码（父类推广参数） */
        @TableField("parent_scene_id")
        private String parentSceneId;
-
-       @TableField(exist = false)
-       private WxUser user;
-
-
    	
 }

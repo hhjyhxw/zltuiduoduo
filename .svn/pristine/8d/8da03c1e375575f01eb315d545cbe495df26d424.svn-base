@@ -32,8 +32,6 @@ public class ZltddAwards implements Serializable {
 
       @TableField("order_no")
       private String orderNo;
-      @TableField("seq_no")
-      private String seqNo;
         /* 用户id */
       @TableField("activity_id")
       private Long activityId;

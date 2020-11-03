@@ -8,8 +8,6 @@ import com.github.pagehelper.PageInfo;
 import com.icloud.common.DateUtil;
 import com.icloud.common.MapEntryUtils;
 import com.icloud.common.PageUtils;
-import com.icloud.common.SnowflakeUtils;
-import com.icloud.config.ServerConfig;
 import com.icloud.modules.wx.entity.WxUser;
 import com.icloud.modules.wx.service.WxUserService;
 import com.icloud.modules.zltdd.entity.ZltddAwards;
@@ -47,8 +45,6 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
     private ZltddPrizeService zltddPrizeService;
     @Autowired
     private WxUserService wxUserService;
-    @Autowired
-    private ServerConfig serverConfig;
 
     @Override
     public PageUtils<ZltddRecommend> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
@@ -57,10 +53,6 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
         PageInfo<ZltddRecommend> pageInfo = new PageInfo<ZltddRecommend>(list);
         PageUtils<ZltddRecommend> page = new PageUtils<ZltddRecommend>(list,(int)pageInfo.getTotal(),pageSize,pageNo);
         return page;
-    }
-
-    public List<ZltddRecommend> queryMixList( Map<String, Object> query) {
-        return zltddRecommendMapper.queryMixList(MapEntryUtils.clearNullValue(query));
     }
 
     /**
@@ -158,7 +150,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
             zltddAwards.setStatus("0");//未领取
             zltddAwards.setScores(zltddPrize.getScore());//积分值
-            zltddAwards.setOrderNo(SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
+//            zltddAwards.setOrderNo();
             zltddAwards.setCreateTime(new Date());
             zltddAwards.setExpireTime(DateUtil.getBeforeNDate(zltddAwards.getCreateTime(),30));//获取一个月后的日期
             zltddAwardsService.save(zltddAwards);
@@ -171,13 +163,9 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
             zltddAwards.setStatus("0");//未领取
             zltddAwards.setScores(zltddPrize.getScore());//积分值
-            zltddAwards.setOrderNo(SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
             zltddAwards.setCreateTime(new Date());
             zltddAwards.setExpireTime(DateUtil.getBeforeNDate(zltddAwards.getCreateTime(),30));//获取一个月后的日期
             zltddAwardsService.save(zltddAwards);
-            //
-            user.setIsbind("1");//成为推广者
-            wxUserService.updateById(user);
             result.put("code", "1");
             result.put("msg", "扫码成功");
         }

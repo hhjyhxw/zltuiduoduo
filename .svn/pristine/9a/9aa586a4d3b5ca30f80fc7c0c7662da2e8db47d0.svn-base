@@ -27,11 +27,6 @@ public class MyPropertitys {
     private String zltuiduoduo_index_url;
     //微信公众号参数配置
     private Wx wx;
-    //龙币接口相关参数
-    private LongCoin longcoin;
-    //积分平台登录注册地址
-    private String scorePlatformUrl;
-
 
 
 
@@ -66,21 +61,4 @@ public class MyPropertitys {
         private String host;
     }
 
-
-    /**
-     * 龙币接口相关
-     */
-    @Data
-    public static class LongCoin{
-        private String sid;//商户号
-        private String key;//数据签名key
-        private String rechargetype;//充值类型
-        private String consumetype;//消费类型
-        private String queryUrl;//查询url
-        private String rechargeUrl;//充值url
-        private String consumeUrl;//消费url
-        private String sid_signup;//新会员注册充值 商户号
-        private String key_signup;//新会员注册充值 签名key
-        private String chareAmount;//给新用户充值的龙币值
-    }
 }

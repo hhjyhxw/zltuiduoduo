@@ -105,9 +105,9 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
 	private WxUser getUserByOpenid(String openid) {
 		return wxUserService.findByOpenId(openid);
 	}
-//	private WxUser getUserByUnionid(String unionid) {
-//		return wxUserService.findByUnionid(unionid);
-//	}
+	private WxUser getUserByUnionid(String unionid) {
+		return wxUserService.findByUnionid(unionid);
+	}
 	/**
 	 * 微信授权方式 重定向
 	 * @param request
@@ -141,11 +141,9 @@ public class WxUserLoginInterceptor implements HandlerInterceptor {
 			JSONObject jsonObject = JSONObject.parseObject(resultString);
 			String userInfo =	HttpRequest.get(WxConst.OAUTH2_USERINFO_URL.replace("ACCESS_TOKEN", jsonObject.getString("access_token")).replace("OPENID", jsonObject.getString("openid"))).execute().body();
 			JSONObject userObj = JSONObject.parseObject(userInfo);
-//			WxUser user = getUserByUnionid(jsonObject.getString("unionid"));
-			WxUser user = getUserByOpenid(jsonObject.getString("openid"));
+			WxUser user = getUserByUnionid(jsonObject.getString("unionid"));
 			if(user!=null){
 				//用户存在主要更新 昵称 头像 省份 城市  乡村
-				user.setUnionid(jsonObject.getString("unionid"));
 				user.setNickname(userObj.getString("nickname"));
 				user.setHeadimgurl(userObj.getString("headimgurl"));
 				user.setProvince(userObj.getString("province"));
