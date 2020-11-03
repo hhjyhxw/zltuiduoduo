@@ -1,9 +1,11 @@
 package com.icloud.api.zltdd;
 
+import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.AuthIgnore;
 import com.icloud.annotation.LoginUser;
+import com.icloud.api.vo.MyCardVo;
 import com.icloud.api.vo.MyPrizeVo;
 import com.icloud.api.vo.UserAccount;
 import com.icloud.basecommon.model.Query;
@@ -14,6 +16,7 @@ import com.icloud.common.util.StringUtil;
 import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.wx.entity.WxUser;
+import com.icloud.modules.wx.service.WxUserService;
 import com.icloud.modules.zltdd.entity.ZltddAwards;
 import com.icloud.modules.zltdd.entity.ZltddRecommend;
 import com.icloud.modules.zltdd.entity.ZltddShop;
@@ -54,6 +57,8 @@ public class IndexController {
     private LongCoinUtil longCoinUtil;
     @Autowired
     private MyPropertitys myPropertitys;
+    @Autowired
+    private WxUserService wxUserService;
 
 
     /**
@@ -81,8 +86,24 @@ public class IndexController {
     @RequestMapping(value = "/myCard",method = {RequestMethod.GET})
     @ResponseBody
     public R myCard(@LoginUser WxUser user) {
-
-        return R.ok().put("user",user);
+        if(StringUtil.checkStr(user.getRecommendUrl())){
+            MyCardVo vo = new MyCardVo();
+            vo.setUrl(user.getRecommendUrl()+"?t="+RandomUtil.randomString(6));
+            vo.setExpiredTime(2592000 - ((System.currentTimeMillis() - user.getRecommendUrlTime().getTime()) / 1000));
+            return R.ok().put("code",vo);
+        }else{
+            return R.ok().put("code",null);
+        }
+    }
+    /**
+     * 更新推广名片
+     * @return
+     */
+    @ApiOperation(value="更新推广名片", notes="")
+    @RequestMapping(value = "/updateMyCard",method = {RequestMethod.GET})
+    @ResponseBody
+    public R updateMyCard(@LoginUser WxUser user) {
+        return wxUserService.updateMyCard(user);
     }
 
     /**

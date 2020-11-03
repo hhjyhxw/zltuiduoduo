@@ -11,6 +11,8 @@ import java.util.Map;
 @Configuration
 public class MyPropertitys {
 
+    //
+    private String cdnPath;//
     //项目路径
     private String service_domain;
     //文件上传目录前缀
@@ -31,6 +33,7 @@ public class MyPropertitys {
     private LongCoin longcoin;
     //积分平台登录注册地址
     private String scorePlatformUrl;
+
 
 
 
@@ -64,6 +67,7 @@ public class MyPropertitys {
         private String imcchostport;//登陆接口签名Key
         private String hosttel;//登陆接口签名Key
         private String host;
+        private String qrcodePath;//二维码存放地址
     }
 
 

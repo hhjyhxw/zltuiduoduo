@@ -109,4 +109,11 @@ public class WxConst {
 	public final static String REFUND_URL_QUERY = "https://api.mch.weixin.qq.com/pay/refundquery";
 	
 	public final static String COUPON_URP = "https://api.mch.weixin.qq.com/mmpaymkttransfers/send_coupon";
+
+	/**
+	 * 生成临时二维码
+	 */
+	public static String qrcode_create = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=TOKEN";
+
+	public static String qrcode_show = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET";
 }

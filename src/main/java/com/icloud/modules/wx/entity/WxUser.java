@@ -79,6 +79,20 @@ public class WxUser implements Serializable {
     /* 推广码(唯一，微信临时场景二维码) */
     @TableField("tdd_code")
     private String tddCode;//推广码
+    /**
+     * 是否已经是推广者
+     * 1已经绑定
+     * 0未绑定
+     */
+    @TableField("isbind")
+    private String isbind;
+    /*推广名片*/
+    @TableField("recommend_url")
+    private String recommendUrl;
+    /*更新推广名片时间*/
+    @TableField("recommend_url_time")
+    private Date recommendUrlTime;
+
     /* 临时存储用户位置经度的值 */
     @TableField(exist = false)
     private String lnt;
@@ -94,12 +108,6 @@ public class WxUser implements Serializable {
     @TableField(exist = false)
     private String sessionKey;
 
-    /**
-     * 是否已经是推广者
-     * 1已经绑定
-     * 0未绑定
-     */
-//    @TableField(exist = false)
-    private String isbind;
+
 
 }

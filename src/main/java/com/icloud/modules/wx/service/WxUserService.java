@@ -1,17 +1,24 @@
 package com.icloud.modules.wx.service;
 
+import cn.hutool.core.util.RandomUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.icloud.basecommon.service.BaseServiceImpl;
+import com.icloud.basecommon.util.lang.StringUtils;
 import com.icloud.common.MapEntryUtils;
 import com.icloud.common.PageUtils;
+import com.icloud.common.R;
+import com.icloud.common.util.wx.CreateQrcodeUtil;
 import com.icloud.modules.wx.dao.WxUserMapper;
 import com.icloud.modules.wx.entity.WxUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +33,8 @@ import java.util.Map;
 public class WxUserService extends BaseServiceImpl<WxUserMapper, WxUser> {
     @Autowired
     private WxUserMapper wxUserMapper;
+    @Autowired
+    private CreateQrcodeUtil createQrcodeUtil;
 
     public WxUser findByUnionid(String unionid) {
         QueryWrapper<WxUser> queryWrapper = new QueryWrapper<WxUser>();
@@ -65,5 +74,26 @@ public class WxUserService extends BaseServiceImpl<WxUserMapper, WxUser> {
      */
     public synchronized String getTddNo(){
        return wxUserMapper.getTddNo();
+    }
+
+    /**
+     * 更新推广名片
+     * @param user
+     */
+    public R updateMyCard(WxUser user) {
+        if (StringUtils.isBlank(user.getTddCode())) {
+            return R.error("不存在推广码");
+        }
+        user.setRecommendUrlTime(new Date());
+        String cardUrl = null;
+        try {
+            cardUrl = createQrcodeUtil.createMasterCard(user);
+            user.setRecommendUrl(cardUrl);
+            wxUserMapper.updateById(user);
+            return R.ok().put("url",cardUrl + "?t=" + RandomUtil.randomString(4));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return R.error(e.getMessage());
+        }
     }
 }
