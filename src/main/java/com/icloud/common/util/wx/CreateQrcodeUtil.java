@@ -4,6 +4,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ImageUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.icloud.common.AppContext;
 import com.icloud.common.util.AccessTokenAndJsapiTicketUtil;
 import com.icloud.config.global.MyPropertitys;
 import com.icloud.modules.wx.entity.WxUser;
@@ -102,8 +103,9 @@ public class CreateQrcodeUtil {
     public String createMasterCard(WxUser user) throws IOException {
         Font fontNick  = new Font("宋体", Font.BOLD, 30);
         //昵称
+        logger.info("card.jpgpath==="+AppContext.baseDirectory()+"/card.jpg");
         BufferedImage loadImage = ImageUtil.pressText(
-                ImageIO.read(FileUtil.file("card.jpg")), "我是"+user.getNickname(), Color.WHITE,
+                ImageIO.read(FileUtil.file(AppContext.baseDirectory()+"/card.jpg")), "我是"+user.getNickname(), Color.WHITE,
                 fontNick,
                 -16, -18, 0.8f);
 
