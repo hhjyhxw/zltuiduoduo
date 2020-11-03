@@ -3,6 +3,7 @@ package com.icloud.common.util.wx;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ImageUtil;
+import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSONObject;
 import com.icloud.common.AppContext;
 import com.icloud.common.util.AccessTokenAndJsapiTicketUtil;

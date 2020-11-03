@@ -1,13 +1,10 @@
 package com.icloud.common.util.wx;
-
-import com.icloud.common.ConfigUtil;
-
 public class WxConst {
 
 	 
-		public final static String APPID = ConfigUtil.get("appid");
-		public final static String APPID_SECRET = ConfigUtil.get("appsecret");
-		public final static  String CHARSET = "UTF-8";
+//		public final static String APPID = ConfigUtil.get("appid");
+//		public final static String APPID_SECRET = ConfigUtil.get("appsecret");
+//		public final static  String CHARSET = "UTF-8";
 //		public final static  String MCH_ID =  ConfigUtil.get("mchId");  //商户号
 //		public final static  String PARTNER_KEY = ConfigUtil.get("partnerKey");//商户秘钥
 //		public final static  String COUPON_STOCK_ID = ConfigUtil.get("coupon_stock_id");//代金券批次id
