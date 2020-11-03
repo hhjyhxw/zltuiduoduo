@@ -81,7 +81,7 @@ public class ZltddShopService extends BaseServiceImpl<ZltddShopMapper,ZltddShop>
         ZltddAwards zltddAwards = new ZltddAwards();
         zltddAwards.setActivityId(config.getId());
         zltddAwards.setUserId(user.getId());//用户id
-        zltddAwards.setAwardsType("3");//参与扫描活动
+        zltddAwards.setAwardsType("3");//绑定成为顶级推主
         zltddAwards.setPrizeId(config.getPrizeId());//奖品id
         zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
         zltddAwards.setStatus("0");//未领取

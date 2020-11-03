@@ -61,7 +61,7 @@ public class ZltddAwards implements Serializable {
    	   	   /* 修改时间 */
        @TableField("modify_time")
        private Date modifyTime;
-       /* 获奖方式（0参与活动活动 1下线扫码获得 2绑定成未 顶级推主） */
+       /* 获奖方式（1参与活动活动 2下线扫码获得 3绑定成未 顶级推主） */
        @TableField("awards_type")
        private String awardsType;
          /*获奖积分值*/

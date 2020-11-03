@@ -55,7 +55,7 @@ public class ZltddAwardsService extends BaseServiceImpl<ZltddAwardsMapper,ZltddA
     }
 
     /**
-     * 零七奖品，发放龙币
+     * 领取奖品，发放龙币
      * @param awards
      * @param user
      */
@@ -71,6 +71,7 @@ public class ZltddAwardsService extends BaseServiceImpl<ZltddAwardsMapper,ZltddA
             }
             if(result!=null && "000000".equals(result.getString("returncode"))){
                 awards.setSeqNo(entity.getSeq());
+                awards.setReceiveTime(new Date());
                 awards.setModifyTime(new Date());
                 awards.setStatus("1");
                 zltddAwardsMapper.updateById(awards);

@@ -153,7 +153,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             ZltddAwards zltddAwards = new ZltddAwards();
             zltddAwards.setActivityId(activityId);
             zltddAwards.setUserId(user.getId());//用户id
-            zltddAwards.setAwardsType("0");//参与扫描活动
+            zltddAwards.setAwardsType("1");//参与扫描活动
             zltddAwards.setPrizeId(config.getPrizeId());//奖品id
             zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
             zltddAwards.setStatus("0");//未领取
@@ -166,7 +166,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             zltddAwards = new ZltddAwards();
             zltddAwards.setActivityId(activityId);
             zltddAwards.setUserId(recommend.getUserId());//用户id
-            zltddAwards.setAwardsType("0");//参与扫描活动
+            zltddAwards.setAwardsType("2");//下线扫码
             zltddAwards.setPrizeId(config.getPrizeId());//奖品id
             zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
             zltddAwards.setStatus("0");//未领取
