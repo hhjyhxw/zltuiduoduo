@@ -79,7 +79,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
     public JSONObject dealScancodeEevent(String openid, String eventKey) {
         JSONObject result = new JSONObject();
         //1、根据场景值id（推主的二维码唯一参数） 查询是否存在推主
-        List<ZltddRecommend> list = zltddRecommendMapper.selectList(new QueryWrapper<ZltddRecommend>().eq("myscene_id",eventKey));
+        List<ZltddRecommend> list = zltddRecommendMapper.selectList(new QueryWrapper<ZltddRecommend>().eq("my_tdd_code",eventKey));
         if (list==null || 0 == list.size()) {
             log.info("无效二维码_eventKey:"+eventKey+" 推主不存在");
             result.put("code", "-2");
