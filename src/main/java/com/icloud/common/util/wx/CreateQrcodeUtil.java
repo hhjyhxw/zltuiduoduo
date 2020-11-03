@@ -136,11 +136,11 @@ public class CreateQrcodeUtil {
             FileUtil.mkdir(myPropertitys.getWx().getQrcodePath()+basePath);
         }
         String userCardPath = myPropertitys.getCdnPath()+basePath+cardName;
-        logger.info("名片路径:"+userCardPath);
+        logger.info("名片访问路径:"+userCardPath);
 
         Image m = ImageUtil.scale(ImageIO.read(is), 0.7f);//压缩尺寸
-        ImageUtil.pressImage(loadImage, FileUtil.file(userCardPath),  m, -8, 192, 0.8f);
-        return myPropertitys.getCdnPath()+basePath+cardName;
+        ImageUtil.pressImage(loadImage, FileUtil.file(basePath+cardName),  m, -8, 192, 0.8f);
+        return userCardPath;
     }
 
 
