@@ -34,6 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,14 +101,8 @@ public class IndexController {
     @RequestMapping(value = "/myCard",method = {RequestMethod.GET})
     @ResponseBody
     public R myCard(@LoginUser WxUser user) {
-        if(StringUtil.checkStr(user.getRecommendUrl())){
-            MyCardVo vo = new MyCardVo();
-            vo.setUrl(user.getRecommendUrl()+"?t="+RandomUtil.randomString(6));
-            vo.setExpiredTime(2592000 - ((System.currentTimeMillis() - user.getRecommendUrlTime().getTime()) / 1000));
-            return R.ok().put("code",vo);
-        }else{
-            return R.ok().put("code",null);
-        }
+        return R.ok().put("url",user.getRecommendUrl()+"?t="+RandomUtil.randomString(6))
+                .put("expiredTime",2592000 - ((System.currentTimeMillis() - user.getRecommendUrlTime().getTime()) / 1000));
     }
     /**
      * 更新推广名片
@@ -132,10 +127,16 @@ public class IndexController {
     @RequestMapping(value = "/myTeam",method = {RequestMethod.GET})
     @ResponseBody
     public R myTeam(@LoginUser WxUser user,String pageNum,String pageSize) {
+        List<ZltddRecommend> recommendslist = zltddRecommendService.list(new QueryWrapper<ZltddRecommend>().eq("user_id",user.getId()));
+
+        if(recommendslist==null && recommendslist.size()==0){
+            return R.ok().put("page",new PageUtils(new ArrayList<>(),0,10,0));
+        }
+        ZltddRecommend recommend = recommendslist.get(0);
         Map parma = new HashMap();
         parma.put("page",pageNum);
         parma.put("limit",pageSize);
-        parma.put("userId",user.getId());
+        parma.put("parentId",recommend.getId());
         Query query = new Query(parma);
         PageUtils<ZltddRecommend> page = zltddRecommendService.findByPage(query.getPageNum(),query.getPageSize(), query);
         List<ZltddRecommend> list = (List<ZltddRecommend>) page.getList();

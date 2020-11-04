@@ -34,8 +34,8 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">所属活动</div>
                     <div class="col-sm-10">
-                        <select class="selectpicker" title="所属活动" v-model="zltddShop.activityId" style="width: 103px;">
-                            <option v-for="(item,index) in configlist" :key="index" :value="item.id" :label="item.activityName" >{{item.activityName}}</option>
+                        <select class="selectpicker" title="所属活动" v-model="activityName" style="width: 103px;">
+                            <option v-for="(item,index) in configlist" :key="index" :value="item.id" :label="item.activityName">{{item.activityName}}</option>
                         </select>
                     </div>
                 </div>

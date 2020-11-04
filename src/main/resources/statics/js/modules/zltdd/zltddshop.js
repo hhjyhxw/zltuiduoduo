@@ -53,7 +53,8 @@ var vm = new Vue({
 		zltddShop: {
 		    activityId:null,
 		},
-		configlist: []
+		configlist: [],
+		activityName:null,
 	},
 	methods: {
 		query: function () {
