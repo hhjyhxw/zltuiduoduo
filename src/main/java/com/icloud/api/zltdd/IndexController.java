@@ -227,7 +227,7 @@ public class IndexController {
     public R bindRecomend(@LoginUser WxUser user,@RequestBody UserAccount userAccount) {
         ValidatorUtils.validateEntityForFront(userAccount);
        List<ZltddShop> list = zltddShopService.list(new QueryWrapper<ZltddShop>()
-               .eq("contact_phone",userAccount.getContactPhone())
+//               .eq("contact_phone",userAccount.getContactPhone())
                .eq("licenese",userAccount.getLicenese()));
        if(list==null || list.size()==0){
            return R.error(102,"账号不存在");
