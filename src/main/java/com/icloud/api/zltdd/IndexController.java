@@ -127,6 +127,17 @@ public class IndexController {
         parma.put("userId",user.getId());
         Query query = new Query(parma);
         PageUtils<ZltddRecommend> page = zltddRecommendService.findByPage(query.getPageNum(),query.getPageSize(), query);
+        List<ZltddRecommend> list = (List<ZltddRecommend>) page.getList();
+        if(list!=null && list.size()>0){
+            list.forEach(p->{
+                if(p.getUser()!=null){
+                    p.setNickname(p.getUser().getNickname());
+                    p.setHeadimgurl(p.getUser().getHeadimgurl());
+                    p.setUser(null);
+                }
+            });
+        }
+        page.setList(list);
         return R.ok().put("page",page);
     }
 
