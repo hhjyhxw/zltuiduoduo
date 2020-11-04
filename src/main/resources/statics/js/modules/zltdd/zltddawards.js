@@ -6,14 +6,15 @@ $(function () {
 			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
 			{ label: '获奖用户', name: 'user.nickname', index: 'user_id', width: 80 },
 			{ label: '获奖方式', name: 'awardsType', width: 60, formatter: function(value, options, row){
-                             return value == '0' ?'<span class="label label-danger">参与活动</span>' :
-                              (value == '1' ?'<span class="label label-danger">下线扫码</span>' :'未知')
+                             return value == '1' ?'<span class="label label-success">参与活动</span>' :
+                              (value == '2' ?'<span class="label label-success">下线扫码</span>' :
+                              (value == '3' ?'<span class="label label-success">绑定顶级用户</span>' :'未知'))
                                                 }},
 			{ label: '奖品名称', name: 'prizeName', index: 'prize_name', width: 80 },
 			{ label: '赠送积分', name: 'scores', index: 'scores', width: 80 },
 			{ label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
                  return value == '0' ?'<span class="label label-danger">未领取</span>' :
-                  (value == '1' ?'<span class="label label-danger">已领取</span>' :
+                  (value == '1' ?'<span class="label label-success">已领取</span>' :
                   (value == '2' ?'<span class="label label-danger">已过期</span>' :'未知'))
                                     }},
 

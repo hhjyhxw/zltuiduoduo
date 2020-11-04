@@ -91,7 +91,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
         for (ZltddRecommend recommend : list) {
             Long activityId = recommend.getActivityId();
             ZltddConfig config = (ZltddConfig) zltddConfigService.getById(activityId);
-            if("0".equals(config.getStatus()) || config.getEndTime().compareTo(new Date())==-1){//结束时间比当前时间小
+            if(config.getStartTime().compareTo(new Date())==1 || config.getEndTime().compareTo(new Date())==-1){
                 log.info(config.getActivityName()+"结束活动_"+openid);
                 result.put("code", "-3");
                 result.put("msg", "活动已结束");
@@ -179,8 +179,6 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             user.setIsbind("1");//成为推广者
             wxUserService.updateById(user);
             result.put("code", "1");
-            WxUser recommendWxUser = (WxUser) wxUserService.getById(recommend.getUserId());
-            result.put("nickname",recommendWxUser.getNickname());
             result.put("msg", "扫码成功");
         }
         return result;
