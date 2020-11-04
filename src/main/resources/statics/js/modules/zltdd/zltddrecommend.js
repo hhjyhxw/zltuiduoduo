@@ -4,16 +4,21 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
-			{ label: '用户昵称', name: 'nickname', index: 'nickname', width: 80 }, 			
+			{ label: '用户昵称', name: 'user.nickname', index: 'nickname', width: 80 },
 			{ label: 'openid', name: 'openid', index: 'openid', width: 80 }, 			
-			{ label: '头像', name: 'headimgurl', index: 'headimgurl', width: 80 }, 			
-			{ label: '活动id', name: 'activityId', index: 'activity_id', width: 80 }, 			
-			{ label: '父类id', name: 'parentId', index: 'parent_id', width: 80 }, 			
-			{ label: '用户类型', name: 'userType', index: 'user_type', width: 80 }, 			
-			{ label: '0为无无限发展', name: 'maxNum', index: 'max_num', width: 80 }, 			
+             { label: '用户头像', name: 'user.headimgurl', width: 60, formatter: function(value, options, row){
+                                return '<img style="height: 3rem;width: 3rem;" src="'+value+'"/>';
+                            }},
+//			{ label: '父类id', name: 'parentId', index: 'parent_id', width: 80 },
+			{ label: '用户类型', name: 'userType', index: 'user_type', width: 80 },
+			{ label: '用户类型', name: 'userType', width: 60, formatter: function(value, options, row){
+                            return value =='0' ? '<span class="label label-success">普通用户</span>' :
+                               (value =='1' ? '<span class="label label-danger">顶级用户</span>' :'未知')
+                        }},
+			{ label: '最大发展人数', name: 'maxNum', index: 'max_num', width: 80 },
 			{ label: '已发展人数', name: 'readyedNum', index: 'readyed_num', width: 80 }, 			
-			{ label: '场景码(推广参数)', name: 'myTddCode', index: 'my_tdd_code', width: 80 },
-			{ label: '父类场景码（父类推广参数）', name: 'parentTddCode', index: 'parent_tdd_code', width: 80 }
+			{ label: '推广码', name: 'myTddCode', index: 'my_tdd_code', width: 80 },
+			{ label: '父类推广码', name: 'parentTddCode', index: 'parent_tdd_code', width: 80 }
         ],
 		viewrecords: true,
         height: 385,
