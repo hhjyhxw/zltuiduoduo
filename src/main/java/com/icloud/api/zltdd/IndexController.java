@@ -34,7 +34,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +71,11 @@ public class IndexController {
        List<ZltddRecommend> list = zltddRecommendService.list(new QueryWrapper<ZltddRecommend>().eq("user_id",user.getId()));
        if(list!=null && list.size()>0){
            user.setIsbind("1");//已经成为推客
+           String parentTddCode = list.get(0).getParentTddCode();
+           if(StringUtil.checkStr(parentTddCode) && parentTddCode.contains("zltdd_")){
+               parentTddCode = parentTddCode.replace("zltdd_","");
+           }
+           user.setParentTddCode(parentTddCode);
        }else {
            user.setIsbind("0");//还未成为推客
        }
