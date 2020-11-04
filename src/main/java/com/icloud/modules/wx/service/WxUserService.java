@@ -53,6 +53,11 @@ public class WxUserService extends BaseServiceImpl<WxUserMapper, WxUser> {
         return (WxUser) getOne(queryWrapper);
     }
 
+    public WxUser findByTddCode(String tddcode) {
+        QueryWrapper<WxUser> queryWrapper = new QueryWrapper<WxUser>();
+        queryWrapper.eq("tdd_code",tddcode);
+        return (WxUser) getOne(queryWrapper);
+    }
 
 
     @Override

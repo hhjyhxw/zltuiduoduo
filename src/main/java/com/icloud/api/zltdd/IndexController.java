@@ -72,6 +72,12 @@ public class IndexController {
        if(list!=null && list.size()>0){
            user.setIsbind("1");//已经成为推客
            String parentTddCode = list.get(0).getParentTddCode();
+           WxUser parentUser = wxUserService.findByTddCode(parentTddCode);
+           if(parentUser==null){
+               user.setParentNick("平台");
+           }else{
+               user.setParentNick(parentUser.getParentNick());
+           }
            if(StringUtil.checkStr(parentTddCode) && parentTddCode.contains("zltdd_")){
                parentTddCode = parentTddCode.replace("zltdd_","");
            }
@@ -82,6 +88,7 @@ public class IndexController {
        if(!StringUtil.checkStr(user.getRecommendUrl())){
            wxUserService.updateMyCard(user);
        }
+        user.setTddCode(user.getTddCode().replace("zltdd_",""));
        return R.ok().put("user",user);
     }
 

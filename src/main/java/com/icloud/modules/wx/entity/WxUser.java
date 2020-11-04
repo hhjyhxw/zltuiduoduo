@@ -110,6 +110,8 @@ public class WxUser implements Serializable {
 
     @TableField(exist = false)
     private String parentTddCode;//推荐人推广码
+    @TableField(exist = false)
+    private String parentNick;//推荐人昵称
 
 
 
