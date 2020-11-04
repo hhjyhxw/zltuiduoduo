@@ -53,6 +53,7 @@ var vm = new Vue({
 		    prizeId:null,
 		},
 		prizelist:[],
+		prizeName: '',//奖品名称
 	},
 	methods: {
 		query: function () {
@@ -128,11 +129,12 @@ var vm = new Vue({
 		getInfo: function(id){
 			$.get(baseURL + "zltdd/zltddconfig/info/"+id, function(r){
                 vm.zltddConfig = r.zltddConfig;
+                 vm.selectPrize(r.zltddConfig.prizeId);
             });
 		},
 		getPrizeList: function(){
 		    $.get(baseURL + "zltdd/zltddprize/prizelist/", function(r){
-                          vm.prizelist = r.list;
+                vm.prizelist = r.list;
             });
 		},
 		reload: function (event) {
@@ -141,6 +143,15 @@ var vm = new Vue({
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
+		},
+		selectPrize: function(id){
+            vm.prizelist.forEach(p=>{
+                if(p.id==id){
+                   vm.zltddConfig.prizeId = id;
+                   vm.prizeName = p.prizeName;
+                   return;
+                }
+           });
 		}
 	}
 });

@@ -130,6 +130,7 @@ var vm = new Vue({
 		getInfo: function(id){
 			$.get(baseURL + "zltdd/zltddshop/info/"+id, function(r){
                 vm.zltddShop = r.zltddShop;
+                vm.selectConfig(r.zltddShop.activityId);
             });
 		},
 		getConfiglist: function(){
@@ -144,7 +145,17 @@ var vm = new Vue({
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
-		}
+		},
+		//选择活动
+        selectConfig: function (id) {
+           vm.configlist.forEach(p=>{
+                if(p.id==id){
+                   vm.zltddShop.activityId = id;
+                   vm.activityName = p.activityName;
+                   return;
+                }
+           });
+        },
 	}
 });
 vm.getConfiglist();
