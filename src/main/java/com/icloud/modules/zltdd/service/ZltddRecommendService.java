@@ -142,9 +142,11 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             invited.setParentId(recommend.getId());
             invited.setOpenid(user.getOpenid());
             invited.setActivityId(activityId);
+            invited.setCreateTime(new Date());
             zltddRecommendMapper.insert(invited);
             //7、更新推主 推广人数
             recommend.setReadyedNum(recommend.getReadyedNum()!=null?recommend.getReadyedNum()+1:1);
+            recommend.setModifyTime(new Date());
             zltddRecommendMapper.updateById(recommend);
             //8、生成推主与被邀请者奖励记录
 

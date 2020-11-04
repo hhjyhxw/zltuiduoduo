@@ -75,6 +75,7 @@ public class ZltddShopService extends BaseServiceImpl<ZltddShopMapper,ZltddShop>
         invited.setParentId(-1L);
         invited.setOpenid(user.getOpenid());
         invited.setActivityId(config.getId());
+        invited.setCreateTime(new Date());
         zltddRecommendMapper.insert(invited);
         //2、生成奖励记录
         ZltddPrize zltddPrize = (ZltddPrize) zltddPrizeService.getById(config.getPrizeId());

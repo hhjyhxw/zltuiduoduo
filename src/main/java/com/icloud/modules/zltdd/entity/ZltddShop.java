@@ -8,6 +8,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -58,7 +59,9 @@ public class ZltddShop implements Serializable {
 
       @TableField("openid")
       private String openid;
-     @TableField("activity_id")
-     private String activityId;
+
+      @Null(message = "请选择活动")
+      @TableField("activity_id")
+      private String activityId;
    	
 }

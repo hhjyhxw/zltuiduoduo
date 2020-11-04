@@ -58,6 +58,12 @@ public class ZltddRecommend implements Serializable {
    	   	   /* 父类场景码（父类推广参数） */
        @TableField("parent_tdd_code")
        private String parentTddCode;
+        /* 邀请时间 */
+        @TableField("create_time")
+        private Date createTime;
+        /* 修改时间 */
+        @TableField("modify_time")
+        private Date modifyTime;
 
        @TableField(exist = false)
        private WxUser user;

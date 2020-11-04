@@ -50,7 +50,10 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		zltddShop: {}
+		zltddShop: {
+		    activityId:null,
+		},
+		configlist: []
 	},
 	methods: {
 		query: function () {
@@ -128,6 +131,12 @@ var vm = new Vue({
                 vm.zltddShop = r.zltddShop;
             });
 		},
+		getConfiglist: function(){
+            $.get(baseURL + "zltdd/zltddconfig/configlist/", function(r){
+                vm.configlist = r.list;
+                console.log("configlist====="+JSON.stringify(r));
+            });
+        },
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
@@ -137,3 +146,4 @@ var vm = new Vue({
 		}
 	}
 });
+vm.getConfiglist();

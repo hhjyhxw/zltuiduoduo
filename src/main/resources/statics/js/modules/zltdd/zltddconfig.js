@@ -50,6 +50,7 @@ var vm = new Vue({
 		zltddConfig: {
 		    startTime:null,
 		    endTime:null,
+		    prizeId:null,
 		},
 		prizelist:[],
 	},
