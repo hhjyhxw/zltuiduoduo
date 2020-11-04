@@ -63,7 +63,7 @@ public class ZltddShopService extends BaseServiceImpl<ZltddShopMapper,ZltddShop>
      * @param user
      */
     public void  createTopRecommend(ZltddShop shop, WxUser user) {
-        ZltddConfig config = (ZltddConfig) zltddConfigService.getById(shop.getId());
+        ZltddConfig config = (ZltddConfig) zltddConfigService.getById(shop.getActivityId());
         //1、生成推荐记录
         ZltddRecommend invited = new ZltddRecommend();
         invited.setUserType("1");//天使用户

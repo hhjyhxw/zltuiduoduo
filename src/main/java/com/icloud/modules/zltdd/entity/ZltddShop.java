@@ -58,5 +58,7 @@ public class ZltddShop implements Serializable {
 
       @TableField("openid")
       private String openid;
+     @TableField("activity_id")
+     private String activityId;
    	
 }
