@@ -217,7 +217,7 @@ public class IndexController {
             return R.error("非法请求");
         }
         zltddAwardsService.getAwards(prize,user);
-        return R.ok();
+        return R.ok().put("url",myPropertitys.getScorePlatformUrl());
     }
     /**
      * 绑定成功天使用户
