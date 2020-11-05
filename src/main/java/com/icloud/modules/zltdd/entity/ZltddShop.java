@@ -60,8 +60,8 @@ public class ZltddShop implements Serializable {
       @TableField("openid")
       private String openid;
 
-      @Null(message = "请选择活动")
+      @NotNull(message = "请选择活动")
       @TableField("activity_id")
-      private String activityId;
+      private Long activityId;
    	
 }

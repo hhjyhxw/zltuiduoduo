@@ -52,9 +52,9 @@ public class ZltddPrize implements Serializable {
    	   	   /* 修改人 */
        @TableField("modify_man")
        private String modifyMan;
-    /* 积分值 */
-    @TableField("score")
-    private Integer score;
+        /* 积分值 */
+        @TableField("score")
+        private Integer score;
 
    	
 }
