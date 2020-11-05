@@ -77,6 +77,7 @@ public class ZltddConfigController extends AbstractController{
     @RequestMapping("/save")
     @RequiresPermissions("zltdd:zltddconfig:save")
     public R save(@RequestBody ZltddConfig zltddConfig){
+        ValidatorUtils.validateEntity(zltddConfig);
         zltddConfig.setCreateTime(new Date());
         zltddConfig.setCreateMan(getUser().getUsername());
         zltddConfigService.save(zltddConfig);

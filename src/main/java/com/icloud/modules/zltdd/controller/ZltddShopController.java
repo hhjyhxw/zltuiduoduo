@@ -67,6 +67,7 @@ public class ZltddShopController extends AbstractController{
     @RequestMapping("/save")
     @RequiresPermissions("zltdd:zltddshop:save")
     public R save(@RequestBody ZltddShop zltddShop){
+        ValidatorUtils.validateEntity(zltddShop);
         zltddShop.setCreateTime(new Date());
         zltddShop.setCreateMan(getUser().getUsername());
         zltddShopService.save(zltddShop);
