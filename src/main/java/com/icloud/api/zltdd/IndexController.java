@@ -101,6 +101,7 @@ public class IndexController {
     @RequestMapping(value = "/myCard",method = {RequestMethod.GET})
     @ResponseBody
     public R myCard(@LoginUser WxUser user) {
+        user = (WxUser) wxUserService.getById(user.getId());
         return R.ok().put("url",user.getRecommendUrl()+"?t="+RandomUtil.randomString(6))
                 .put("expiredTime",2592000 - ((System.currentTimeMillis() - user.getRecommendUrlTime().getTime()) / 1000));
     }
