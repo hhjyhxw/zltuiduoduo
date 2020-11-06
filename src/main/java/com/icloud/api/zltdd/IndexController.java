@@ -72,14 +72,22 @@ public class IndexController {
        List<ZltddRecommend> list = zltddRecommendService.list(new QueryWrapper<ZltddRecommend>().eq("user_id",user.getId()));
        if(list!=null && list.size()>0){
            user.setIsbind("1");//已经成为推客
-           String parentTddCode = list.get(0).getParentTddCode();
+           ZltddRecommend recommend = list.get(0);
+           String parentTddCode = recommend.getParentTddCode();
            WxUser parentUser = wxUserService.findByTddCode(parentTddCode);
-           if(parentUser==null){
+           if(parentUser==null){//天使用户，可以无限发展
                user.setParentNick("平台");
                user.setMaxNum(-1);
-           }else{
+               user.setIsable(1);
+           }else{//普通用户限制发展
                user.setParentNick(parentUser.getParentNick());
-               user.setMaxNum(list.get(0).getMaxNum());
+               user.setMaxNum(recommend.getMaxNum());
+               Integer readyedNum = recommend.getReadyedNum()==null?0:recommend.getReadyedNum();
+               if(recommend.getMaxNum()<=readyedNum){//发展人数达到最大值，不能再发展
+                   user.setIsable(0);
+               }else{
+                   user.setIsable(1);
+               }
            }
            if(StringUtil.checkStr(parentTddCode) && parentTddCode.contains("zltdd_")){
                parentTddCode = parentTddCode.replace("zltdd_","");

@@ -99,7 +99,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             }
             //3、判断是否是普通推主 以及已达到最大限制人数
             if("0".equals(recommend.getUserType())){
-                if(recommend.getMaxNum()!=null && recommend.getReadyedNum()!=null && recommend.getMaxNum().compareTo(recommend.getReadyedNum())==0){
+                if(recommend.getMaxNum()!=null && recommend.getReadyedNum()!=null && recommend.getMaxNum().compareTo(recommend.getReadyedNum())<=0){
                     log.info(openid+"推广已达上限");
                     result.put("code", "-3");
                     result.put("msg", "推广已达上限");

@@ -115,6 +115,8 @@ public class WxUser implements Serializable {
     private String parentNick;//推荐人昵称
     @TableField(exist = false)
     private Integer maxNum;//最大可发展人数(-1 不限制)
+    @TableField(exist = false)
+    private Integer isable;//是否还可以发展
 
 
 
