@@ -31,10 +31,8 @@ public class MyPropertitys {
     private Wx wx;
     //龙币接口相关参数
     private LongCoin longcoin;
-    //积分平台登录注册地址
+    //积分平台单点登录地址
     private String scorePlatformUrl;
-
-
 
 
 

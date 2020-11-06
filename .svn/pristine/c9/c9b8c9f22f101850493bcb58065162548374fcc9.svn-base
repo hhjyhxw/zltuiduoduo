@@ -1,0 +1,105 @@
+package com.icloud.modules.zltdd.controller;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Map;
+
+import com.icloud.annotation.SysLog;
+import com.icloud.basecommon.model.Query;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import com.icloud.modules.zltdd.entity.ZltddShop;
+import com.icloud.modules.zltdd.service.ZltddShopService;
+import com.icloud.basecommon.model.Query;
+import com.icloud.common.PageUtils;
+import com.icloud.common.R;
+import com.icloud.common.validator.ValidatorUtils;
+import com.icloud.modules.sys.controller.AbstractController;
+
+
+/**
+ * 顶级资格用户表
+ *
+ * @author zdh
+ * @email yyyyyy@cm.com
+ * @date 2020-11-02 14:35:32
+ * 菜单主连接： modules/zltdd/zltddshop.html
+ */
+@RestController
+@RequestMapping("zltdd/zltddshop")
+public class ZltddShopController extends AbstractController{
+    @Autowired
+    private ZltddShopService zltddShopService;
+
+    /**
+     * 列表
+     */
+    @RequestMapping("/list")
+    @RequiresPermissions("zltdd:zltddshop:list")
+    public R list(@RequestParam Map<String, Object> params){
+        Query query = new Query(params);
+        PageUtils page = zltddShopService.findByPage(query.getPageNum(),query.getPageSize(), query);
+
+        return R.ok().put("page", page);
+    }
+
+
+    /**
+     * 信息
+     */
+    @RequestMapping("/info/{id}")
+    @RequiresPermissions("zltdd:zltddshop:info")
+    public R info(@PathVariable("id") Long id){
+        ZltddShop zltddShop = (ZltddShop)zltddShopService.getById(id);
+
+        return R.ok().put("zltddShop", zltddShop);
+    }
+
+    /**
+     * 保存
+     */
+    @SysLog("添加顶级用户信息")
+    @RequestMapping("/save")
+    @RequiresPermissions("zltdd:zltddshop:save")
+    public R save(@RequestBody ZltddShop zltddShop){
+        ValidatorUtils.validateEntity(zltddShop);
+        zltddShop.setCreateTime(new Date());
+        zltddShop.setCreateMan(getUser().getUsername());
+        zltddShopService.save(zltddShop);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改
+     */
+    @SysLog("修改顶级用户信息")
+    @RequestMapping("/update")
+    @RequiresPermissions("zltdd:zltddshop:update")
+    public R update(@RequestBody ZltddShop zltddShop){
+        ValidatorUtils.validateEntity(zltddShop);
+        zltddShop.setModifyTime(new Date());
+        zltddShop.setModifyMan(getUser().getUsername());
+        zltddShopService.updateById(zltddShop);
+        
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @SysLog("删除顶级用户")
+    @RequestMapping("/delete")
+    @RequiresPermissions("zltdd:zltddshop:delete")
+    public R delete(@RequestBody Long[] ids){
+        zltddShopService.removeByIds(Arrays.asList(ids));
+
+        return R.ok();
+    }
+
+}
