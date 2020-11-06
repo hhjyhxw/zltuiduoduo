@@ -3,6 +3,7 @@ package com.icloud.basecommon.web.upload;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.icloud.api.util.WeixinInterfaceUtil;
 import com.icloud.basecommon.web.AppBaseController;
 import com.icloud.common.Contants;
 import com.icloud.common.DateTools;
