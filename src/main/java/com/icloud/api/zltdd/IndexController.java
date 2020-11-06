@@ -89,6 +89,7 @@ public class IndexController {
                    user.setIsable(1);
                }
            }
+           user.setReadyedNum(recommend.getReadyedNum());
            if(StringUtil.checkStr(parentTddCode) && parentTddCode.contains("zltdd_")){
                parentTddCode = parentTddCode.replace("zltdd_","");
            }
