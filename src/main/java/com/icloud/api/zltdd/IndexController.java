@@ -76,8 +76,10 @@ public class IndexController {
            WxUser parentUser = wxUserService.findByTddCode(parentTddCode);
            if(parentUser==null){
                user.setParentNick("平台");
+               user.setMaxNum(-1);
            }else{
                user.setParentNick(parentUser.getParentNick());
+               user.setMaxNum(list.get(0).getMaxNum());
            }
            if(StringUtil.checkStr(parentTddCode) && parentTddCode.contains("zltdd_")){
                parentTddCode = parentTddCode.replace("zltdd_","");
@@ -91,6 +93,18 @@ public class IndexController {
        }
         user.setTddCode(user.getTddCode().replace("zltdd_",""));
        return R.ok().put("user",user);
+    }
+
+    /**
+     * 我的未领取奖励数
+     * @return
+     */
+    @ApiOperation(value="我的未领取奖励数", notes="")
+    @RequestMapping(value = "/myUnreceiveAaward",method = {RequestMethod.GET})
+    @ResponseBody
+    public R myUnreceiveAaward(@LoginUser WxUser user) {
+        int count = zltddAwardsService.count(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status",""));
+        return R.ok().put("countNum",count);
     }
 
     /**
