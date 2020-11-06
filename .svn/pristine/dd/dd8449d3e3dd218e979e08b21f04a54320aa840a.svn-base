@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.icloud.api.util.WxUserInfoUtil;
 import com.icloud.common.DateUtil;
 import com.icloud.common.MapEntryUtils;
 import com.icloud.common.PageUtils;
@@ -50,8 +49,6 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
     private WxUserService wxUserService;
     @Autowired
     private ServerConfig serverConfig;
-    @Autowired
-    private WxUserInfoUtil wxUserInfoUtil;
 
     @Override
     public PageUtils<ZltddRecommend> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
@@ -129,20 +126,6 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             }else{
                 //生成微信用户记录
                 user = new WxUser();
-                try{
-                    JSONObject json = wxUserInfoUtil.getUserInfo(openid,2);
-                    if(json!=null && json.containsKey("nickname")){
-                        user.setNickname(json.getString("nickname"));
-                    }
-                    if(json!=null && json.containsKey("unionid")){
-                        user.setUnionid(json.getString("unionid"));
-                    }
-                    if(json!=null && json.containsKey("headimgurl")){
-                        user.setHeadimgurl(json.getString("headimgurl"));
-                    }
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
                 user.setCreateTime(new Date());
                 user.setOpenid(openid);
                 user.setTddCode("zltdd_"+wxUserService.getTddNo());

@@ -1,6 +1,7 @@
 package com.icloud.api.scancode;
 
 import com.alibaba.fastjson.JSONObject;
+import com.icloud.api.util.WxUserInfoUtil;
 import com.icloud.basecommon.service.redis.RedisService;
 import com.icloud.common.util.wx.XmlMessageUtil;
 import com.icloud.config.global.MyPropertitys;
@@ -30,6 +31,7 @@ public class ScanCodeController {
     private ZltddRecommendService zltddRecommendService;
     @Autowired
     private MyPropertitys myPropertitys;
+
 
 
     @RequestMapping("/pushevent")

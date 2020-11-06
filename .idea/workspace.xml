@@ -4,12 +4,12 @@
     <list default="true" id="53219508-cadf-4d23-8478-dcda2e0b374c" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/util/WeixinInterfaceUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/util/WxUserInfoUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -25,54 +25,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="91" column="55" selection-start-line="91" selection-start-column="55" selection-end-line="91" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1326">
+              <caret line="121" column="43" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddRecommend.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-local.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+            <state relative-caret-position="162">
+              <caret line="130" column="18" selection-start-line="130" selection-start-column="2" selection-end-line="130" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="640" column="20" lean-forward="true" selection-start-line="640" selection-start-column="20" selection-end-line="640" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/apache-maven-3.3.1/repository/com/baomidou/mybatis-plus-extension/3.2.0/mybatis-plus-extension-3.2.0.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="269" column="15" selection-start-line="269" selection-start-column="15" selection-end-line="269" selection-end-column="15" />
-              <folding>
-                <element signature="e#9942#9943#0" expanded="true" />
-                <element signature="e#10026#10027#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddAwards.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="47" column="28" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="28" />
+            <state relative-caret-position="370">
+              <caret line="135" column="28" lean-forward="true" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -80,20 +55,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="120" column="30" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="30" />
+            <state relative-caret-position="250">
+              <caret line="45" column="29" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -101,8 +67,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="69" column="58" lean-forward="true" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+            <state relative-caret-position="299">
+              <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="129" column="26" lean-forward="true" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/util/WxUserInfoUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,19 +98,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/util/WeixinInterfaceUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1039">
-              <caret line="101" column="145" selection-start-line="101" selection-start-column="145" selection-end-line="101" selection-end-column="145" />
+            <state relative-caret-position="345">
+              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/wx/WxConst.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="5" />
+            <state relative-caret-position="189">
+              <caret line="80" column="31" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/AccessTokenAndJsapiTicketUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -161,6 +160,7 @@
       <find>zltuiduoduozl</find>
       <find>/data/imcc/webapps</find>
       <find>scorePlatformUrl</find>
+      <find>ConfigUtil</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -172,8 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/modules/zltdd/zltddprize.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/front/H5LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/wx/WxUserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/dao/WxUserMapper.java" />
@@ -192,7 +190,6 @@
         <option value="$PROJECT_DIR$/doc/前端错误码整理" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/vo/MyCardVo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/config/global/SwaggerConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddRecommendMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddAwardsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/entity/ZltddAwards.java" />
@@ -220,9 +217,12 @@
         <option value="$PROJECT_DIR$/doc/访问地址" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/util/WeixinInterfaceUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/api/util/WxUserInfoUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java" />
       </list>
     </option>
   </component>
@@ -321,7 +321,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="icloud" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="zltdd" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zltuiduoduo" type="b2602c69:ProjectViewProjectNode" />
@@ -339,22 +339,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/icloud/api/util" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.icloud.api.zltdd" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.icloud.common.util.wx" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\zl\zltuiduoduo\src\main\java\com\icloud\api\util" />
       <recent name="D:\project\zl\zltuiduoduo\src\main\resources" />
       <recent name="D:\project\zl\zltuiduoduo\src\main\java\com\icloud\modules" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icloud.api.util" />
+      <recent name="com.icloud.common.util.wx" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.icloud.api.zltdd" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -556,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604548434647</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020">
+      <created>1604650797456</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1604650797456</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -571,7 +580,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.12588401" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" visible="true" weight="0.15558699" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.042432815" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -627,37 +636,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/apache-maven-3.3.1/repository/cn/hutool/hutool-all/4.2.1/hutool-all-4.2.1.jar!/cn/hutool/core/io/FileUtil.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1587">
-          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/wx/CreateQrcodeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/zltdd/ZltddAwardsMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/js/modules/bsactivity/bsactivityad.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="89" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/statics/js/modules/zltdd/zltddrecommend.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -879,27 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-local.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="130" column="18" selection-start-line="130" selection-start-column="2" selection-end-line="130" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="128" column="18" selection-start-line="128" selection-start-column="2" selection-end-line="128" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="121" column="43" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -939,33 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="69" column="58" lean-forward="true" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1039">
-          <caret line="101" column="145" selection-start-line="101" selection-start-column="145" selection-end-line="101" selection-end-column="145" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="120" column="30" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/config/global/MyPropertitys.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -976,10 +906,92 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/zltdd/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="586">
-          <caret line="91" column="55" selection-start-line="91" selection-start-column="55" selection-end-line="91" selection-end-column="55" />
+          <caret line="91" column="27" lean-forward="true" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/AccessTokenAndJsapiTicketUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/wx/WxConst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="80" column="31" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/util/WeixinInterfaceUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-local.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="130" column="18" selection-start-line="130" selection-start-column="2" selection-end-line="130" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="135" column="28" lean-forward="true" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="121" column="43" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/util/WxUserInfoUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/entity/WxUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="129" column="26" lean-forward="true" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
         </state>
       </provider>
     </entry>
