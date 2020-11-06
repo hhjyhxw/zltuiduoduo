@@ -78,19 +78,19 @@ public class ZltddShopService extends BaseServiceImpl<ZltddShopMapper,ZltddShop>
         invited.setCreateTime(new Date());
         zltddRecommendMapper.insert(invited);
         //2、生成奖励记录
-        ZltddPrize zltddPrize = (ZltddPrize) zltddPrizeService.getById(config.getPrizeId());
-        ZltddAwards zltddAwards = new ZltddAwards();
-        zltddAwards.setActivityId(config.getId());
-        zltddAwards.setUserId(user.getId());//用户id
-        zltddAwards.setAwardsType("3");//绑定成为顶级推主
-        zltddAwards.setPrizeId(config.getPrizeId());//奖品id
-        zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
-        zltddAwards.setStatus("0");//未领取
-        zltddAwards.setScores(zltddPrize.getScore());//积分值
-        zltddAwards.setOrderNo(SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
-        zltddAwards.setCreateTime(new Date());
-        zltddAwards.setExpireTime(DateUtil.getBeforeNDate(zltddAwards.getCreateTime(),30));//获取一个月后的日期
-        zltddAwardsService.save(zltddAwards);
+//        ZltddPrize zltddPrize = (ZltddPrize) zltddPrizeService.getById(config.getPrizeId());
+//        ZltddAwards zltddAwards = new ZltddAwards();
+//        zltddAwards.setActivityId(config.getId());
+//        zltddAwards.setUserId(user.getId());//用户id
+//        zltddAwards.setAwardsType("3");//绑定成为顶级推主
+//        zltddAwards.setPrizeId(config.getPrizeId());//奖品id
+//        zltddAwards.setPrizeName(zltddPrize.getPrizeName());//奖品名称
+//        zltddAwards.setStatus("0");//未领取
+//        zltddAwards.setScores(zltddPrize.getScore());//积分值
+//        zltddAwards.setOrderNo(SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
+//        zltddAwards.setCreateTime(new Date());
+//        zltddAwards.setExpireTime(DateUtil.getBeforeNDate(zltddAwards.getCreateTime(),30));//获取一个月后的日期
+//        zltddAwardsService.save(zltddAwards);
         //3、更新shop
         shop.setOpenid(user.getOpenid());
         zltddShopMapper.updateById(shop);
