@@ -133,7 +133,7 @@ public class IndexController {
      * @return
      */
     @ApiOperation(value="更新推广名片", notes="")
-    @RequestMapping(value = "/updateMyCard",method = {RequestMethod.GET})
+    @RequestMapping(value = "/updateMyCard",method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public R updateMyCard(@LoginUser WxUser user) {
         return wxUserService.updateMyCard(user);
