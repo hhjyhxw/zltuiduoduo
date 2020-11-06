@@ -121,7 +121,7 @@ public class IndexController {
      * @return
      */
     @ApiOperation(value="我的名片", notes="")
-    @RequestMapping(value = "/myCard",method = {RequestMethod.GET})
+    @RequestMapping(value = "/myCard",method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public R myCard(@LoginUser WxUser user) {
         user = (WxUser) wxUserService.getById(user.getId());
