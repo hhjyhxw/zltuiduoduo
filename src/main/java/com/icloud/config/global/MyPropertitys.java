@@ -33,6 +33,8 @@ public class MyPropertitys {
     private LongCoin longcoin;
     //积分平台单点登录地址
     private String scorePlatformUrl;
+    //积分平台会员绑定地址
+    private String scorePlatformBindUrl;
 
 
 

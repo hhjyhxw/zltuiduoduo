@@ -3,7 +3,9 @@ package com.icloud.api.zltdd;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.icloud.annotation.AuthIgnore;
 import com.icloud.annotation.LoginUser;
+import com.icloud.api.vo.MyCardVo;
 import com.icloud.api.vo.MyPrizeVo;
 import com.icloud.api.vo.UserAccount;
 import com.icloud.basecommon.model.Query;
@@ -218,7 +220,7 @@ public class IndexController {
         if(result!=null && result.containsKey("returncode") && "000000".equals(result.getString("returncode"))){
             return R.ok();
         }
-        return R.error(105,"不是积分会员").put("url",myPropertitys.getScorePlatformBindUrl());
+        return R.error(105,"不是积分会员").put("url",myPropertitys.getScorePlatformUrl());
     }
 
     /**

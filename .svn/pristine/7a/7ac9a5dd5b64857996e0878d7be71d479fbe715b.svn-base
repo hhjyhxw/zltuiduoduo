@@ -218,7 +218,7 @@ public class IndexController {
         if(result!=null && result.containsKey("returncode") && "000000".equals(result.getString("returncode"))){
             return R.ok();
         }
-        return R.error(105,"不是积分会员").put("url",myPropertitys.getScorePlatformBindUrl());
+        return R.error(105,"不是积分会员").put("url",myPropertitys.getScorePlatformUrl());
     }
 
     /**
