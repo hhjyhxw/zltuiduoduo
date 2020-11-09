@@ -112,7 +112,7 @@ public class IndexController {
     @RequestMapping(value = "/myUnreceiveAaward",method = {RequestMethod.GET})
     @ResponseBody
     public R myUnreceiveAaward(@LoginUser WxUser user) {
-        int count = zltddAwardsService.count(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status",""));
+        int count = zltddAwardsService.count(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0"));
         return R.ok().put("countNum",count);
     }
 
