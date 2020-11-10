@@ -5,6 +5,7 @@
   */
 package com.icloud.common.util.wx.model;
 
+import com.icloud.common.util.AccessTokenAndJsapiTicketUtil;
 import com.icloud.common.util.wx.PayUtil;
 
 
@@ -36,7 +37,7 @@ public class JsSDK extends MchBean {
 	 * @author fwx215666
 	 * @description 构造出调用JS方法的必须参数
 	 * */
-	public JsSDK(String appid,String appsecret,String url) throws Exception{
+	public JsSDK(String appid, String appsecret, String url, AccessTokenAndJsapiTicketUtil accessTokenAndJsapiTicketUtil) throws Exception{
 		
 		
 		this.appid     = appid;
@@ -45,9 +46,7 @@ public class JsSDK extends MchBean {
 		//原来获取JsApiTicket
 		//this.jsTick    = JsApiTicketMap.get(appid).getJsApiTicket();
 		//现在获取JsApiTicket
-//		this.jsTick    =AccessTokenAndJsapiTicketUtil.getJsapiTicket();
-		
-		
+		this.jsTick    =accessTokenAndJsapiTicketUtil.getJsapiTicket();
 		this.url = url;
 		this.timeStamp = PayUtil.getTimeStamp();
 		this.nonceStr  = PayUtil.getStrReq();
