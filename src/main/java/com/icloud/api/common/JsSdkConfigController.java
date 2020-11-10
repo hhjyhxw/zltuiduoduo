@@ -19,12 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * 类名称: JsSdkConfigController
- * 类描述: 
- * 创建人: zhangdehai
- * 创建时间:2018年8月15日 下午4:41:31
- */
+
 @Slf4j
 @Api("分享签名参数")
 @RestController
