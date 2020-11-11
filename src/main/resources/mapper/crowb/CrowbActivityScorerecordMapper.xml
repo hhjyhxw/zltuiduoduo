@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.crowb.dao.CrowbActivityScorerecordMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.crowb.entity.CrowbActivityScorerecord" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="sq" column="sq"/>
+     <result property="openid" column="openid"/>
+     <result property="createTime" column="create_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,sq,openid,create_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_crowb_activity_scorerecord t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="sq != null">
+    and t.sq = #{sq}
+</if>
+<if test="openid != null">
+    and t.openid = #{openid}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+ <if test="sidx != null and sidx!=''">
+    order by ${sidx} ${sord}
+</if>
+</select>
+</mapper>

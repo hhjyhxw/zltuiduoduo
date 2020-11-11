@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.message.dao.MessageSendrecordMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.message.entity.MessageSendrecord" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="messageId" column="message_id"/>
+     <result property="openid" column="openid"/>
+     <result property="status" column="status"/>
+     <result property="msg" column="msg"/>
+     <result property="createTime" column="create_time"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,message_id,openid,status,msg,create_time,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_message_sendrecord t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="messageId != null">
+    and t.message_id = #{messageId}
+</if>
+<if test="openid != null">
+    and t.openid = #{openid}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+<if test="msg != null">
+    and t.msg = #{msg}
+</if>
+<if test="createTime != null">
+    and t.create_time = #{createTime}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+ <if test="sidx != null and sidx!=''">
+    order by ${sidx} ${sord}
+</if>
+</select>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.crowb.dao.CrowbActivitySignMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.crowb.entity.CrowbActivitySign" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="crowbActivityId" column="crowb_activity_id"/>
+     <result property="name" column="name"/>
+     <result property="phone" column="phone"/>
+     <result property="score" column="score"/>
+     <result property="createTime" column="create_time"/>
+     <result property="openid" column="openid"/>
+     <result property="nickname" column="nickname"/>
+     <result property="takePartner" column="take_partner"/>
+     <result property="memerberPhone" column="memerber_phone"/>
+     <result property="suportintention" column="suportIntention"/>
+     <result property="activityName" column="activity_name"/>
+     <result property="unitName" column="unit_name"/>
+     <result property="officeName" column="office_name"/>
+     <result property="takeNum" column="take_num"/>
+     <result property="verifyStatus" column="verify_status"/>
+     <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,crowb_activity_id,name,phone,score,create_time,openid,nickname,take_partner,memerber_phone,suportIntention,activity_name,unit_name,office_name,take_num,verify_status,modify_time
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_crowb_activity_sign t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="crowbActivityId != null">
+    and t.crowb_activity_id = #{crowbActivityId}
+</if>
+<if test="name != null">
+    and t.name = #{name}
+</if>
+<if test="phone != null">
+    and t.phone = #{phone}
+</if>
+<if test="score != null">
+    and t.score = #{score}
+</if>
+<if test="createTime != null">
+    and t.create_time = #{createTime}
+</if>
+<if test="openid != null">
+    and t.openid = #{openid}
+</if>
+<if test="nickname != null">
+    and t.nickname = #{nickname}
+</if>
+<if test="takePartner != null">
+    and t.take_partner = #{takePartner}
+</if>
+<if test="memerberPhone != null">
+    and t.memerber_phone = #{memerberPhone}
+</if>
+<if test="suportintention != null">
+    and t.suportIntention = #{suportintention}
+</if>
+<if test="activityName != null">
+    and t.activity_name = #{activityName}
+</if>
+<if test="unitName != null">
+    and t.unit_name = #{unitName}
+</if>
+<if test="officeName != null">
+    and t.office_name = #{officeName}
+</if>
+<if test="takeNum != null">
+    and t.take_num = #{takeNum}
+</if>
+<if test="verifyStatus != null">
+    and t.verify_status = #{verifyStatus}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+ <if test="sidx != null and sidx!=''">
+    order by ${sidx} ${sord}
+</if>
+</select>
+</mapper>
