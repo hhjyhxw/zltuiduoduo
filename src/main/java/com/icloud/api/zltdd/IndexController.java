@@ -13,6 +13,7 @@ import com.icloud.common.beanutils.ColaBeanUtils;
 import com.icloud.common.util.StringUtil;
 import com.icloud.common.validator.ValidatorUtils;
 import com.icloud.config.global.MyPropertitys;
+import com.icloud.config.threadpool.ThreadPoodExecuteService;
 import com.icloud.modules.wx.entity.WxUser;
 import com.icloud.modules.wx.service.WxUserService;
 import com.icloud.modules.zltdd.entity.ZltddAwards;
@@ -78,7 +79,7 @@ public class IndexController {
                user.setMaxNum(-1);
                user.setIsable(1);
            }else{//普通用户限制发展
-               user.setParentNick(parentUser.getParentNick());
+               user.setParentNick(parentUser.getNickname());
                user.setMaxNum(recommend.getMaxNum());
                Integer readyedNum = recommend.getReadyedNum()==null?0:recommend.getReadyedNum();
                if(recommend.getMaxNum()<=readyedNum){//发展人数达到最大值，不能再发展
@@ -99,6 +100,9 @@ public class IndexController {
            wxUserService.updateMyCard(user);
        }
         user.setTddCode(user.getTddCode().replace("zltdd_",""));
+       //异步查询用户已发展人数 与实际发展人数是否相等，不等更新
+        //异步执行发送任务
+//        ThreadPoodExecuteService.getTaskExecutor().execute(cardVerifyCallbackService);
        return R.ok().put("user",user);
     }
 
