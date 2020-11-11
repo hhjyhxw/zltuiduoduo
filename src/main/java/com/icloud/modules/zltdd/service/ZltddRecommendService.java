@@ -3,14 +3,17 @@ package com.icloud.modules.zltdd.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.icloud.api.util.WxUserInfoUtil;
+import com.icloud.basecommon.service.LockComponent;
 import com.icloud.common.DateUtil;
 import com.icloud.common.MapEntryUtils;
 import com.icloud.common.PageUtils;
 import com.icloud.common.SnowflakeUtils;
 import com.icloud.config.ServerConfig;
+import com.icloud.exceptions.ApiException;
 import com.icloud.modules.wx.entity.WxUser;
 import com.icloud.modules.wx.service.WxUserService;
 import com.icloud.modules.zltdd.entity.ZltddAwards;
@@ -38,6 +41,7 @@ import java.util.Map;
 @Transactional
 public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,ZltddRecommend> {
 
+    private static final String RECOMMEND_LOCK = "RECOMMEND_LOCK_";
     @Autowired
     private ZltddRecommendMapper zltddRecommendMapper;
     @Autowired
@@ -52,6 +56,8 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
     private ServerConfig serverConfig;
     @Autowired
     private WxUserInfoUtil wxUserInfoUtil;
+    @Autowired
+    private LockComponent lockComponent;
 
     @Override
     public PageUtils<ZltddRecommend> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
@@ -121,7 +127,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             WxUser user = wxUserService.findByOpenId(openid);
             if(user!=null){
                 if (recommend.getUserId().compareTo(user.getId()) == 0) {
-                    log.info("openid:"+openid+"不能自己邀请资金");
+                    log.info("openid:"+openid+"不能自己邀请自己");
                     result.put("code", "-1");
                     result.put("msg", "已存在唯一推荐人");
                     continue;
@@ -148,6 +154,19 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
                 user.setTddCode("zltdd_"+wxUserService.getTddNo());
                 wxUserService.save(user);
             }
+            //7、更新推主 推广人数
+            if (lockComponent.tryLock(RECOMMEND_LOCK + recommend.getOpenid(), 5)) {
+                recommend = zltddRecommendMapper.selectById(recommend.getId());
+                recommend.setReadyedNum(recommend.getReadyedNum()!=null?recommend.getReadyedNum()+1:1);
+                recommend.setModifyTime(new Date());
+//                    zltddRecommendMapper.update(recommend,new UpdateWrapper<ZltddRecommend>());
+                zltddRecommendMapper.updateById(recommend);
+            } else {
+                log.info("openid:"+openid+"更新用户总数失败");
+                result.put("code", "3");
+                result.put("msg", "系统繁忙，请稍后再试");
+                continue;
+            }
             //6、生成推荐记录
             ZltddRecommend invited = new ZltddRecommend();
             invited.setUserType("0");//普通用户
@@ -161,12 +180,8 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             invited.setActivityId(activityId);
             invited.setCreateTime(new Date());
             zltddRecommendMapper.insert(invited);
-            //7、更新推主 推广人数
-            recommend.setReadyedNum(recommend.getReadyedNum()!=null?recommend.getReadyedNum()+1:1);
-            recommend.setModifyTime(new Date());
-            zltddRecommendMapper.updateById(recommend);
-            //8、生成推主与被邀请者奖励记录
 
+            //8、生成推主与被邀请者奖励记录
             //被邀请者奖励
             ZltddPrize zltddPrize = (ZltddPrize) zltddPrizeService.getById(config.getPrizeId());
             ZltddAwards zltddAwards = new ZltddAwards();
@@ -205,5 +220,8 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
         return result;
     }
 
+    public void updateUserReadyedNum(){
+
+    }
 }
 
