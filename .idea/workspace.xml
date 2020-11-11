@@ -90,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="89" column="48" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="48" />
+            <state relative-caret-position="115">
+              <caret line="71" column="64" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,8 +102,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="164" column="54" lean-forward="true" selection-start-line="164" selection-start-column="54" selection-end-line="164" selection-end-column="54" />
+            <state relative-caret-position="471">
+              <caret line="161" column="48" lean-forward="true" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
+              <folding>
+                <element signature="e#9759#9760#0" expanded="true" />
+                <element signature="e#9817#9818#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1082,8 +1086,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/api/scancode/ScanCodeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="89" column="48" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="48" />
+        <state relative-caret-position="115">
+          <caret line="71" column="64" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1092,8 +1096,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/zltdd/service/ZltddRecommendService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="164" column="54" lean-forward="true" selection-start-line="164" selection-start-column="54" selection-end-line="164" selection-end-column="54" />
+        <state relative-caret-position="471">
+          <caret line="161" column="48" lean-forward="true" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
+          <folding>
+            <element signature="e#9759#9760#0" expanded="true" />
+            <element signature="e#9817#9818#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

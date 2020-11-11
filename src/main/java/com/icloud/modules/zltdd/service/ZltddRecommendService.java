@@ -159,8 +159,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
                 recommend = zltddRecommendMapper.selectById(recommend.getId());
                 recommend.setReadyedNum(recommend.getReadyedNum()!=null?recommend.getReadyedNum()+1:1);
                 recommend.setModifyTime(new Date());
-//                    zltddRecommendMapper.update(recommend,new UpdateWrapper<ZltddRecommend>());
-                zltddRecommendMapper.updateById(recommend);
+                updateUserReadyedNum(recommend);
             } else {
                 log.info("openid:"+openid+"更新用户总数失败");
                 result.put("code", "3");
@@ -220,8 +219,8 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
         return result;
     }
 
-    public void updateUserReadyedNum(){
-
+    public void updateUserReadyedNum(ZltddRecommend recommend){
+        zltddRecommendMapper.updateById(recommend);
     }
 }
 
