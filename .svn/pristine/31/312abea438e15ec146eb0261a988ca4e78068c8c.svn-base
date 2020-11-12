@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.message.dao.MessageTemplateMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.message.entity.MessageTemplate" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="first" column="first"/>
+     <result property="keyword1" column="keyword1"/>
+     <result property="keyword2" column="keyword2"/>
+     <result property="keyword3" column="keyword3"/>
+     <result property="keyword4" column="keyword4"/>
+     <result property="keyword5" column="keyword5"/>
+     <result property="remark" column="remark"/>
+     <result property="templateId" column="template_id"/>
+     <result property="visitUrl" column="visit_url"/>
+     <result property="titile" column="titile"/>
+     <result property="dealZclass" column="deal_zclass"/>
+     <result property="status" column="status"/>
+     <result property="sendStatus" column="send_status"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,first,keyword1,keyword2,keyword3,keyword4,keyword5,remark,template_id,visit_url,titile,deal_zclass,status,send_status
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_message_template t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="first != null">
+    and t.first = #{first}
+</if>
+<if test="keyword1 != null">
+    and t.keyword1 = #{keyword1}
+</if>
+<if test="keyword2 != null">
+    and t.keyword2 = #{keyword2}
+</if>
+<if test="keyword3 != null">
+    and t.keyword3 = #{keyword3}
+</if>
+<if test="keyword4 != null">
+    and t.keyword4 = #{keyword4}
+</if>
+<if test="keyword5 != null">
+    and t.keyword5 = #{keyword5}
+</if>
+<if test="remark != null">
+    and t.remark = #{remark}
+</if>
+<if test="templateId != null">
+    and t.template_id = #{templateId}
+</if>
+<if test="visitUrl != null">
+    and t.visit_url = #{visitUrl}
+</if>
+<if test="titile != null">
+    and t.titile = #{titile}
+</if>
+<if test="dealZclass != null">
+    and t.deal_zclass = #{dealZclass}
+</if>
+<if test="status != null">
+    and t.status = #{status}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+ <if test="sidx != null and sidx!=''">
+    order by ${sidx} ${sord}
+</if>
+</select>
+</mapper>

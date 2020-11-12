@@ -2,6 +2,7 @@ package com.icloud.modules.zltdd.service;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.icloud.basecommon.service.redislock.DistributedLockUtil;
@@ -78,6 +79,41 @@ public class ZltddAwardsService extends BaseServiceImpl<ZltddAwardsMapper,ZltddA
             }else{
                 throw new ApiException(LongbiServiceImpl.getCodeMap().get(result.getString("returncode")));
             }
+    }
+
+    /**
+     * 领取我的所有奖励
+     * @param user
+     */
+    public void getMyAwards(WxUser user) {
+        List<ZltddAwards> list = zltddAwardsMapper.selectList(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0"));
+        Integer totalScore = 0;
+        if(list!=null && list.size()>0){
+            for (ZltddAwards awards:list){
+                totalScore = totalScore+awards.getScores();
+            }
+            LongChargeEntity entity = longCoinUtil.getChargeEntity(user.getOpenid(),totalScore.toString(),"2");
+            JSONObject result = null;
+            try {
+                result = longbiServiceImpl.recharge(entity.getRequestParamMap());
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new ApiException("系统开小差了,请稍后再试");
+            }
+            if(result!=null && "000000".equals(result.getString("returncode"))){
+                Date date = new Date();
+                for (ZltddAwards awards:list){
+                    awards.setSeqNo(entity.getSeq());
+                    awards.setReceiveTime(date);
+                    awards.setModifyTime(date);
+                    awards.setStatus("1");
+                    zltddAwardsMapper.updateById(awards);
+                }
+            }else{
+                throw new ApiException(LongbiServiceImpl.getCodeMap().get(result.getString("returncode")));
+            }
+        }
+
     }
 }
 

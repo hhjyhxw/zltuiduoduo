@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("crowb:crowbactivity:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("crowb:crowbactivity:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("crowb:crowbactivity:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">名称</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.title" placeholder="名称"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">需要积分值</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.score" placeholder="需要积分值"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动人数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.total" placeholder="活动人数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">已报名人数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.signed" placeholder="已报名人数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动开始时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.starttime" placeholder="活动开始时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动结束时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.endtime" placeholder="活动结束时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">停用标志 0表示停用，1表示启用(默认启用)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.status" placeholder="停用标志 0表示停用，1表示启用(默认启用)"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">消息发送状态0未发送 1表示活动成功已发送 2表示众筹失败发送消息</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.sendStatus" placeholder="消息发送状态0未发送 1表示活动成功已发送 2表示众筹失败发送消息"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动介绍描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.description" placeholder="活动介绍描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动规则描述</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.rule" placeholder="活动规则描述"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">活动入口链接</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.link" placeholder="活动入口链接"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">报名成功后参与地址</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.attendAddress" placeholder="报名成功后参与地址"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">报名成功后参与时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.attendTime" placeholder="报名成功后参与时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.createTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.modifyTime" placeholder="创建时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否需要积分支付积分(0不需要 1需要 默认1)</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="crowbActivity.isneedScore" placeholder="是否需要积分支付积分(0不需要 1需要 默认1)"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/crowb/crowbactivity.js?_${.now?long}"></script>
+</body>
+</html>

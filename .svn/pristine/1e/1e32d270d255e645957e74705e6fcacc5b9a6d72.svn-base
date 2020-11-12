@@ -1,0 +1,2 @@
+CREATE  INDEX  recommend_parentid_index on  t_zltdd_recommend (parent_id);
+

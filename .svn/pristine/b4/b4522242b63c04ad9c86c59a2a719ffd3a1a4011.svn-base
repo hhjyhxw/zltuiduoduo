@@ -71,19 +71,8 @@ public class IndexController {
         user = (WxUser) wxUserService.getById(user.getId());
        List<ZltddRecommend> list = zltddRecommendService.list(new QueryWrapper<ZltddRecommend>().eq("user_id",user.getId()));
        if(list!=null && list.size()>0){
-
            user.setIsbind("1");//已经成为推客
            ZltddRecommend recommend = list.get(0);
-           if("1".equals(recommend.getIsfirstin())){
-               user.setIsfirstin("0");//不是第一次进入
-           }else{
-               //成为推客后第一次进入
-               ZltddRecommend updateRecommend = new ZltddRecommend();
-               updateRecommend.setId(recommend.getId());
-               updateRecommend.setIsfirstin("1");//系统变成已进入
-               zltddRecommendService.updateById(updateRecommend);
-               user.setIsfirstin("1");//页面是首次进入
-           }
            String parentTddCode = recommend.getParentTddCode();
            WxUser parentUser = wxUserService.findByTddCode(parentTddCode);
            if(parentUser==null){//天使用户，可以无限发展
@@ -107,7 +96,6 @@ public class IndexController {
            user.setParentTddCode(parentTddCode);
        }else {
            user.setIsbind("0");//还未成为推客
-           user.setIsfirstin("0");//首次进入
        }
        if(!StringUtil.checkStr(user.getRecommendUrl())){
            wxUserService.updateMyCard(user);
@@ -127,16 +115,8 @@ public class IndexController {
     @RequestMapping(value = "/myUnreceiveAaward",method = {RequestMethod.GET})
     @ResponseBody
     public R myUnreceiveAaward(@LoginUser WxUser user) {
-        List<ZltddAwards> list = zltddAwardsService.list(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0"));
-        int countNum = 0;
-        int totalScore = 0;
-        if(list!=null && list.size()>0){
-            countNum = list.size();
-            for (ZltddAwards awards:list){
-                totalScore = totalScore+awards.getScores();
-            }
-        }
-        return R.ok().put("countNum",countNum).put("totalScore",totalScore);
+        int count = zltddAwardsService.count(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0"));
+        return R.ok().put("countNum",count);
     }
 
     /**
@@ -247,7 +227,7 @@ public class IndexController {
     }
 
     /**
-     * 领取单个奖品
+     * 领取奖品
      * @return
      */
     @ApiOperation(value="领取奖品", notes="")
@@ -265,19 +245,6 @@ public class IndexController {
         zltddAwardsService.getAwards(prize,user);
         return R.ok().put("url",myPropertitys.getScorePlatformUrl());
     }
-
-    /**
-     * 领取所有奖品
-     * @return
-     */
-    @ApiOperation(value="领取所有奖品", notes="")
-    @RequestMapping(value = "/getAwardsAll",method = {RequestMethod.GET})
-    @ResponseBody
-    public R getAwardsAll(@LoginUser WxUser user) {
-        zltddAwardsService.getMyAwards(user);
-        return R.ok().put("url",myPropertitys.getScorePlatformUrl());
-    }
-
     /**
      * 绑定成功天使用户
      * @return

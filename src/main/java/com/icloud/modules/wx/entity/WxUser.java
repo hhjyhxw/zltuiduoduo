@@ -93,6 +93,8 @@ public class WxUser implements Serializable {
     @TableField("recommend_url_time")
     private Date recommendUrlTime;
 
+
+
     /* 临时存储用户位置经度的值 */
     @TableField(exist = false)
     private String lnt;
@@ -119,6 +121,9 @@ public class WxUser implements Serializable {
     private Integer isable;//是否还可以发展
     @TableField(exist = false)
     private Integer readyedNum;//已发展人数
+    /*是否是首次参与活动 0不是  1是*/
+    @TableField(exist = false)
+    private String isfirstin;
 
 
 

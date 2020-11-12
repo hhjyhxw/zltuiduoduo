@@ -65,6 +65,10 @@ public class ZltddRecommend implements Serializable {
         @TableField("modify_time")
         private Date modifyTime;
 
+        /*是否已进入活动  1是  0不是 */
+        @TableField("isfirstin")
+        private String isfirstin;
+
        @TableField(exist = false)
        private WxUser user;
 
