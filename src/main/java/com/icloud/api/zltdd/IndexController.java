@@ -33,10 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Api("首页相关接口")
@@ -127,7 +124,7 @@ public class IndexController {
     @RequestMapping(value = "/myUnreceiveAaward",method = {RequestMethod.GET})
     @ResponseBody
     public R myUnreceiveAaward(@LoginUser WxUser user) {
-        List<ZltddAwards> list = zltddAwardsService.list(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0"));
+        List<ZltddAwards> list = zltddAwardsService.list(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0").gt("expire_time",new Date()));
         int countNum = 0;
         int totalScore = 0;
         if(list!=null && list.size()>0){
@@ -259,6 +256,12 @@ public class IndexController {
             return R.error("奖品不存在");
         }
         ZltddAwards prize = (ZltddAwards) awaard;
+        if("1".equals(prize.getStatus())){
+            return R.error("奖品已领取");
+        }
+        if("2".equals(prize.getStatus()) || new Date().after(prize.getExpireTime())){
+            return R.error("奖品已过期");
+        }
         if(prize.getUserId().compareTo(user.getId())!=0){
             return R.error("非法请求");
         }

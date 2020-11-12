@@ -86,7 +86,7 @@ public class ZltddAwardsService extends BaseServiceImpl<ZltddAwardsMapper,ZltddA
      * @param user
      */
     public void getMyAwards(WxUser user) {
-        List<ZltddAwards> list = zltddAwardsMapper.selectList(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0"));
+        List<ZltddAwards> list = zltddAwardsMapper.selectList(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0").gt("expire_time",new Date()));
         Integer totalScore = 0;
         if(list!=null && list.size()>0){
             for (ZltddAwards awards:list){
