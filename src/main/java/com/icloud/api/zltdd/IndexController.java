@@ -277,8 +277,13 @@ public class IndexController {
     @RequestMapping(value = "/getAwardsAll",method = {RequestMethod.GET})
     @ResponseBody
     public R getAwardsAll(@LoginUser WxUser user) {
-        zltddAwardsService.getMyAwards(user);
-        return R.ok().put("url",myPropertitys.getScorePlatformUrl());
+        boolean result = zltddAwardsService.getMyAwards(user);
+        if(result){
+            return R.ok().put("url",myPropertitys.getScorePlatformUrl());
+        }else {
+            return R.error("领取失败");
+        }
+
     }
 
     /**

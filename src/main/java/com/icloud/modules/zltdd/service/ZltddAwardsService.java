@@ -85,7 +85,7 @@ public class ZltddAwardsService extends BaseServiceImpl<ZltddAwardsMapper,ZltddA
      * 领取我的所有奖励
      * @param user
      */
-    public void getMyAwards(WxUser user) {
+    public boolean getMyAwards(WxUser user) {
         List<ZltddAwards> list = zltddAwardsMapper.selectList(new QueryWrapper<ZltddAwards>().eq("user_id",user.getId()).eq("status","0").gt("expire_time",new Date()));
         Integer totalScore = 0;
         if(list!=null && list.size()>0){
@@ -109,10 +109,12 @@ public class ZltddAwardsService extends BaseServiceImpl<ZltddAwardsMapper,ZltddA
                     awards.setStatus("1");
                     zltddAwardsMapper.updateById(awards);
                 }
+                return true;
             }else{
                 throw new ApiException(LongbiServiceImpl.getCodeMap().get(result.getString("returncode")));
             }
         }
+        return false;
 
     }
 }
