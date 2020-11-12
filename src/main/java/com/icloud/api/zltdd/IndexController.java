@@ -68,6 +68,7 @@ public class IndexController {
     @RequestMapping(value = "/userinfo",method = {RequestMethod.GET})
     @ResponseBody
     public R userinfo(@LoginUser WxUser user) {
+        user = (WxUser) wxUserService.getById(user.getId());
        List<ZltddRecommend> list = zltddRecommendService.list(new QueryWrapper<ZltddRecommend>().eq("user_id",user.getId()));
        if(list!=null && list.size()>0){
            user.setIsbind("1");//已经成为推客
