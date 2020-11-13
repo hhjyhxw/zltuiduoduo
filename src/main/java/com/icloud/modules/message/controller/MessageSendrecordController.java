@@ -10,6 +10,7 @@ import com.icloud.basecommon.model.Query;
 import com.icloud.basecommon.util.codec.Md5Utils;
 import com.icloud.basecommon.util.excelutilss.ExcelMoreSheetPoiUtil;
 import com.icloud.common.util.StringUtil;
+import com.icloud.config.global.MyPropertitys;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,8 @@ import com.icloud.modules.sys.controller.AbstractController;
 public class MessageSendrecordController extends AbstractController{
     @Autowired
     private MessageSendrecordService messageSendrecordService;
+    @Autowired
+    private MyPropertitys myPropertitys;
 
     /**
      * 列表
@@ -73,6 +76,7 @@ public class MessageSendrecordController extends AbstractController{
     @RequestMapping("/save")
     @RequiresPermissions("message:messagesendrecord:save")
     public R save(@RequestBody MessageSendrecord messageSendrecord){
+        ValidatorUtils.validateEntity(messageSendrecord);
         messageSendrecordService.save(messageSendrecord);
 
         return R.ok();
@@ -103,6 +107,14 @@ public class MessageSendrecordController extends AbstractController{
         return R.ok();
     }
 
+    /**
+     * 删除
+     */
+    @RequestMapping("/importtemplate")
+    public R importtemplate(){
+        return R.ok().put("url", myPropertitys.getCdnPath()+"/message/usertemplate.xls");
+    }
+
 
     /**
      * 导入待发送用户数据
@@ -130,7 +142,7 @@ public class MessageSendrecordController extends AbstractController{
             MessageSendrecord retail = null;
             Date date = new Date();
             List<MessageSendrecord> sendlist = new ArrayList<>();
-            for(int i=0;i<dataList.size();i++){
+            for(int i=1;i<dataList.size();i++){
                 List<Object> comlunsList = dataList.get(i);
                 if(comlunsList.get(0)==null || comlunsList.get(1)==null){
                     continue;

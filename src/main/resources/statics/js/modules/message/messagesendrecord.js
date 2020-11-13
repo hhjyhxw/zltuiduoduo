@@ -40,14 +40,43 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
         }
     });
+
+
+
+     new AjaxUpload('#upload', {
+            action: baseURL + "local/localUplaod/upload2",
+            name: 'file',
+            autoSubmit:true,
+            responseType:"json",
+            onSubmit:function(file, extension){
+                if (!(extension && /^(xlsx|xls)$/.test(extension.toLowerCase()))){
+                    alert('只支持xlsx、xls格式的文件！');
+                    return false;
+                }
+            },
+            onComplete : function(file, r){
+                console.log("r=="+JSON.stringify(r));
+                console.log("file=="+file);
+                if(r.code == 0){
+                    alert("上传成功!");
+                    vm.uploadfileurl = r.url;
+                }else{
+                    alert(r.msg);
+                }
+            }
+        });
 });
 
 var vm = new Vue({
 	el:'#icloudapp',
 	data:{
+	    uploadfileurl: null
 		showList: true,
+		showUserurl: false,//是否显示导入按钮
 		title: null,
-		messageSendrecord: {}
+		messageSendrecord: {
+		    status:'0'
+		}
 	},
 	methods: {
 		query: function () {
@@ -55,50 +84,63 @@ var vm = new Vue({
 		},
 		add: function(){
 			vm.showList = false;
+			 vm.showUserurl = false;
 			vm.title = "新增";
 			vm.messageSendrecord = {};
 		},
+		addimpot:function(){
+            vm.showList = false;
+            vm.showUserurl = true;
+            vm.title = "导入";
+            vm.messageSendrecord = {};
+        },
 		update: function (event) {
 			var id = getSelectedRow();
 			if(id == null){
 				return ;
 			}
+			vm.showUserurl = false;
 			vm.showList = false;
             vm.title = "修改";
             
             vm.getInfo(id)
 		},
 		  //导入
-                btnInpomt: function (event) {
-                    $('#btnInpomt').button('loading').delay(1000).queue(function() {
-                        var viurl = "retail/retailconfirn/importusers?url="+vm.userurl;
-                        $.ajax({
-                            type: "get",
-                            url: baseURL + viurl,
-                            contentType: "application/json",
-                            // data: {url:vm.userurl},
-                            success: function(r){
-                                if(r.code === 0){
-                                    layer.msg("操作成功", {icon: 1});
-                                    vm.reload();
-                                    $('#btnInpomt').button('reset');
-                                    $('#btnInpomt').dequeue();
-                                }else{
-                                    layer.alert(r.msg);
-                                    $('#btnInpomt').button('reset');
-                                    $('#btnInpomt').dequeue();
-                                }
-                            }
-                        });
-                    });
-                },
-                //导出
-                btndownload: function (event) {
-                    var pagesize = 50000;
-                    var viurl = baseURL + "retail/retailconfirn/downLoaduserlist?userName?="+vm.q.userName+"&status="+vm.q.status+"&page="+vm.q.page+"&limit="+pagesize;
-                    window.location.href = viurl;
-                },
-
+        btnInpomt: function (event) {
+            $('#btnInpomt').button('loading').delay(1000).queue(function() {
+                var viurl = "message/messagesendrecord/importusers?url="+vm.uploadfileurl;
+                $.ajax({
+                    type: "get",
+                    url: baseURL + viurl,
+                    contentType: "application/json",
+                    // data: {url:vm.userurl},
+                    success: function(r){
+                        if(r.code === 0){
+                            layer.msg("操作成功", {icon: 1});
+                            vm.reload();
+                            $('#btnInpomt').button('reset');
+                            $('#btnInpomt').dequeue();
+                        }else{
+                            layer.alert(r.msg);
+                            $('#btnInpomt').button('reset');
+                            $('#btnInpomt').dequeue();
+                        }
+                    }
+                });
+            });
+        },
+        //模板下载
+        btndownloadtemplate: function (event) {
+            $.get(baseURL + "message/messagesendrecord/importtemplate", function(r){
+                 window.location.href = r.url;
+            });
+        },
+        //导出
+        btndownload: function (event) {
+            var pagesize = 50000;
+            var viurl = baseURL + "retail/retailconfirn/downLoaduserlist?userName?="+vm.q.userName+"&status="+vm.q.status+"&page="+vm.q.page+"&limit="+pagesize;
+            window.location.href = viurl;
+        },
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
                 var url = vm.messageSendrecord.id == null ? "message/messagesendrecord/save" : "message/messagesendrecord/update";
@@ -156,11 +198,14 @@ var vm = new Vue({
                 vm.messageSendrecord = r.messageSendrecord;
             });
 		},
+
 		reload: function (event) {
 			vm.showList = true;
+			vm.showUserurl = false;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
-                page:page
+                postData:vm.q,
+                page: 1
             }).trigger("reloadGrid");
 		}
 	}

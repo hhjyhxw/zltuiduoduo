@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,9 +26,11 @@ public class MessageSendrecord implements Serializable {
        @TableId(value="id", type= IdType.AUTO)
        private Long id;
    	   	   /* 本地消息模板id(活动id) */
+      @NotEmpty(message = "消息模板编号不能为空")
        @TableField("message_id")
        private Long messageId;
    	   	   /* 用户openid */
+       @NotEmpty(message = "openid不能为空")
        @TableField("openid")
        private String openid;
    	   	   /* 发送状态(0未发送 1已发送 2发送失败) */
