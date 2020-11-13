@@ -81,11 +81,10 @@ public class ScanCodeController {
                 sbf.append("对不起，您已有唯一推荐人，推荐人一经确立不可修改。\n" +
                         "欢迎加入 真龙大家庭\n" +
                         "\n" +
-                        "扫码可为推荐人累积奖励，您也赶紧推荐好友来参加吧！\n推多多活动详情请点击：<a href='"+myPropertitys.getZltuiduoduo_index_url()+"'>推多多活动主页</a>");
+                        "扫码可为推荐人累积奖励，您也赶紧推荐好友来参加吧！\n活动详情请点击：<a href='"+myPropertitys.getZltuiduoduo_index_url()+"'>寻找龙的传人主页</a>");
             }else if("1".equals(result.getString("code"))){
-                sbf.append("您的好友"+result.getString("nickname")+"推荐您参加真龙推多多活动，扫描推主二维码，即可获得参与资格，礼品多多！  \n" +
-                        "欢迎加入 真龙大家庭\n" +
-                        "扫码可为推荐人累积奖励，您也赶紧推荐好友来参加吧！\n推多多活动详情请点击：<a href='"+myPropertitys.getZltuiduoduo_index_url()+"'>推多多活动主页</a>");
+                sbf.append("您的好友"+result.getString("nickname")+"推荐您参加“寻找龙的传人”活动，生成自己的推广名片，推荐好友参加活动，丰富好礼等你拿，赶紧参与起来吧！  \n" +
+                        "扫码可为推荐人累积奖励，您也赶紧推荐好友来参加吧！\n活动详情请点击：<a href='"+myPropertitys.getZltuiduoduo_index_url()+"'>寻找龙的传人主页</a>");
             }else{
                 sbf.append(result.getString("msg"));
             }

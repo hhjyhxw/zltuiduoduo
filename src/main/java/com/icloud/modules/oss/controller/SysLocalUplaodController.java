@@ -99,4 +99,59 @@ public class SysLocalUplaodController {
         }
 	}
 
+
+    @PostMapping(value="/upload2",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public JSONObject upload2(@RequestParam("file") MultipartFile file) {
+        JSONObject result = new JSONObject();
+        try {
+            if (file.isEmpty()) {
+                result.put("code",500);
+                result.put("msg","上传文件不能为");
+                return result;
+            }
+            //上传文件
+            String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            //获取文件类型
+            String contentType = file.getContentType();
+            if(!contentType.equals("")) {
+                //可以对文件类型进行检查
+            }
+            //获取文件名，带扩展名
+            String originFileName = file.getOriginalFilename();
+            //获取文件扩展名
+            String extension = originFileName.substring(originFileName.lastIndexOf("."));
+            //获取文件大小，单位字节
+            long site = file.getSize();
+            if(site > 1000000) {
+                //可以对文件大小进行检查
+            }
+            //文件存储的相对路径
+            String basePath = "/uploadpath/"+DateUtil.getYearMonthDay(new Date());
+            //获取项目根路径的绝对路径
+            String realPath = myPropertitys.getWx().getQrcodePath()+basePath;
+            log.error(realPath);
+            File dirFile = new File(realPath);
+            if (!dirFile.exists()) {
+                dirFile.mkdirs();
+            }
+            //获取新的文件名
+            String id = UUID.randomUUID().toString();
+            id = id.replace("-", "");
+            String newfileName =  id + extension;
+            file.transferTo(new File(dirFile+"/"+newfileName));
+            log.info("上传成功");
+
+            result.put("code",0);
+            result.put("url", myPropertitys.getCdnPath()+basePath);
+            result.put("msg","上传成功");
+            return result;
+
+        } catch (Exception e) {
+            log.info("上传文件异常=="+e.getMessage());
+            result.put("code",500);
+            result.put("msg",e.getMessage());
+            return result;
+        }
+    }
 }

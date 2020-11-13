@@ -68,6 +68,37 @@ var vm = new Vue({
             
             vm.getInfo(id)
 		},
+		  //导入
+                btnInpomt: function (event) {
+                    $('#btnInpomt').button('loading').delay(1000).queue(function() {
+                        var viurl = "retail/retailconfirn/importusers?url="+vm.userurl;
+                        $.ajax({
+                            type: "get",
+                            url: baseURL + viurl,
+                            contentType: "application/json",
+                            // data: {url:vm.userurl},
+                            success: function(r){
+                                if(r.code === 0){
+                                    layer.msg("操作成功", {icon: 1});
+                                    vm.reload();
+                                    $('#btnInpomt').button('reset');
+                                    $('#btnInpomt').dequeue();
+                                }else{
+                                    layer.alert(r.msg);
+                                    $('#btnInpomt').button('reset');
+                                    $('#btnInpomt').dequeue();
+                                }
+                            }
+                        });
+                    });
+                },
+                //导出
+                btndownload: function (event) {
+                    var pagesize = 50000;
+                    var viurl = baseURL + "retail/retailconfirn/downLoaduserlist?userName?="+vm.q.userName+"&status="+vm.q.status+"&page="+vm.q.page+"&limit="+pagesize;
+                    window.location.href = viurl;
+                },
+
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
                 var url = vm.messageSendrecord.id == null ? "message/messagesendrecord/save" : "message/messagesendrecord/update";
