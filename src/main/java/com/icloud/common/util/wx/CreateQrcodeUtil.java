@@ -108,7 +108,7 @@ public class CreateQrcodeUtil {
         BufferedImage loadImage = ImageUtil.pressText(
                 ImageIO.read(FileUtil.file(myPropertitys.getWx().getQrcodePath()+File.separator+"zltdd/card.jpg")), "我是"+user.getNickname(), Color.WHITE,
                 fontNick,
-                -1, -28, 0.8f);
+                2, -35, 0.8f);
 
         //过期时间
         StringBuffer dateStr = new StringBuffer("推多多名片有效期:");
