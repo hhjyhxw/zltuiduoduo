@@ -4,11 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import cn.hutool.core.io.FileUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import com.icloud.basecommon.util.codec.Md5Utils;
 import com.icloud.basecommon.util.excelutilss.ExcelMoreSheetPoiUtil;
+import com.icloud.basecommon.util.io.FileUtils;
+import com.icloud.common.AppContext;
+import com.icloud.common.UrlDownLoadUtils;
 import com.icloud.common.util.StringUtil;
 import com.icloud.config.global.MyPropertitys;
 import lombok.extern.slf4j.Slf4j;
@@ -125,6 +129,7 @@ public class MessageSendrecordController extends AbstractController{
     @RequestMapping("/importusers")
     @RequiresPermissions("message:messagesendrecord:update")
     public R importusers(@RequestParam String url){//url本地文件
+        File filepath = null;
         try {
             if(!StringUtil.checkStr(url)){
                 return R.error("文件不能为空");
@@ -134,10 +139,16 @@ public class MessageSendrecordController extends AbstractController{
             }
 //            String realPath = request.getSession().getServletContext().getRealPath(url);
             log.error(url);
-            File dirFile = new File(url);
-            log.info("url=============="+url);
-            log.info("filename=============="+dirFile.getName());
-            List<List<Object>> dataList = ExcelMoreSheetPoiUtil.readExcel(dirFile, 0);
+            String tempbaseDir = AppContext.baseDirectory()+"/temp/";
+            File filetempbaseDir = new File(tempbaseDir);
+            if (!filetempbaseDir.exists()) {
+                filetempbaseDir.mkdirs();
+            }
+            //获取文件扩展名
+            String extension = url.substring(url.lastIndexOf("."));
+            filepath = new File(tempbaseDir + "/" + UUID.randomUUID() + extension);
+            UrlDownLoadUtils.dowmloadUrlResoure(filepath, url);
+            List<List<Object>> dataList = ExcelMoreSheetPoiUtil.readExcel(filepath, 0);
             log.info("excel大小:dataList=============="+ dataList.size());
             MessageSendrecord retail = null;
             Date date = new Date();
@@ -166,6 +177,10 @@ public class MessageSendrecordController extends AbstractController{
             messageSendrecordService.saveBatch(sendlist);
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            if(filepath!=null){
+                filepath.delete();
+            }
         }
         return R.ok();
     }
