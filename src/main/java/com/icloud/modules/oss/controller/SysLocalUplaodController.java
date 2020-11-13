@@ -141,12 +141,11 @@ public class SysLocalUplaodController {
             String id = UUID.randomUUID().toString();
             id = id.replace("-", "");
             String newfileName =  id + extension;
-            file.transferTo( FileUtil.file(dirFile+"/"+newfileName));
-//            file.transferTo(new File(dirFile+"/"+newfileName));
+//            file.transferTo( FileUtil.file(dirFile+"/"+newfileName));
+            file.transferTo(new File(dirFile+"/"+newfileName));
             log.info("上传成功");
-
             result.put("code",0);
-            result.put("url", myPropertitys.getCdnPath()+basePath);
+            result.put("url", myPropertitys.getCdnPath()+basePath+"/"+newfileName);
             result.put("msg","上传成功");
             return result;
 
