@@ -112,7 +112,7 @@ public class MessageSendrecordController extends AbstractController{
      */
     @RequestMapping("/importtemplate")
     public R importtemplate(){
-        return R.ok().put("url", myPropertitys.getCdnPath()+"/message/usertemplate.xls");
+        return R.ok().put("url", myPropertitys.getCdnPath()+"/message/usertemplate.xlsx");
     }
 
 

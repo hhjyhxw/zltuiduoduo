@@ -2,6 +2,7 @@ package com.icloud.modules.oss.controller; /**
  */
 
 
+import cn.hutool.core.io.FileUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.icloud.common.DateUtil;
 import com.icloud.config.global.MyPropertitys;
@@ -127,10 +128,11 @@ public class SysLocalUplaodController {
                 //可以对文件大小进行检查
             }
             //文件存储的相对路径
-            String basePath = "/uploadpath/"+DateUtil.getYearMonthDay(new Date());
+            String basePath =  "/uploadpath/"+DateUtil.getYearMonthDay(new Date());
             //获取项目根路径的绝对路径
             String realPath = myPropertitys.getWx().getQrcodePath()+basePath;
             log.error(realPath);
+
             File dirFile = new File(realPath);
             if (!dirFile.exists()) {
                 dirFile.mkdirs();
@@ -139,7 +141,8 @@ public class SysLocalUplaodController {
             String id = UUID.randomUUID().toString();
             id = id.replace("-", "");
             String newfileName =  id + extension;
-            file.transferTo(new File(dirFile+"/"+newfileName));
+            file.transferTo( FileUtil.file(dirFile+"/"+newfileName));
+//            file.transferTo(new File(dirFile+"/"+newfileName));
             log.info("上传成功");
 
             result.put("code",0);

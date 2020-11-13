@@ -70,7 +70,7 @@ $(function () {
 var vm = new Vue({
 	el:'#icloudapp',
 	data:{
-	    uploadfileurl: null
+	    uploadfileurl: null,
 		showList: true,
 		showUserurl: false,//是否显示导入按钮
 		title: null,

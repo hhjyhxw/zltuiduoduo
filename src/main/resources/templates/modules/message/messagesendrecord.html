@@ -3,6 +3,7 @@
 <head>
     <title></title>
 		<#include "/header.html">
+        <script src="${request.contextPath}/statics/libs/ajaxupload.js"></script>
 </head>
 <body>
 <div id="icloudapp" v-cloak>
@@ -22,7 +23,6 @@
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>
 			-->
-            <a class="btn btn-primary" @click="addimpot"><i class="fa fa-plus"></i>&nbsp;导入</a>
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>

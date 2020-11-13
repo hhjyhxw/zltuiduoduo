@@ -53,6 +53,11 @@ public class ConsoleLogAspect {
             log.info("文件上传不打印参数 : ");
             return;
         }
+        if(request.getRequestURL().indexOf("/localUplaod/upload")>=0){
+            log.info("文件上传不打印参数 : ");
+            return;
+        }
+
         // 只记录post方法
         if("POST".equals(request.getMethod())){
             // 获取参数, 只取自定义的参数, 自带的HttpServletRequest, HttpServletResponse不管
