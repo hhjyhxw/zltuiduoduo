@@ -155,16 +155,20 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
                 wxUserService.save(user);
             }
             //7、更新推主 推广人数
-            if (lockComponent.tryLock(RECOMMEND_LOCK + recommend.getOpenid(), 5)) {
-                recommend = zltddRecommendMapper.selectById(recommend.getId());
-                recommend.setReadyedNum(recommend.getReadyedNum()!=null?recommend.getReadyedNum()+1:1);
-                recommend.setModifyTime(new Date());
-                updateUserReadyedNum(recommend);
-            } else {
-                log.info("openid:"+openid+"更新用户总数失败");
-                result.put("code", "3");
-                result.put("msg", "系统繁忙，请稍后再试");
-                continue;
+            try {
+                if (lockComponent.tryLock(RECOMMEND_LOCK + recommend.getOpenid(), 5)) {
+                    recommend = zltddRecommendMapper.selectById(recommend.getId());
+                    recommend.setReadyedNum(recommend.getReadyedNum() != null ? recommend.getReadyedNum() + 1 : 1);
+                    recommend.setModifyTime(new Date());
+                    updateUserReadyedNum(recommend);
+                } else {
+                    log.info("openid:" + openid + "更新用户总数失败");
+                    result.put("code", "3");
+                    result.put("msg", "系统繁忙，请稍后再试");
+                    continue;
+                }
+            }finally {
+                lockComponent.release(RECOMMEND_LOCK + recommend.getOpenid());
             }
             //6、生成推荐记录
             ZltddRecommend invited = new ZltddRecommend();
