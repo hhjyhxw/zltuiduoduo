@@ -63,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/service/WxUserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="94" column="48" lean-forward="true" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
+            <state relative-caret-position="215">
+              <caret line="94" column="52" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -72,7 +72,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/wx/CreateQrcodeUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="264">
               <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
             </state>
           </provider>
@@ -125,6 +125,7 @@
       <find>JsSdkConfigController</find>
       <find>shiro</find>
       <find>isfirstin</find>
+      <find>createMasterCard</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -648,7 +649,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24530831" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24530831" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -656,8 +657,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932975" weight="0.09335219" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19943424" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49932975" visible="true" weight="0.38755304" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19943424" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1018,14 +1019,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/modules/wx/service/WxUserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="94" column="48" lean-forward="true" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
+        <state relative-caret-position="215">
+          <caret line="94" column="52" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/icloud/common/util/wx/CreateQrcodeUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
+        <state relative-caret-position="264">
           <caret line="110" column="22" selection-start-line="110" selection-start-column="22" selection-end-line="110" selection-end-column="22" />
         </state>
       </provider>
