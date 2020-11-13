@@ -2,6 +2,8 @@ package com.icloud.modules.crowb.controller;
 
 import java.util.Arrays;
 import java.util.Map;
+
+import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,7 @@ public class CrowbActivitySignController extends AbstractController{
     /**
      * 保存
      */
+    @SysLog("保存报名记录")
     @RequestMapping("/save")
     @RequiresPermissions("crowb:crowbactivitysign:save")
     public R save(@RequestBody CrowbActivitySign crowbActivitySign){
@@ -71,6 +74,7 @@ public class CrowbActivitySignController extends AbstractController{
     /**
      * 修改
      */
+    @SysLog("更新报名记录")
     @RequestMapping("/update")
     @RequiresPermissions("crowb:crowbactivitysign:update")
     public R update(@RequestBody CrowbActivitySign crowbActivitySign){
@@ -83,6 +87,7 @@ public class CrowbActivitySignController extends AbstractController{
     /**
      * 删除
      */
+    @SysLog("删除报名记录")
     @RequestMapping("/delete")
     @RequiresPermissions("crowb:crowbactivitysign:delete")
     public R delete(@RequestBody Long[] ids){

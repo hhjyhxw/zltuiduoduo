@@ -8,6 +8,7 @@
 <div id="icloudapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
+            <!--
 			<#if shiro.hasPermission("message:messagesendrecord:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			</#if>
@@ -17,6 +18,7 @@
 			<#if shiro.hasPermission("message:messagesendrecord:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>
+			-->
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
@@ -25,19 +27,19 @@
     <div v-show="!showList" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
-														                    <div class="form-group">
+					<div class="form-group">
                         <div class="col-sm-2 control-label">本地消息模板id(活动id)</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="messageSendrecord.messageId" placeholder="本地消息模板id(活动id)"/>
                         </div>
                     </div>
-											                    <div class="form-group">
+					<div class="form-group">
                         <div class="col-sm-2 control-label">用户openid</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="messageSendrecord.openid" placeholder="用户openid"/>
                         </div>
                     </div>
-											                    <div class="form-group">
+					<div class="form-group">
                         <div class="col-sm-2 control-label">发送状态(0未发送 1已发送 2发送失败)</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="messageSendrecord.status" placeholder="发送状态(0未发送 1已发送 2发送失败)"/>

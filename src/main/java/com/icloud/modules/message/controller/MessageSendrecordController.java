@@ -2,6 +2,8 @@ package com.icloud.modules.message.controller;
 
 import java.util.Arrays;
 import java.util.Map;
+
+import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,7 @@ public class MessageSendrecordController extends AbstractController{
     /**
      * 保存
      */
+    @SysLog("保存待发送记录")
     @RequestMapping("/save")
     @RequiresPermissions("message:messagesendrecord:save")
     public R save(@RequestBody MessageSendrecord messageSendrecord){
@@ -71,6 +74,7 @@ public class MessageSendrecordController extends AbstractController{
     /**
      * 修改
      */
+    @SysLog("修改待发送记录")
     @RequestMapping("/update")
     @RequiresPermissions("message:messagesendrecord:update")
     public R update(@RequestBody MessageSendrecord messageSendrecord){
@@ -83,6 +87,7 @@ public class MessageSendrecordController extends AbstractController{
     /**
      * 删除
      */
+    @SysLog("删除待发送记录")
     @RequestMapping("/delete")
     @RequiresPermissions("message:messagesendrecord:delete")
     public R delete(@RequestBody Long[] ids){

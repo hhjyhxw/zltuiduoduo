@@ -6,7 +6,11 @@ $(function () {
 			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
 			{ label: '本地消息模板id(活动id)', name: 'messageId', index: 'message_id', width: 80 }, 			
 			{ label: '用户openid', name: 'openid', index: 'openid', width: 80 }, 			
-			{ label: '发送状态(0未发送 1已发送 2发送失败)', name: 'status', index: 'status', width: 80 }, 			
+			{ label: '发送状态', name: 'status', width: 60, formatter: function(value, options, row){
+                                                     return value == '0' ?'<span class="label label-success">未发送</span>' :
+                                                      (value == '1' ?'<span class="label label-success">已发送</span>' :
+                                                      (value == '2' ?'<span class="label label-success">发送失败</span>' :'未知'))
+                                                                        }},
 			{ label: '发送结果描述', name: 'msg', index: 'msg', width: 80 }, 			
 			{ label: '发送时间', name: 'createTime', index: 'create_time', width: 80 }, 			
 			{ label: '更新时间', name: 'modifyTime', index: 'modify_time', width: 80 }			

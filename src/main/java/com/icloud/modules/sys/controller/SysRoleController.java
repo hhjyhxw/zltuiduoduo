@@ -54,6 +54,7 @@ public class SysRoleController extends AbstractController {
 	/**
 	 * 角色信息
 	 */
+
 	@RequestMapping("/info/{roleId}")
 	@RequiresPermissions("sys:role:info")
 	public R info(@PathVariable("roleId") Long roleId){

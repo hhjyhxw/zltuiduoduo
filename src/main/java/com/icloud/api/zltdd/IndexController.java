@@ -113,7 +113,7 @@ public class IndexController {
        //异步查询用户已发展人数 与实际发展人数是否相等，不等更新
         //异步执行发送任务
 //        ThreadPoodExecuteService.getTaskExecutor().execute(cardVerifyCallbackService);
-       return R.ok().put("user",user);
+       return R.ok().put("user",user).put("url",myPropertitys.getScorePlatformUrl());
     }
 
     /**

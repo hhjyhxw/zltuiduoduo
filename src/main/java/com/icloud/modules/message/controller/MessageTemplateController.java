@@ -2,6 +2,8 @@ package com.icloud.modules.message.controller;
 
 import java.util.Arrays;
 import java.util.Map;
+
+import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,7 @@ public class MessageTemplateController extends AbstractController{
     /**
      * 保存
      */
+    @SysLog("保存消息模板记录")
     @RequestMapping("/save")
     @RequiresPermissions("message:messagetemplate:save")
     public R save(@RequestBody MessageTemplate messageTemplate){
@@ -71,6 +74,7 @@ public class MessageTemplateController extends AbstractController{
     /**
      * 修改
      */
+    @SysLog("编辑消息模板")
     @RequestMapping("/update")
     @RequiresPermissions("message:messagetemplate:update")
     public R update(@RequestBody MessageTemplate messageTemplate){
@@ -83,6 +87,7 @@ public class MessageTemplateController extends AbstractController{
     /**
      * 删除
      */
+    @SysLog("删除消息模板")
     @RequestMapping("/delete")
     @RequiresPermissions("message:messagetemplate:delete")
     public R delete(@RequestBody Long[] ids){

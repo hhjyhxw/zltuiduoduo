@@ -2,6 +2,8 @@ package com.icloud.modules.crowb.controller;
 
 import java.util.Arrays;
 import java.util.Map;
+
+import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,7 @@ public class CrowbActivityController extends AbstractController{
     /**
      * 保存
      */
+    @SysLog("保存众筹活动")
     @RequestMapping("/save")
     @RequiresPermissions("crowb:crowbactivity:save")
     public R save(@RequestBody CrowbActivity crowbActivity){
@@ -71,6 +74,7 @@ public class CrowbActivityController extends AbstractController{
     /**
      * 修改
      */
+    @SysLog("编辑众筹活动")
     @RequestMapping("/update")
     @RequiresPermissions("crowb:crowbactivity:update")
     public R update(@RequestBody CrowbActivity crowbActivity){
@@ -83,6 +87,7 @@ public class CrowbActivityController extends AbstractController{
     /**
      * 删除
      */
+    @SysLog("删除众筹活动")
     @RequestMapping("/delete")
     @RequiresPermissions("crowb:crowbactivity:delete")
     public R delete(@RequestBody Long[] ids){

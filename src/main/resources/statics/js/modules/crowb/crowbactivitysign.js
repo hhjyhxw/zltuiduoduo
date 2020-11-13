@@ -11,15 +11,28 @@ $(function () {
 			{ label: '报名时间', name: 'createTime', index: 'create_time', width: 80 }, 			
 			{ label: 'openid', name: 'openid', index: 'openid', width: 80 }, 			
 			{ label: '昵称', name: 'nickname', index: 'nickname', width: 80 }, 			
-			{ label: '是否带同伴，停用标志 0不带，1带同伴(默认不带)', name: 'takePartner', index: 'take_partner', width: 80 }, 			
+			{ label: '是否带同伴', name: 'takePartner', width: 60, formatter: function(value, options, row){
+                                                     return value == '0' ?'<span class="label label-success">不带</span>' :
+                                                      (value == '1' ?'<span class="label label-success">带同</span>' :
+                                                      (value == '2' ?'<span class="label label-success">未知</span>' :'未知'))
+                                                                        }},
 			{ label: '会员手机', name: 'memerberPhone', index: 'memerber_phone', width: 80 }, 			
-			{ label: '是否有赞助意向，停用标志 0否，1是', name: 'suportintention', index: 'suportIntention', width: 80 }, 			
+			{ label: '是否有赞助意向', name: 'suportintention', width: 60, formatter: function(value, options, row){
+                                                                 return value == '0' ?'<span class="label label-success">否</span>' :
+                                                                  (value == '1' ?'<span class="label label-success">是</span>' :
+                                                                  (value == '2' ?'<span class="label label-success">未知</span>' :'未知'))
+                                                                                    }},
 			{ label: '活动名称', name: 'activityName', index: 'activity_name', width: 80 }, 			
 			{ label: '单位名称', name: 'unitName', index: 'unit_name', width: 80 }, 			
 			{ label: '职务名称', name: 'officeName', index: 'office_name', width: 80 }, 			
 			{ label: '携带同伴人数', name: 'takeNum', index: 'take_num', width: 80 }, 			
-			{ label: '//0未报名，1已报名，并且审核通过，2审核中或者取消，3审核失败', name: 'verifyStatus', index: 'verify_status', width: 80 }, 			
-			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 }			
+			{ label: '报名状态', name: 'verifyStatus', width: 60, formatter: function(value, options, row){
+                                                                             return value == '0' ?'<span class="label label-success">未报名</span>' :
+                                                                              (value == '1' ?'<span class="label label-success">已报名</span>' :
+                                                                              (value == '2' ?'<span class="label label-success">审核中或者取消</span>' :
+                                                                              (value == '3' ?'<span class="label label-success">审核失败</span>' :'未知')))
+                                                                                                }},
+			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 }
         ],
 		viewrecords: true,
         height: 385,

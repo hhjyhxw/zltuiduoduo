@@ -14,9 +14,9 @@
 			<#if shiro.hasPermission("message:messagetemplate:update")>
             <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
 			</#if>
-			<#if shiro.hasPermission("message:messagetemplate:delete")>
+		<!--	<#if shiro.hasPermission("message:messagetemplate:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-			</#if>
+			</#if>-->
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
@@ -25,7 +25,13 @@
     <div v-show="!showList" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
-														                    <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">模板标题</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="messageTemplate.titile" placeholder="模板标题（用于管理员识别）"/>
+                        </div>
+                    </div>
+					<div class="form-group">
                         <div class="col-sm-2 control-label">消息头部描述</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="messageTemplate.first" placeholder="消息头部描述"/>
@@ -79,31 +85,27 @@
                             <input type="text" class="form-control" v-model="messageTemplate.visitUrl" placeholder="点击模板跳转地址"/>
                         </div>
                     </div>
+
 											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">模板标题（用于管理员识别）</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="messageTemplate.titile" placeholder="模板标题（用于管理员识别）"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">消息发送处理器（根据业务需求填写）</div>
+                        <div class="col-sm-2 control-label">消息发送处理器</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="messageTemplate.dealZclass" placeholder="消息发送处理器（根据业务需求填写）"/>
                         </div>
                     </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">状态（0停用、1启用）</div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">状态</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="messageTemplate.status" placeholder="状态（0停用、1启用）"/>
+                            <label class="radio-inline">
+                                <input type="radio" v-model="messageTemplate.status" name="optionsRadios" id="optionsRadios1" value="0" checked>停用
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" v-model="messageTemplate.status" name="optionsRadios" id="optionsRadios2" value="1">启用
+                            </label>
                         </div>
                     </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">是否已发送（0未发送 1已发送）</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="messageTemplate.sendStatus" placeholder="是否已发送（0未发送 1已发送）"/>
-                        </div>
-                    </div>
-							            <div class="form-group">
+
+
+			<div class="form-group">
                 <div class="col-sm-2 control-label"></div>
                 <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
                 &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>

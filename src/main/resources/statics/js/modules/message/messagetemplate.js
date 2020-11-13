@@ -4,6 +4,7 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
+			{ label: '模板标题', name: 'titile', index: 'titile', width: 80 },
 			{ label: '消息头部描述', name: 'first', index: 'first', width: 80 }, 			
 			{ label: '关键字1', name: 'keyword1', index: 'keyword1', width: 80 }, 			
 			{ label: '关键字2', name: 'keyword2', index: 'keyword2', width: 80 }, 			
@@ -13,10 +14,15 @@ $(function () {
 			{ label: '消息底部描述', name: 'remark', index: 'remark', width: 80 }, 			
 			{ label: '微信模板id', name: 'templateId', index: 'template_id', width: 80 }, 			
 			{ label: '点击模板跳转地址', name: 'visitUrl', index: 'visit_url', width: 80 }, 			
-			{ label: '模板标题（用于管理员识别）', name: 'titile', index: 'titile', width: 80 }, 			
-			{ label: '消息发送处理器（根据业务需求填写）', name: 'dealZclass', index: 'deal_zclass', width: 80 }, 			
-			{ label: '状态（0停用、1启用）', name: 'status', index: 'status', width: 80 }, 			
-			{ label: '是否已发送（0未发送 1已发送）', name: 'sendStatus', index: 'send_status', width: 80 }			
+
+			{ label: '消息发送处理器', name: 'dealZclass', index: 'deal_zclass', width: 80 },
+			{ label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
+                                                                 return value == '0' ?'<span class="label label-success">停用</span>' :
+                                                                  (value == '1' ?'<span class="label label-success">启用</span>' :
+                                                                  (value == '2' ?'<span class="label label-success">未知</span>' :'未知'))
+                                                                                    }},
+//			{ label: '是否已发送（0未发送 1已发送）', name: 'sendStatus', index: 'send_status', width: 80 }
+
         ],
 		viewrecords: true,
         height: 385,

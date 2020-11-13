@@ -10,16 +10,28 @@ $(function () {
 			{ label: '已报名人数', name: 'signed', index: 'signed', width: 80 }, 			
 			{ label: '活动开始时间', name: 'starttime', index: 'starttime', width: 80 }, 			
 			{ label: '活动结束时间', name: 'endtime', index: 'endtime', width: 80 }, 			
-			{ label: '停用标志 0表示停用，1表示启用(默认启用)', name: 'status', index: 'status', width: 80 }, 			
-			{ label: '消息发送状态0未发送 1表示活动成功已发送 2表示众筹失败发送消息', name: 'sendStatus', index: 'send_status', width: 80 }, 			
-			{ label: '活动介绍描述', name: 'description', index: 'description', width: 80 }, 			
+			{ label: '活动状态', name: 'status', width: 60, formatter: function(value, options, row){
+                 return value == '0' ?'<span class="label label-success">停用</span>' :
+                  (value == '1' ?'<span class="label label-success">启用</span>' :
+                  (value == '3' ?'<span class="label label-success">未知</span>' :'未知'))
+                                    }},
+			{ label: '消息发送状态', name: 'sendStatus', width: 60, formatter: function(value, options, row){
+                             return value == '0' ?'<span class="label label-success">未发送</span>' :
+                              (value == '1' ?'<span class="label label-success">众筹成功已发送</span>' :
+                              (value == '2' ?'<span class="label label-success">众筹失败发送消息</span>' :'未知'))
+                                                }},
+			{ label: '活动介绍描述', name: 'description', index: 'description', width: 80 },
 			{ label: '活动规则描述', name: 'rule', index: 'rule', width: 80 }, 			
 			{ label: '活动入口链接', name: 'link', index: 'link', width: 80 }, 			
 			{ label: '报名成功后参与地址', name: 'attendAddress', index: 'attend_address', width: 80 }, 			
 			{ label: '报名成功后参与时间', name: 'attendTime', index: 'attend_time', width: 80 }, 			
 			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 }, 			
 			{ label: '创建时间', name: 'modifyTime', index: 'modify_time', width: 80 }, 			
-			{ label: '是否需要积分支付积分(0不需要 1需要 默认1)', name: 'isneedScore', index: 'isneed_score', width: 80 }			
+			{ label: '是否需要积分支付积分', name: 'isneedScore', width: 60, formatter: function(value, options, row){
+                                         return value == '0' ?'<span class="label label-success">不需要</span>' :
+                                          (value == '1' ?'<span class="label label-success">需要</span>' :
+                                          (value == '2' ?'<span class="label label-success">未知</span>' :'未知'))
+                                                            }},
         ],
 		viewrecords: true,
         height: 385,
