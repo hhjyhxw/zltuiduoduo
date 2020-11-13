@@ -1,10 +1,16 @@
 package com.icloud.modules.message.controller;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
+import com.icloud.basecommon.util.codec.Md5Utils;
+import com.icloud.basecommon.util.excelutilss.ExcelMoreSheetPoiUtil;
+import com.icloud.common.util.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +35,7 @@ import com.icloud.modules.sys.controller.AbstractController;
  * @date 2020-11-11 16:06:38
  * 菜单主连接： modules/message/messagesendrecord.html
  */
+@Slf4j
 @RestController
 @RequestMapping("message/messagesendrecord")
 public class MessageSendrecordController extends AbstractController{
@@ -96,4 +103,58 @@ public class MessageSendrecordController extends AbstractController{
         return R.ok();
     }
 
+
+    /**
+     * 导入待发送用户数据
+     * 联合主键
+     * 1、messageid
+     * 2、openid
+     */
+    @RequestMapping("/importusers")
+    @RequiresPermissions("message:messagesendrecord:update")
+    public R importusers(@RequestParam String url){//url本地文件
+        try {
+            if(!StringUtil.checkStr(url)){
+                return R.error("文件不能为空");
+            }
+            if(url.indexOf("xls")<0){
+                return R.error("不是合法的文件");
+            }
+//            String realPath = request.getSession().getServletContext().getRealPath(url);
+            log.error(url);
+            File dirFile = new File(url);
+            log.info("url=============="+url);
+            log.info("filename=============="+dirFile.getName());
+            List<List<Object>> dataList = ExcelMoreSheetPoiUtil.readExcel(dirFile, 0);
+            log.info("excel大小:dataList=============="+ dataList.size());
+            MessageSendrecord retail = null;
+            Date date = new Date();
+            List<MessageSendrecord> sendlist = new ArrayList<>();
+            for(int i=0;i<dataList.size();i++){
+                List<Object> comlunsList = dataList.get(i);
+                if(comlunsList.get(0)==null || comlunsList.get(1)==null){
+                    continue;
+                }
+                String messageId = comlunsList.get(0).toString();
+                String openid = comlunsList.get(1).toString();
+                //1、消息模板id  2、openid
+                int count = messageSendrecordService.count(new QueryWrapper<MessageSendrecord>().eq("message_id",messageId).eq("openid",openid));
+                if(count>0){
+                    log.info("openid====="+openid+" 用户已存在");
+                    continue;
+                }
+                MessageSendrecord record= new MessageSendrecord();
+                record.setCreateTime(date);
+                record.setMessageId(Long.valueOf(messageId));
+                record.setOpenid(openid);
+                record.setStatus("0");
+                sendlist.add(record);
+            }
+            log.info("实际大小=============="+ sendlist.size());
+            messageSendrecordService.saveBatch(sendlist);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return R.ok();
+    }
 }
