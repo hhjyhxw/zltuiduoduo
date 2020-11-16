@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+    <title></title>
+    <#include "/header.html">
+    <style type="text/css">
+    *{
+        -webkit-touch-callout:text;  /*系统默认菜单被禁用*/
+        -webkit-user-select:text; /*webkit浏览器*/
+        -khtml-user-select:text; /*早期浏览器*/
+        -moz-user-select:text;/*火狐*/
+        -ms-user-select:text; /*IE10*/
+        user-select:text;
+    }
+
+
+		.erweimaTitle{
+			text-align: center;
+			font-size: 21px;
+			font-weight: bold;
+			height: 90px;
+		}
+		.erweimaImg{
+			width:100%;
+			height: 420px;
+			margin: 0 auto;
+			background: pink;
+		}
+		.erweimaImg>img{
+			display: block;
+			width:100%;
+			height: 420px;
+		}
+    </style>
+</head>
+<body style=" background:#FFF">
+<section style="padding: 1rem 2%;">
+    <p class="SX_ZLed1" style="line-height: 22px;FONT-SIZE: 1.2EM;    text-align: -webkit-left;padding:5px 0px  0px 5px;">
+        <span style="color:#000000;float:left; font-size: 1.6rem; width: 23%;">卡号：</span>
+        <span style="color: #137ad7;font-size: 1.6rem;">&nbsp;${messageSendrecord.cardId}</span>
+    </p>
+
+    <p class="SX_ZLed1" style="line-height: 22px;FONT-SIZE: 1.2EM;    text-align: -webkit-left;padding:0px 0px  0px 5px;margin-top: 10px;marging-bottom:10px;">
+        <span style="color:#000000;float:left; font-size: 1.6rem; width: 23%;">充值密码：</span>
+        <span style="color: #137ad7;font-size: 1.6rem;">&nbsp;${messageSendrecord.cardCode}</span>
+    </p>
+
+    <p style="color:red;margin-top: 10px;">温馨提示：您可以通过长按复制以方便操作。</p>
+    <p>&nbsp;</p>
+    <div class="SX_ZLed3">
+        <p>
+            中石油充值卡使用说明:</br>
+            1.此卡用于中国石油昆仑加油卡个人记名卡充值使用，如无加油卡，须先办理加油卡并充值后消费。</br>
+            2.持卡人请拨打95504热线电话（测试暂无），登陆 >>> <a href="http://www.95504.net" style="color:137AD7;text-decoration:underline;">点击进入</a>  >>>网站或微信公众号“中油好客E站”为昆仑加油卡充值。</br>
+            3.持卡人应妥善保存卡片和密码，如因卡片和密码保管不当造成的损失，责任自负。</br>
+            4.此卡为不记名卡，不挂失、不提现，遗失不补办。</br>
+            5.请在有效期内使用，逾期被视为放弃卡内金额。（卡面标记为五年）</br>
+
+            <div class="zmErweima">
+                <div class="erweimaImg"><img src="${request.contextPath}/statics/images/zhongshiyou.jpg" alt="" /></div>
+                <div class="erweimaTitle">长按识别图中二维码,关注微信公众号“中油好客E站”为昆仑加油卡充值</div>
+            </div>
+        </p>
+    </div>
+</section>
+</body>
+</html>

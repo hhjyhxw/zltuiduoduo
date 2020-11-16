@@ -53,7 +53,7 @@ public class LoginInterceptor_local implements HandlerInterceptor{
 
         WxUser user = (WxUser) session.getAttribute("wx_user");
         if(null==user){
-            user = wxUserService.findByUnionid("o38k50wA4d_l-kaa0UjJ0qlJNDRw");
+            user = wxUserService.findByUnionid("ocoMKt2a_9XrLt2NBG5CupS6THE4");
             session.setAttribute("wx_user",user);
         }
         request.setAttribute(Constants.USER_KEY, user);
