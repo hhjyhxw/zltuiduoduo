@@ -38,12 +38,19 @@
 			width:100%;
 			height: 420px;
 		}
+		.gobtn{
+		    display:flex;
+		    padding:2rem;
+		    backgroud-color:blue;
+		    color:white;
+		    text-align:center;
+		}
     </style>
 </head>
 <body style=" background:#FFF">
 <section style="padding: 3rem 3%;">
     <p class="SX_ZLed1" style="line-height: 22px;FONT-SIZE: 1.2EM;    text-align: -webkit-left;padding:5px 0px  0px 5px;">
-        <span style="color:#000000;float:left; font-size: 1.6rem; width: 23%;">卡号：</span>
+        <span style="color:#000000;float:left; font-size: 1.6rem; width: 23%;">序列号：</span>
         <span style="color: #137ad7;font-size: 1.6rem;">&nbsp;${messageSendrecord.cardId}</span>
     </p>
 
@@ -54,19 +61,14 @@
 
     <p style="color:red;margin-top: 10px;">温馨提示：您可以通过长按复制以方便操作。</p>
     <p>&nbsp;</p>
+    <a href="https://sinopecsales.com/" class="gobtn">登录中石化网上营业厅</a>
     <div class="SX_ZLed3">
         <p>
-            中石油充值卡使用说明:</br>
-            1.此卡用于中国石油昆仑加油卡个人记名卡充值使用，如无加油卡，须先办理加油卡并充值后消费。</br>
-            2.持卡人请拨打95504热线电话（测试暂无），登陆 >>> <a href="http://www.95504.net" style="color:137AD7;text-decoration:underline;">点击进入</a>  >>>网站或微信公众号“中油好客E站”为昆仑加油卡充值。</br>
-            3.持卡人应妥善保存卡片和密码，如因卡片和密码保管不当造成的损失，责任自负。</br>
-            4.此卡为不记名卡，不挂失、不提现，遗失不补办。</br>
-            5.请在有效期内使用，逾期被视为放弃卡内金额。（卡面标记为五年）</br>
-
-            <div class="zmErweima">
-                <div class="erweimaImg"><img src="${request.contextPath}/statics/images/zhongshiyou.jpg" alt="" /></div>
-                <div class="erweimaTitle">长按识别图中二维码,关注微信公众号“中油好客E站”为昆仑加油卡充值</div>
-            </div>
+            中石化充值卡使用说明:</br>
+            1.此卡用于中国石化加油卡个人记名卡充值使用，如无加油卡，须先办理加油卡并充值后消费。</br>
+            2.持卡人应妥善保存卡片和密码，如因卡片和密码保管不当造成的损失，责任自负。</br>
+            3.此卡为不记名卡，不挂失、不提现，遗失不补办。</br>
+            4.请在有效期内使用，逾期被视为放弃卡内金额。（卡面标记为五年）</br>
         </p>
     </div>
 </section>
