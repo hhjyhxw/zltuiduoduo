@@ -45,5 +45,11 @@ public class MessageSendrecord implements Serializable {
    	   	   /* 更新时间 */
        @TableField("modify_time")
        private Date modifyTime;
+        /* 油卡编号 */
+        @TableField("card_id")
+        private String cardId;
+        /* 油卡密钥 */
+        @TableField("card_code")
+        private String cardCode;
    	
 }

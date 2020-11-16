@@ -7,7 +7,11 @@ import com.icloud.common.util.StringUtil;
 import com.icloud.modules.message.entity.MessageSendrecord;
 import com.icloud.modules.message.entity.MessageTemplate;
 import com.icloud.modules.message.util.WxMessageUtil;
+import com.icloud.modules.message.vo.BaseMessagaeVo;
+import com.icloud.modules.wx.entity.WxUser;
+import com.icloud.modules.wx.service.WxUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +28,8 @@ public class DefaultBaseSendService {
     private MessageSendrecordService messageSendrecordService;
     @Autowired
     private WxMessageUtil wxMessageUtil;
+    @Autowired
+    private WxUserService wxUserService;
 
     public JSONObject sendMessage(MessageTemplate messageTemplate) {
         JSONObject json = new JSONObject();
@@ -37,10 +43,16 @@ public class DefaultBaseSendService {
         log.info("total==="+total);
         json.put("total",total);
         int successTotal = 0;
+        BaseMessagaeVo vo =  new BaseMessagaeVo();
+        BeanUtils.copyProperties(messageTemplate,vo);
         if(list!=null || list.size()>0){
             for (MessageSendrecord record:list){
                 if(StringUtil.checkStr(record.getOpenid())){
-                   String message = messageTemplate.getMessageJson(record.getOpenid());
+                    WxUser user = wxUserService.findByOpenId(record.getOpenid());
+                    vo.setOpenId(record.getOpenid());
+                    vo.setKeyword1(user!=null?user.getNickname():"xxx");
+                    vo.setKeyword2("卡号:"+record.getCardId()+"\n"+"卡密:"+record.getCardCode());
+                    String message = vo.getMessageJson();
                     JSONObject jsonObject = wxMessageUtil.sendWeixinMessage(message,1);
                     if(jsonObject!=null && jsonObject.containsKey("errcode") && "0".equals(jsonObject.getString("errcode"))){
                         record.setStatus("1");

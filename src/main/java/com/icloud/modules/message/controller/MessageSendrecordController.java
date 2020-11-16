@@ -160,6 +160,8 @@ public class MessageSendrecordController extends AbstractController{
                 }
                 String messageId = comlunsList.get(0).toString();
                 String openid = comlunsList.get(1).toString();
+                Object cardCode = comlunsList.get(2);
+                Object carId = comlunsList.get(3).toString();
                 //1、消息模板id  2、openid
                 int count = messageSendrecordService.count(new QueryWrapper<MessageSendrecord>().eq("message_id",messageId).eq("openid",openid));
                 if(count>0){
@@ -171,6 +173,9 @@ public class MessageSendrecordController extends AbstractController{
                 record.setMessageId(Long.valueOf(messageId));
                 record.setOpenid(openid);
                 record.setStatus("0");
+                record.setCardId(StringUtil.checkObj(carId)?carId.toString():null);
+                record.setCardCode(StringUtil.checkObj(cardCode
+                )?carId.toString():null);
                 sendlist.add(record);
             }
             log.info("实际大小=============="+ sendlist.size());
