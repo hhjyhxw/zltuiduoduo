@@ -1,0 +1,49 @@
+package com.icloud.service.wxmessage.util;
+
+import com.alibaba.fastjson.JSONObject;
+import com.icloud.common.util.wx.CommonUtil;
+import com.icloud.common.util.wx.WxConst;
+import com.icloud.web.thirdinterface.userinfo.WxUserInfoUtil;
+import org.apache.log4j.Logger;
+
+/**
+ * Created by 512162086@qq.com on 2019/4/17 .
+ */
+public class WxMessageUtil {
+
+    public static Logger loggers = Logger.getLogger(WxMessageUtil.class);
+
+    public static JSONObject sendWeixinMessage(String newJson, int infoCount){
+        String access_token = WxUserInfoUtil.getAccessToken(0);
+        if(access_token==null){
+            loggers.warn("获取access_token失败:"+access_token+",请稍后再试");
+            return null;
+        }
+        String urls = WxConst.SEND_TEMPLATE_MESSAGE_URL.replace("ACCESS_TOKEN", access_token);
+        // 发送请求获取状态
+        loggers.warn("body:" + newJson + ",url:"+ urls);
+        //根据openid 和 基础access_token 获取用户订阅信息
+//        JSONObject jsonResult = CommonUtil.httpRequest(PropertyConstants.getPropertiesKey("wxsendTemplateMsgUrl") + access_token, "GET",null); //发送目标消息
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = CommonUtil.httpRequest(urls, "POST", newJson);
+            infoCount++;
+            loggers.warn("infoCount===" + infoCount);
+            if(jsonObject!=null && jsonObject.containsKey("errcode") && "40001".equals(jsonObject.getString("errcode"))) {
+                loggers.warn("获取access_token失败:errcode=" + jsonObject.get("errcode") + ";errmsg=" + jsonObject.get("errmsg"));
+                if (infoCount > 5) {
+                    return null;
+                }
+                jsonObject = sendWeixinMessage(newJson, infoCount);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(jsonObject!=null && jsonObject.containsKey("errcode") && "0".equals(jsonObject.getString("errcode"))){
+            loggers.warn("infoCount===" + infoCount+"  消息发送成功");
+        }else {
+            loggers.warn("infoCount===" + infoCount+"  消息发送失败");
+        }
+        return jsonObject;
+    }
+}

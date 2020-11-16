@@ -21,6 +21,11 @@ $(function () {
                                                                   (value == '1' ?'<span class="label label-success">启用</span>' :
                                                                   (value == '2' ?'<span class="label label-success">未知</span>' :'未知'))
                                                                                     }},
+            {header:'操作', name:'操作', width:90, sortable:false, title:false, align:'center', formatter: function(val, obj, row, act){
+                            var actions = [];
+                                actions.push('<a class="btn btn-primary" onclick="vm.sendMessage('+row.id+')" style="padding: 3px 8px;"><i class="fa fa-pencil-square-o"></i>&nbsp;发送消息</a>&nbsp;');
+                            return actions.join('');
+                        }}
 //			{ label: '是否已发送（0未发送 1已发送）', name: 'sendStatus', index: 'send_status', width: 80 }
 
         ],
@@ -140,6 +145,37 @@ var vm = new Vue({
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 page:page
             }).trigger("reloadGrid");
+		},
+		sendMessage:function(id){
+                if(id == null){
+                    return ;
+                }
+                var messageTemplate = {id:id};
+                  var lock = false;
+                   layer.confirm('确定要发送该模板消息？', {
+                       btn: ['确定','取消'] //按钮
+                   }, function(){
+                      if(!lock) {
+                           lock = true;
+                        $.ajax({
+                               type: "POST",
+                               url: baseURL + "message/messagetemplate/sendMessage",
+                               contentType: "application/json",
+                               data: JSON.stringify(messageTemplate),
+                               success: function(r){
+                                   if(r.code == 0){
+                                       layer.msg("发送成功数:"+r.successTotal+";失败数:"+r.fairTotl, {icon: 1});
+                                       $("#jqGrid").trigger("reloadGrid");
+                                   }else{
+                                       layer.alert(r.msg);
+                                   }
+                               }
+                        });
+                    }
+                    }, function(){
+
+                    });
+
 		}
 	}
 });

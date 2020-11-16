@@ -3,6 +3,7 @@ package com.icloud.modules.message.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONObject;
 import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import com.icloud.basecommon.service.LockComponent;
@@ -109,7 +110,7 @@ public class MessageTemplateController extends AbstractController{
      */
     @SysLog("消息发送")
     @RequestMapping("/sendMessage")
-    @RequiresPermissions("message:messagetemplate:sendMessage")
+    @RequiresPermissions("message:messagetemplate:update")
     public R sendMessage(@RequestBody MessageTemplate messageTemplate){
         if(messageTemplate.getId()==null){
             return R.error("消息模板不能为空");
@@ -124,13 +125,20 @@ public class MessageTemplateController extends AbstractController{
                 } else {
                     sendService = SpringContextHolder.getBean("defaultSendService");
                 }
+                JSONObject json = sendService.sendMessage(messageTemplate);
+                return R.ok()
+                        .put("total", json.get("total"))
+                        .put("successTotal", json.get("successTotal"))
+                        .put("fairTotl", json.get("fairTotl"));
             } else {
-
+                return R.error("任务正在执行，请稍后再试!");
             }
+
+        }catch (Exception e){
+            return R.error(e.getMessage());
         }finally {
             lockComponent.release(CONSOLE_SENDMESSAGE_LOCK + messageTemplate.getId().toString());
         }
-        return R.ok();
     }
 
 
