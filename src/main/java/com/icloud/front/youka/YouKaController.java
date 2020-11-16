@@ -30,7 +30,7 @@ public class YouKaController {
             List<MessageSendrecord> list = messageSendrecordService.list(new QueryWrapper<MessageSendrecord>()
                     .eq("message_id",messageId)
                     .eq("openid",user.getOpenid()));
-            if(list!=null || list.size()>0){
+            if(list!=null && list.size()>0){
                 request.setAttribute("messageSendrecord",list.get(0));
                 return "modules/front/youka/youkadetails";
             }else{
