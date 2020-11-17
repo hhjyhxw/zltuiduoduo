@@ -63,5 +63,7 @@ public class ZltddShop implements Serializable {
       @NotNull(message = "请选择活动")
       @TableField("activity_id")
       private Long activityId;
+        @TableField("max_num")
+        private Integer maxNum;
    	
 }

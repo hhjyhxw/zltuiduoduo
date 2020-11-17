@@ -67,7 +67,7 @@ public class ZltddShopService extends BaseServiceImpl<ZltddShopMapper,ZltddShop>
         //1、生成推荐记录
         ZltddRecommend invited = new ZltddRecommend();
         invited.setUserType("1");//天使用户
-        invited.setMaxNum(-1);//最大可邀请人数
+        invited.setMaxNum(shop.getMaxNum()!=null?shop.getMaxNum():-1);//最大可邀请人数
         invited.setReadyedNum(0);//已邀请人数
         invited.setUserId(user.getId());
         invited.setMyTddCode(user.getTddCode());
