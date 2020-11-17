@@ -27,6 +27,9 @@ public class CrowbActivity implements Serializable {
    	   	   /* 名称 */
        @TableField("title")
        private String title;
+        /* 活动编号 */
+        @TableField("activity_no")
+        private String activityNo;
    	   	   /* 需要积分值 */
        @TableField("score")
        private Integer score;
@@ -72,5 +75,12 @@ public class CrowbActivity implements Serializable {
    	   	   /* 是否需要积分支付积分(0不需要 1需要 默认1) */
        @TableField("isneed_score")
        private String isneedScore;
+
+        /*活动状态 0未开始 1、进行中 2、成功结束 3 失败结束 4活动结束 状态未更新*/
+        @TableField(exist = false)
+        private String activityStatus;
+        /*用户报名状态 -1未报名 0已经报名,待审核  1已经报名，并且审核通过  2已经报名，且已取消 3审核失败*/
+        @TableField(exist = false)
+        private String signState;
    	
 }

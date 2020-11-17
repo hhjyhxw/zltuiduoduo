@@ -66,7 +66,7 @@ public class CrowbActivitySign implements Serializable {
    	   	   /* 携带同伴人数 */
        @TableField("take_num")
        private Integer takeNum;
-   	   	   /* //0未报名，1已报名，并且审核通过，2审核中或者取消，3审核失败 */
+   	   	   /* //0未报名，1已报名，并且审核通过，2取消，3审核失败 */
        @TableField("verify_status")
        private String verifyStatus;
    	   	   /* 修改时间 */

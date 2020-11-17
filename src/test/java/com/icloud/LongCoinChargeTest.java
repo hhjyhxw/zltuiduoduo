@@ -27,19 +27,19 @@
 //    public void apiTest(){
 //        try {
 //            LongChargeEntity entity = new LongChargeEntity();
-////            entity.setSid(ConfigUtil.get("sid"));
-////            entity.setKey(ConfigUtil.get("key"));
-//            entity.setSid(myPropertitys.getLongcoin().getSid_signup());
-//            entity.setKey(myPropertitys.getLongcoin().getKey_signup());
-//            entity.setSeq(longCoinUtil.getSerialNumber_signup());
-//            entity.setUseraccount("ocoMKt2a_9XrLt2NBG5CupS6THE410");
+//            entity.setSid(myPropertitys.getLongcoin().getSid());
+//            entity.setKey(myPropertitys.getLongcoin().getKey());
+//            entity.setSeq(longCoinUtil.getSerialNumber());
+////            entity.setSid(myPropertitys.getLongcoin().getSid_signup());
+////            entity.setKey(myPropertitys.getLongcoin().getKey_signup());
+////            entity.setSeq(longCoinUtil.getSerialNumber_signup());
+//            entity.setUseraccount("oREekjpYosWes5b16jyeSTmv3CcA");
 //            entity.setAccounttype("2");
 //            entity.setRechargetype(longCoinUtil.getRechargetype());
-//            entity.setRechargeamount("12");
+//            entity.setRechargeamount("1");
 //            entity.setTimestamp(longCoinUtil.getTimeStamp());
 //
 //            System.out.println("LongQueryEntity=="+ JSON.toJSONString(entity));
-//
 //            longbiServiceImpl.recharge(entity.getRequestParamMap());
 //        } catch (Exception e) {
 //            e.printStackTrace();

@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Slf4j
-@Api("首页相关接口")
+@Api("佛山推多多首页相关接口")
 @RestController
 @RequestMapping("/api/index")
 public class IndexController {

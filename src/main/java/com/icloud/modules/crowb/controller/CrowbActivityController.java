@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
+import com.icloud.common.SnowflakeUtils;
+import com.icloud.config.ServerConfig;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +36,8 @@ import com.icloud.modules.sys.controller.AbstractController;
 public class CrowbActivityController extends AbstractController{
     @Autowired
     private CrowbActivityService crowbActivityService;
-
+    @Autowired
+    private ServerConfig serverConfig;
     /**
      * 列表
      */
@@ -79,6 +82,7 @@ public class CrowbActivityController extends AbstractController{
     @RequiresPermissions("crowb:crowbactivity:update")
     public R update(@RequestBody CrowbActivity crowbActivity){
         ValidatorUtils.validateEntity(crowbActivity);
+        crowbActivity.setActivityNo("A"+SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
         crowbActivityService.updateById(crowbActivity);
         
         return R.ok();
