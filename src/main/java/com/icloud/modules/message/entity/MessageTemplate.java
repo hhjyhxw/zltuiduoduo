@@ -65,6 +65,9 @@ public class MessageTemplate implements Serializable {
    	   	   /* 是否已发送（0未发送 1已发送） */
        @TableField("send_status")
        private String sendStatus;
+        /* 模板唯一code */
+        @TableField("template_code")
+        private String templateCode;
 
 
     public String getMessageJson(String openid) {

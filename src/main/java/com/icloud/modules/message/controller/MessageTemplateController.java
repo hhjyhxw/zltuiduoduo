@@ -1,12 +1,15 @@
 package com.icloud.modules.message.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import com.icloud.basecommon.service.LockComponent;
+import com.icloud.common.RandomValidateCodeUtil;
 import com.icloud.common.SpringContextHolder;
 import com.icloud.common.util.StringUtil;
 import com.icloud.modules.message.service.BaseMessageSendService;
@@ -75,9 +78,25 @@ public class MessageTemplateController extends AbstractController{
     @RequestMapping("/save")
     @RequiresPermissions("message:messagetemplate:save")
     public R save(@RequestBody MessageTemplate messageTemplate){
+        if(!StringUtil.checkStr(messageTemplate.getTemplateCode())){
+            String templateCode = new RandomValidateCodeUtil().getRandomString(6);
+            templateCode = getAbleTemplateCode(templateCode);
+            messageTemplate.setTemplateCode(templateCode);
+        }
         messageTemplateService.save(messageTemplate);
 
         return R.ok();
+    }
+
+    private String getAbleTemplateCode(String templateCode){
+        if(!StringUtil.checkStr(templateCode)){
+            templateCode = new RandomValidateCodeUtil().getRandomString(6);
+        }
+        List<MessageTemplate> list = messageTemplateService.list(new QueryWrapper<MessageTemplate>().eq("template_code",templateCode));
+        if(list!=null && list.size()>0){
+            return getAbleTemplateCode(null);
+        }
+        return templateCode;
     }
 
     /**
@@ -88,6 +107,14 @@ public class MessageTemplateController extends AbstractController{
     @RequiresPermissions("message:messagetemplate:update")
     public R update(@RequestBody MessageTemplate messageTemplate){
         ValidatorUtils.validateEntity(messageTemplate);
+        if(StringUtil.checkStr(messageTemplate.getTemplateCode())){
+            MessageTemplate old = (MessageTemplate) messageTemplateService.getById(messageTemplate.getId());
+            if(!old.getTemplateCode().equals(messageTemplate.getTemplateCode())){
+                String templateCode = messageTemplate.getTemplateCode();
+                templateCode = getAbleTemplateCode(templateCode);
+                messageTemplate.setTemplateCode(templateCode);
+            }
+        }
         messageTemplateService.updateById(messageTemplate);
         
         return R.ok();

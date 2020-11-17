@@ -18,7 +18,7 @@ public class LongBaseEntity {
     private String timestamp;//交易时间戳
     private String key;//用于签名的key
     private String skey;//sign （签名）
-    private String fromType = "1";//来自哪个应用 1、百色活动 2、.......
+    private String fromType = "1";//来自哪个应用 1、百色活动 2、寻找龙的传人活动 3、线下报名活动
 
     /**
      * 获取

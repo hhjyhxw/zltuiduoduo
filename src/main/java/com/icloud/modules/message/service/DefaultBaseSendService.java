@@ -51,7 +51,7 @@ public class DefaultBaseSendService {
                     WxUser user = wxUserService.findByOpenId(record.getOpenid());
                     vo.setOpenId(record.getOpenid());
                     vo.setKeyword1(user!=null?user.getNickname():"xxx");
-                    vo.setKeyword2("卡号:"+record.getCardId()+";"+"卡密:"+record.getCardCode());
+                    vo.setKeyword2("中石化油卡一张"+"\n"+"序列号:"+record.getCardId()+"\n"+"密码:"+record.getCardCode());
                     String message = vo.getMessageJson();
                     JSONObject jsonObject = wxMessageUtil.sendWeixinMessage(message,1);
                     if(jsonObject!=null && jsonObject.containsKey("errcode") && "0".equals(jsonObject.getString("errcode"))){

@@ -24,9 +24,12 @@ public class CrowbActivityScorerecord implements Serializable {
    	   /*  */
        @TableId(value="id", type= IdType.AUTO)
        private Long id;
+
+       @TableField("crow_sign_id")
+      private Long crowSignId;
    	   	   /*  */
-       @TableField("sq")
-       private String sq;
+       @TableField("seq")
+       private String seq;
    	   	   /*  */
        @TableField("openid")
        private String openid;

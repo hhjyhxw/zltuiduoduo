@@ -100,4 +100,45 @@ public class CrowbActivityController extends AbstractController{
         return R.ok();
     }
 
+
+    /**
+     */
+    @SysLog("众筹活动成功")
+    @RequestMapping("/successActivity")
+    @RequiresPermissions("crowb:crowbactivity:update")
+    public R successActivity(@RequestBody CrowbActivity crowbActivity){
+        CrowbActivity odlcrowbActivity = (CrowbActivity) crowbActivityService.getById(crowbActivity.getId());
+        //活动已结束
+        if(!"0".equals(odlcrowbActivity.getSendStatus())){
+            return R.error("活动已结束");
+        }
+        //发送成功模消息,
+        //verifysuccess
+
+        //verifyfair
+
+        //crowsuccess
+
+        //crowfair
+        return R.ok();
+    }
+
+    /**
+     */
+    @SysLog("众筹活动失败")
+    @RequestMapping("/faireActivity")
+    @RequiresPermissions("crowb:crowbactivity:update")
+    public R faireActivity(@RequestBody CrowbActivity crowbActivity){
+        CrowbActivity odlcrowbActivity = (CrowbActivity) crowbActivityService.getById(crowbActivity.getId());
+        //活动已结束
+        if(!"0".equals(crowbActivity.getSendStatus())){
+            return R.error("活动已结束");
+        }
+        //退龙币
+
+        return R.ok();
+    }
+
+
+
 }

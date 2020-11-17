@@ -1,6 +1,7 @@
 package com.icloud.modules.crowb.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 import com.icloud.annotation.SysLog;
@@ -96,4 +97,59 @@ public class CrowbActivitySignController extends AbstractController{
         return R.ok();
     }
 
+
+    /**
+     * 报名审核通过或者失败
+     */
+    @SysLog("报名审核通过")
+    @RequestMapping("/signPass")
+    @RequiresPermissions("crowb:crowbactivitysign:update")
+    public R signPass(@RequestBody CrowbActivitySign crowbActivitySign){
+        if(crowbActivitySign.getId()!=null){
+            CrowbActivitySign passSign = new CrowbActivitySign();
+            passSign.setId(crowbActivitySign.getId());
+            passSign.setModifyTime(new Date());
+            passSign.setVerifyStatus("1");
+            crowbActivitySignService.passSign(passSign);
+            return R.ok();
+        }
+        return R.error("id不能为空");
+    }
+
+    /**
+     * 报名审核通过或者失败
+     */
+    @SysLog("报名审核失败")
+    @RequestMapping("/signFair")
+    @RequiresPermissions("crowb:crowbactivitysign:update")
+    public R signFair(@RequestBody CrowbActivitySign crowbActivitySign){
+        if(crowbActivitySign.getId()!=null){
+            CrowbActivitySign passSign = new CrowbActivitySign();
+            passSign.setId(crowbActivitySign.getId());
+            passSign.setModifyTime(new Date());
+            passSign.setVerifyStatus("3");
+            crowbActivitySignService.updateById(passSign);
+            return R.ok();
+        }
+        return R.error("id不能为空");
+    }
+
+
+    /**
+     * 后台取消报名
+     */
+    @SysLog("后台取消报名")
+    @RequestMapping("/cancelSign")
+    @RequiresPermissions("crowb:crowbactivitysign:update")
+    public R cancelSign(@RequestBody CrowbActivitySign crowbActivitySign){
+        if(crowbActivitySign.getId()!=null){
+            CrowbActivitySign passSign = new CrowbActivitySign();
+            passSign.setId(crowbActivitySign.getId());
+            passSign.setModifyTime(new Date());
+            passSign.setVerifyStatus("2");
+            crowbActivitySignService.cancelSign(passSign);
+            return R.ok();
+        }
+        return R.error("id不能为空");
+    }
 }
