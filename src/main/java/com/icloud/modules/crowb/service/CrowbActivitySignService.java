@@ -4,10 +4,12 @@ package com.icloud.modules.crowb.service;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.icloud.basecommon.service.LockComponent;
 import com.icloud.basecommon.service.redislock.DistributedLockUtil;
 import com.icloud.common.MapEntryUtils;
 import com.icloud.common.PageUtils;
 import com.icloud.exceptions.ApiException;
+import com.icloud.modules.crowb.entity.CrowbActivity;
 import com.icloud.modules.crowb.entity.CrowbActivityScorerecord;
 import com.icloud.modules.crowb.entity.CrowbActivitySign;
 import com.icloud.thirdinterfaces.score.entity.LongChargeEntity;
@@ -33,6 +35,7 @@ import java.util.Map;
 @Transactional
 public class CrowbActivitySignService extends BaseServiceImpl<CrowbActivitySignMapper,CrowbActivitySign> {
 
+    private static final String ACTIVITY_SIGN_LOCK = "ACTIVITY_SIGN_LOCK_";
     @Autowired
     private CrowbActivitySignMapper crowbActivitySignMapper;
     @Autowired
@@ -43,6 +46,10 @@ public class CrowbActivitySignService extends BaseServiceImpl<CrowbActivitySignM
     private LongCoinUtil longCoinUtil;
     @Autowired
     private CrowbActivityScorerecordService crowbActivityScorerecordService;
+    @Autowired
+    private CrowbActivityService crowbActivityService;
+    @Autowired
+    private LockComponent lockComponent;
     @Override
     public PageUtils<CrowbActivitySign> findByPage(int pageNo, int pageSize, Map<String, Object> query) {
         PageHelper.startPage(pageNo, pageSize);
@@ -52,6 +59,23 @@ public class CrowbActivitySignService extends BaseServiceImpl<CrowbActivitySignM
         return page;
     }
 
+    /**
+     * 添加报名记录、更新活动总人数
+     * @param passSign
+     * @param crowbActivity
+     */
+    public void addCrowbActivitySign(CrowbActivitySign passSign, CrowbActivity crowbActivity){
+        crowbActivitySignMapper.insert(passSign);
+        try {
+            if(lockComponent.tryLock(ACTIVITY_SIGN_LOCK+crowbActivity.getId(),2)){
+                crowbActivity = (CrowbActivity) crowbActivityService.getById(crowbActivity.getId());
+                crowbActivity.setSigned(crowbActivity.getSigned()!=null?crowbActivity.getSigned()+1:1);
+                crowbActivityService.updateById(crowbActivity);
+            }
+        }finally {
+            lockComponent.release(ACTIVITY_SIGN_LOCK+crowbActivity.getId());
+        }
+    }
 
     /**
      * 审核通过

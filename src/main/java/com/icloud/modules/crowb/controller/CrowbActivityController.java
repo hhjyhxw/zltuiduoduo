@@ -72,6 +72,7 @@ public class CrowbActivityController extends AbstractController{
     @RequestMapping("/save")
     @RequiresPermissions("crowb:crowbactivity:save")
     public R save(@RequestBody CrowbActivity crowbActivity){
+        crowbActivity.setActivityNo("A"+SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
         crowbActivityService.save(crowbActivity);
 
         return R.ok();
@@ -85,7 +86,7 @@ public class CrowbActivityController extends AbstractController{
     @RequiresPermissions("crowb:crowbactivity:update")
     public R update(@RequestBody CrowbActivity crowbActivity){
         ValidatorUtils.validateEntity(crowbActivity);
-        crowbActivity.setActivityNo("A"+SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
+//        crowbActivity.setActivityNo("A"+SnowflakeUtils.getOrderNoByWordId(serverConfig.getServerPort()%31L));
         crowbActivityService.updateById(crowbActivity);
         
         return R.ok();

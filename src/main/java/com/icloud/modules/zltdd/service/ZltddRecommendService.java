@@ -156,7 +156,7 @@ public class ZltddRecommendService extends BaseServiceImpl<ZltddRecommendMapper,
             }
             //7、更新推主 推广人数
             try {
-                if (lockComponent.tryLock(RECOMMEND_LOCK + recommend.getOpenid(), 5)) {
+                if (lockComponent.tryLock(RECOMMEND_LOCK + recommend.getOpenid(), 2)) {
                     recommend = zltddRecommendMapper.selectById(recommend.getId());
                     recommend.setReadyedNum(recommend.getReadyedNum() != null ? recommend.getReadyedNum() + 1 : 1);
                     recommend.setModifyTime(new Date());

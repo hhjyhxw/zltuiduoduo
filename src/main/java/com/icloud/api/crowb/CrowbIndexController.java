@@ -120,7 +120,7 @@ public class CrowbIndexController {
         if( nowtime< activityInfo.getStarttime().getTime()){
             return R.error("活动未开始，不能报名");
         }
-        if( nowtime>activityInfo.getStarttime().getTime()){
+        if( nowtime>activityInfo.getEndtime().getTime()){
             return R.error("活动已经结束，不能报名");
         }
         //众筹成功1
@@ -130,6 +130,11 @@ public class CrowbIndexController {
         }else if("2".equals(activityInfo.getSendStatus())){
             return R.error("报名已结束，通道关闭");
         }
+        //活动总人数
+        int readyNum = activityInfo.getSigned()!=null?activityInfo.getSigned():0;
+        if(activityInfo.getTotal()<=readyNum){
+            return R.error("活动人数已满，不能再次报名");
+        }
         List<CrowbActivitySign> signlist = crowbActivitySignService.list(new QueryWrapper<CrowbActivitySign>()
                 .eq("crowb_activity_id",activityInfo.getId())
                 .eq("openid",user.getOpenid()));
@@ -137,14 +142,15 @@ public class CrowbIndexController {
         if(signlist!=null && signlist.size()>0 && !"2".equals(signlist.get(0).getVerifyStatus())){//取消状态可以再次报名
             return R.error("已报名，不能再次报名");
         }
-        //创建报名记录
+
+        //创建报名记录,更新报名人数
         CrowbActivitySign crowbActivitySign = new CrowbActivitySign();
         BeanUtils.copyProperties(signVo,crowbActivitySign);
         crowbActivitySign.setCrowbActivityId(activityInfo.getId());
         crowbActivitySign.setActivityName(activityInfo.getTitle());
         crowbActivitySign.setOpenid(user.getOpenid());
         crowbActivitySign.setScore(activityInfo.getScore());
-        crowbActivitySignService.save(crowbActivitySign);
+        crowbActivitySignService.addCrowbActivitySign(crowbActivitySign,activityInfo);
         return R.ok().put("activityInfo",activityInfo);//活动信息
 
     }
