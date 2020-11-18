@@ -143,6 +143,7 @@ public class CrowbIndexController {
         crowbActivitySign.setCrowbActivityId(activityInfo.getId());
         crowbActivitySign.setActivityName(activityInfo.getTitle());
         crowbActivitySign.setOpenid(user.getOpenid());
+        crowbActivitySign.setScore(activityInfo.getScore());
         crowbActivitySignService.save(crowbActivitySign);
         return R.ok().put("activityInfo",activityInfo);//活动信息
 

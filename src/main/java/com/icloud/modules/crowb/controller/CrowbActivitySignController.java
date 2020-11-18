@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
+import com.icloud.modules.crowb.service.CrowbSendMessageService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +36,8 @@ import com.icloud.modules.sys.controller.AbstractController;
 public class CrowbActivitySignController extends AbstractController{
     @Autowired
     private CrowbActivitySignService crowbActivitySignService;
+    @Autowired
+    private CrowbSendMessageService crowbSendMessageService;
 
     /**
      * 列表
@@ -68,7 +71,6 @@ public class CrowbActivitySignController extends AbstractController{
     @RequiresPermissions("crowb:crowbactivitysign:save")
     public R save(@RequestBody CrowbActivitySign crowbActivitySign){
         crowbActivitySignService.save(crowbActivitySign);
-
         return R.ok();
     }
 
@@ -111,6 +113,8 @@ public class CrowbActivitySignController extends AbstractController{
             passSign.setModifyTime(new Date());
             passSign.setVerifyStatus("1");
             crowbActivitySignService.passSign(passSign);
+            //发送通知消息
+            crowbSendMessageService.sendVerifySuccessMessage(passSign);
             return R.ok();
         }
         return R.error("id不能为空");
@@ -129,6 +133,8 @@ public class CrowbActivitySignController extends AbstractController{
             passSign.setModifyTime(new Date());
             passSign.setVerifyStatus("3");
             crowbActivitySignService.updateById(passSign);
+            //发送通知消息
+            crowbSendMessageService.sendVerifyFailMessage(passSign);
             return R.ok();
         }
         return R.error("id不能为空");
@@ -147,7 +153,10 @@ public class CrowbActivitySignController extends AbstractController{
             passSign.setId(crowbActivitySign.getId());
             passSign.setModifyTime(new Date());
             passSign.setVerifyStatus("2");
+            //退龙币
             crowbActivitySignService.cancelSign(passSign);
+            //发送通知消息
+            crowbSendMessageService.sendCancelSignMessage(passSign);
             return R.ok();
         }
         return R.error("id不能为空");

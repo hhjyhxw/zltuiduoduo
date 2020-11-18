@@ -7,6 +7,7 @@ import com.icloud.annotation.SysLog;
 import com.icloud.basecommon.model.Query;
 import com.icloud.common.SnowflakeUtils;
 import com.icloud.config.ServerConfig;
+import com.icloud.modules.crowb.service.CrowbSendMessageService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +39,8 @@ public class CrowbActivityController extends AbstractController{
     private CrowbActivityService crowbActivityService;
     @Autowired
     private ServerConfig serverConfig;
+    @Autowired
+    private CrowbSendMessageService crowbSendMessageService;
     /**
      * 列表
      */
@@ -112,7 +115,10 @@ public class CrowbActivityController extends AbstractController{
         if(!"0".equals(odlcrowbActivity.getSendStatus())){
             return R.error("活动已结束");
         }
-        //发送成功模消息,
+        //众筹成功发送模板消息
+        crowbSendMessageService.sendCrowSuccessMessage(crowbActivity);
+
+
         //verifysuccess
 
         //verifyfair
@@ -120,6 +126,10 @@ public class CrowbActivityController extends AbstractController{
         //crowsuccess
 
         //crowfair
+
+        //signsuccess
+
+        //cancelsign
         return R.ok();
     }
 
@@ -134,7 +144,8 @@ public class CrowbActivityController extends AbstractController{
         if(!"0".equals(crowbActivity.getSendStatus())){
             return R.error("活动已结束");
         }
-        //退龙币
+        //众筹退龙币 并发送模板消息
+        crowbSendMessageService.sendCrowFairMessage(crowbActivity);
 
         return R.ok();
     }

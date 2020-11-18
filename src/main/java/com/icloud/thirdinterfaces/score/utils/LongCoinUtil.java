@@ -334,7 +334,7 @@ public class LongCoinUtil {
             entity.setRechargetype(getRechargetype());
             entity.setRechargeamount(chargeAmount);
             entity.setTimestamp(getTimeStamp());
-            entity.setFromType(fromType);//调用活动1、现场会 2、新版链式营销
+            entity.setFromType(fromType);//调用活动1、现场会 2、新版链式营销 3、新版报名活动
         return entity;
     }
 

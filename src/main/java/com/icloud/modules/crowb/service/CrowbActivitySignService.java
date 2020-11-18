@@ -116,5 +116,31 @@ public class CrowbActivitySignService extends BaseServiceImpl<CrowbActivitySignM
             throw new ApiException(LongbiServiceImpl.getCodeMap().get(result.getString("returncode")));
         }
     }
+
+    /**
+     * 众筹失败
+     * //1、回退龙币
+     * @param crowFair
+     */
+    public JSONObject crowFair(CrowbActivitySign crowFair) {
+        CrowbActivitySign crowbActivitySign = crowbActivitySignMapper.selectById(crowFair.getId());
+        LongChargeEntity entity = longCoinUtil.getChargeEntity(crowbActivitySign.getOpenid(),crowbActivitySign.getScore().toString(),"3");
+        JSONObject result = null;
+        try {
+            result = longbiServiceImpl.recharge(entity.getRequestParamMap());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(result!=null && "000000".equals(result.getString("returncode"))){
+            CrowbActivityScorerecord crowbActivityScorerecord = new CrowbActivityScorerecord();
+            crowbActivityScorerecord.setId(crowbActivitySign.getId());
+            crowbActivityScorerecord.setCreateTime(new Date());
+            crowbActivityScorerecord.setOpenid(crowbActivitySign.getOpenid());
+            crowbActivityScorerecord.setSeq(entity.getSeq());
+            //保存龙币回退记录
+            crowbActivityScorerecordService.save(crowbActivityScorerecord);
+        }
+        return result;
+    }
 }
 
