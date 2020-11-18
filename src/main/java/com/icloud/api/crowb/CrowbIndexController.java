@@ -56,7 +56,7 @@ public class CrowbIndexController {
         if( nowtime< activityInfo.getStarttime().getTime()){
             activityInfo.setActivityStatus("0");//活动未开始
         }
-        if( nowtime>activityInfo.getStarttime().getTime()){
+        if( nowtime>activityInfo.getEndtime().getTime()){
             //众筹成功1
             if("1".equals(activityInfo.getSendStatus())){
                 activityInfo.setActivityStatus("2");//成功结束
@@ -151,8 +151,7 @@ public class CrowbIndexController {
         crowbActivitySign.setOpenid(user.getOpenid());
         crowbActivitySign.setScore(activityInfo.getScore());
         crowbActivitySignService.addCrowbActivitySign(crowbActivitySign,activityInfo);
-        return R.ok().put("activityInfo",activityInfo);//活动信息
-
+        return R.ok();//活动信息
     }
     //报名查询
     @ApiOperation(value="报名查询", notes="")
@@ -170,7 +169,7 @@ public class CrowbIndexController {
         if( nowtime< activityInfo.getStarttime().getTime()){
             activityInfo.setActivityStatus("0");//活动未开始
         }
-        if( nowtime>activityInfo.getStarttime().getTime()){
+        if( nowtime>activityInfo.getEndtime().getTime()){
             //众筹成功1
             if("1".equals(activityInfo.getSendStatus())){
                 activityInfo.setActivityStatus("2");//成功结束
