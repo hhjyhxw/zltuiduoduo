@@ -113,7 +113,7 @@ public class CrowbActivityController extends AbstractController{
     public R successActivity(@RequestBody CrowbActivity crowbActivity){
         CrowbActivity odlcrowbActivity = (CrowbActivity) crowbActivityService.getById(crowbActivity.getId());
         //活动已结束
-        if(!"0".equals(odlcrowbActivity.getSendStatus())){
+        if("1".equals(odlcrowbActivity.getSendStatus()) || "2".equals(odlcrowbActivity.getSendStatus())){
             return R.error("活动已结束");
         }
         //众筹成功发送模板消息
@@ -142,7 +142,7 @@ public class CrowbActivityController extends AbstractController{
     public R faireActivity(@RequestBody CrowbActivity crowbActivity){
         CrowbActivity odlcrowbActivity = (CrowbActivity) crowbActivityService.getById(crowbActivity.getId());
         //活动已结束
-        if(!"0".equals(crowbActivity.getSendStatus())){
+        if("1".equals(odlcrowbActivity.getSendStatus()) || "2".equals(odlcrowbActivity.getSendStatus())){
             return R.error("活动已结束");
         }
         //众筹退龙币 并发送模板消息

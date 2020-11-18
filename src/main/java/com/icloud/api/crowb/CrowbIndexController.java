@@ -52,6 +52,7 @@ public class CrowbIndexController {
             return R.error("活动不存在");
         }
         CrowbActivity activityInfo = list.get(0);
+
         long nowtime = new Date().getTime();
         if( nowtime< activityInfo.getStarttime().getTime()){
             activityInfo.setActivityStatus("0");//活动未开始
@@ -67,7 +68,7 @@ public class CrowbIndexController {
                 activityInfo.setActivityStatus("4");//活动结束 状态未更新
             }
         }
-        if(nowtime>=activityInfo.getStarttime().getTime() && nowtime<=activityInfo.getStarttime().getTime()){
+        if(nowtime>=activityInfo.getStarttime().getTime() && nowtime<=activityInfo.getEndtime().getTime()){
             //众筹成功1
             if("1".equals(activityInfo.getSendStatus())){
                 activityInfo.setActivityStatus("2");//成功结束
@@ -96,6 +97,9 @@ public class CrowbIndexController {
             }
         }else{
             activityInfo.setSignState("-1");//未报名
+        }
+        if(!"1".equals(activityInfo.getStatus())){
+            activityInfo.setActivityStatus("5");//活动已停止
         }
         return R.ok().put("activityInfo",activityInfo);//活动信息
 
@@ -129,6 +133,10 @@ public class CrowbIndexController {
             //众筹失败2
         }else if("2".equals(activityInfo.getSendStatus())){
             return R.error("报名已结束，通道关闭");
+        }
+        if(!"1".equals(activityInfo.getStatus())){
+            return R.error("活动已停止");
+//            activityInfo.setActivityStatus("5");//活动已停止
         }
         //活动总人数
         int readyNum = activityInfo.getSigned()!=null?activityInfo.getSigned():0;
@@ -180,7 +188,7 @@ public class CrowbIndexController {
                 activityInfo.setActivityStatus("4");//活动结束 状态未更新
             }
         }
-        if(nowtime>=activityInfo.getStarttime().getTime() && nowtime<=activityInfo.getStarttime().getTime()){
+        if(nowtime>=activityInfo.getStarttime().getTime() && nowtime<=activityInfo.getEndtime().getTime()){
             //众筹成功1
             if("1".equals(activityInfo.getSendStatus())){
                 activityInfo.setActivityStatus("2");//成功结束
@@ -209,6 +217,9 @@ public class CrowbIndexController {
             }
         }else{
             activityInfo.setSignState("-1");//未报名
+        }
+        if(!"1".equals(activityInfo.getStatus())){
+            activityInfo.setActivityStatus("5");//活动已停止
         }
         return R.ok().put("activityInfo",activityInfo);//活动信息
 

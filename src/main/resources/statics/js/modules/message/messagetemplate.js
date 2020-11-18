@@ -14,8 +14,8 @@ $(function () {
 			{ label: '消息底部描述', name: 'remark', index: 'remark', width: 80 }, 			
 			{ label: '微信模板id', name: 'templateId', index: 'template_id', width: 80 }, 			
 			{ label: '点击模板跳转地址', name: 'visitUrl', index: 'visit_url', width: 80 }, 			
-
 			{ label: '消息发送处理器', name: 'dealZclass', index: 'deal_zclass', width: 80 },
+			{ label: '模板code', name: 'templateCode', index: 'template_code', width: 80 },
 			{ label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
                                                                  return value == '0' ?'<span class="label label-success">停用</span>' :
                                                                   (value == '1' ?'<span class="label label-success">启用</span>' :

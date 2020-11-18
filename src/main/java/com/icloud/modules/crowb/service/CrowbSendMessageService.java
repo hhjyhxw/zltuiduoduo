@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -89,6 +91,11 @@ public class CrowbSendMessageService {
         int total = list!=null?list.size():0;
         log.info("total==="+total);
         int successTotal = 0;
+
+        crowbActivity.setSendStatus("1");
+        crowbActivity.setModifyTime(new Date());
+        crowbActivityService.updateById(crowbActivity);
+
         if(list!=null && list.size()>0 && messageTemplateList!=null && messageTemplateList.size()>0){
             MessageTemplate  messageTemplate = messageTemplateList.get(0);
             BaseMessagaeVo vo =  new BaseMessagaeVo();
@@ -103,6 +110,7 @@ public class CrowbSendMessageService {
                 }
             }
         }
+
         log.info("sendCrowSuccessMessage_successTotal==="+ successTotal);
         log.info("sendCrowSuccessMessage_fairTotl==="+(total-successTotal));
     }
@@ -114,6 +122,11 @@ public class CrowbSendMessageService {
         int total = list!=null?list.size():0;
         log.info("total==="+total);
         int successTotal = 0;
+
+        crowbActivity.setSendStatus("2");
+        crowbActivity.setModifyTime(new Date());
+        crowbActivityService.updateById(crowbActivity);
+
         if(list!=null && list.size()>0 && messageTemplateList!=null && messageTemplateList.size()>0){
             MessageTemplate  messageTemplate = messageTemplateList.get(0);
             BaseMessagaeVo vo =  new BaseMessagaeVo();
@@ -132,6 +145,7 @@ public class CrowbSendMessageService {
                 }
             }
         }
+
         log.info("sendCrowFairMessage_successTotal==="+ successTotal);
         log.info("sendCrowFairMessage_fairTotl==="+(total-successTotal));
     }

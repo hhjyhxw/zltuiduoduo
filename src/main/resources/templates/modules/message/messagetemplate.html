@@ -76,7 +76,8 @@
 											                    <div class="form-group">
                         <div class="col-sm-2 control-label">微信模板id</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="messageTemplate.templateId" placeholder="微信模板id"/>
+                            <input type="text" v-if="messageTemplate.id!=null" class="form-control" v-model="messageTemplate.templateId" placeholder="微信模板id" readonly/>
+                            <input type="text" v-if="messageTemplate.id==null" class="form-control" v-model="messageTemplate.templateId" placeholder="微信模板id" />
                         </div>
                     </div>
 											                    <div class="form-group">
@@ -86,10 +87,16 @@
                         </div>
                     </div>
 
-											                    <div class="form-group">
+					<div class="form-group">
                         <div class="col-sm-2 control-label">消息发送处理器</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="messageTemplate.dealZclass" placeholder="消息发送处理器（根据业务需求填写）"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">模板Code</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="messageTemplate.templateCode" placeholder="模板唯一Code"/>
                         </div>
                     </div>
                     <div class="form-group">

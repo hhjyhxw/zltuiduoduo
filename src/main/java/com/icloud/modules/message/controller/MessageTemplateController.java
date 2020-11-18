@@ -109,7 +109,7 @@ public class MessageTemplateController extends AbstractController{
         ValidatorUtils.validateEntity(messageTemplate);
         if(StringUtil.checkStr(messageTemplate.getTemplateCode())){
             MessageTemplate old = (MessageTemplate) messageTemplateService.getById(messageTemplate.getId());
-            if(!old.getTemplateCode().equals(messageTemplate.getTemplateCode())){
+            if(!messageTemplate.getTemplateCode().equals(old.getTemplateCode())){
                 String templateCode = messageTemplate.getTemplateCode();
                 templateCode = getAbleTemplateCode(templateCode);
                 messageTemplate.setTemplateCode(templateCode);

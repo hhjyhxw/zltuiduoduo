@@ -3,6 +3,15 @@
 <head>
     <title></title>
 		<#include "/header.html">
+    <link rel="stylesheet" href="${request.contextPath}/statics/plugins/kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="${request.contextPath}/statics/plugins/kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="${request.contextPath}/statics/plugins/kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="${request.contextPath}/statics/plugins/kindeditor/lang/zh-CN.js"></script>
+    <script charset="utf-8" src="${request.contextPath}/statics/plugins/kindeditor/plugins/code/prettify.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 <body>
 <div id="icloudapp" v-cloak>
@@ -11,9 +20,9 @@
 			<#if shiro.hasPermission("crowb:crowbactivity:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			</#if>
-			<#if shiro.hasPermission("crowb:crowbactivity:update")>
+			<!--<#if shiro.hasPermission("crowb:crowbactivity:update")>
             <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-			</#if>
+			</#if>-->
 			<!--<#if shiro.hasPermission("crowb:crowbactivity:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			</#if>-->
@@ -24,7 +33,7 @@
 
     <div v-show="!showList" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
-        <form class="form-horizontal">
+        <form class="form-horizontal"  style="width:100%;width: 70%; margin-right: auto;" >
 					<div class="form-group">
                         <div class="col-sm-2 control-label">名称</div>
                         <div class="col-sm-10">
@@ -46,43 +55,54 @@
 					<div class="form-group">
                         <div class="col-sm-2 control-label">已报名人数</div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" v-model="crowbActivity.signed" placeholder="已报名人数"/>
+                            <input type="number" class="form-control" v-model="crowbActivity.signed" placeholder="已报名人数" readonly/>
                         </div>
                     </div>
-					<div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-2 control-label">活动开始时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="crowbActivity.starttime" placeholder="活动开始时间"/>
+                        <div class="block">
+                            <el-date-picker
+                                    v-model="crowbActivity.starttime"
+                                    type="datetime"
+                                    placeholder="选择活动开始时间" value-format="yyyy-MM-dd HH:mm:ss">
+                            </el-date-picker>
                         </div>
                     </div>
-					<div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-2 control-label">活动结束时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="crowbActivity.endtime" placeholder="活动结束时间"/>
+                        <div class="block">
+                            <el-date-picker
+                                    v-model="crowbActivity.endtime"
+                                    type="datetime"
+                                    placeholder="选择活动结束时间" value-format="yyyy-MM-dd HH:mm:ss">
+                            </el-date-picker>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-2 control-label">状态</div>
                         <div class="col-sm-10">
                             <label class="radio-inline">
-                                <input type="radio" v-model="crowbActivity.status" name="optionsRadios" id="optionsRadios1" value="0" checked>停用
+                                <input type="radio" v-model="crowbActivity.status" name="status" id="optionsRadios1" value="0" checked>停用
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" v-model="crowbActivity.status" name="optionsRadios" id="optionsRadios2" value="1">启用
+                                <input type="radio" v-model="crowbActivity.status" name="status" id="optionsRadios2" value="1">启用
                             </label>
                         </div>
                     </div>
-
-					<div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-2 control-label">活动介绍描述</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="crowbActivity.description" placeholder="活动介绍描述"/>
+                            <div class="layui-form-item">
+                                <textarea class="form-control" name="description" lay-verify="" id="description" v-model="crowbActivity.description">{{crowbActivity.description}}</textarea>
+                            </div>
                         </div>
                     </div>
-					<div class="form-group">
+                    <div class="form-group">
                         <div class="col-sm-2 control-label">活动规则描述</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="crowbActivity.rule" placeholder="活动规则描述"/>
+                            <div class="layui-form-item">
+                                <textarea class="form-control" name="rule" lay-verify="" id="rule" v-model="crowbActivity.rule">{{crowbActivity.rule}}</textarea>
+                            </div>
                         </div>
                     </div>
 					<div class="form-group">

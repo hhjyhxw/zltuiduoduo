@@ -76,7 +76,7 @@ public class CrowbActivity implements Serializable {
        @TableField("isneed_score")
        private String isneedScore;
 
-        /*活动状态 0未开始 1、进行中 2、成功结束 3 失败结束 4活动结束 状态未更新*/
+        /*活动状态 0未开始 1、进行中 2、成功结束 3 失败结束 4活动结束 状态未更新 5活动已停止*/
         @TableField(exist = false)
         private String activityStatus;
         /*用户报名状态 -1未报名 0已经报名,待审核  1已经报名，并且审核通过  2已经报名，且已取消 3审核失败*/
