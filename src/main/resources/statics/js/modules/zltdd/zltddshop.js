@@ -13,6 +13,7 @@ $(function () {
                     '<span class="label label-danger">停用</span>' :
                     '<span class="label label-success">启用</span>';
             }},
+            { label: 'openid', name: 'openid', index: 'openid', width: 80 },
 			{ label: '创建时间', name: 'createTime', index: 'create_time', width: 80 }, 			
 			{ label: '创建人', name: 'createMan', index: 'create_man', width: 80 }, 			
 			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 }, 			
