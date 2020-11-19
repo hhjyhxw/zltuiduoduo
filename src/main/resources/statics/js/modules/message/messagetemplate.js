@@ -4,14 +4,14 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: 'id', name: 'id', index: 'id', width: 50, key: true },
-			{ label: '模板标题', name: 'titile', index: 'titile', width: 80 },
-			{ label: '消息头部描述', name: 'first', index: 'first', width: 80 }, 			
+			{ label: '模板标题', name: 'titile', index: 'titile', width: 450 },
+			{ label: '消息头部描述', name: 'first', index: 'first', width: 150 },
 			{ label: '关键字1', name: 'keyword1', index: 'keyword1', width: 80 }, 			
 			{ label: '关键字2', name: 'keyword2', index: 'keyword2', width: 80 }, 			
 			{ label: '关键字3', name: 'keyword3', index: 'keyword3', width: 80 }, 			
 			{ label: '关键字4', name: 'keyword4', index: 'keyword4', width: 80 }, 			
 			{ label: '关键字5', name: 'keyword5', index: 'keyword5', width: 80 }, 			
-			{ label: '消息底部描述', name: 'remark', index: 'remark', width: 80 }, 			
+			{ label: '消息底部描述', name: 'remark', index: 'remark', width: 150 },
 			{ label: '微信模板id', name: 'templateId', index: 'template_id', width: 80 }, 			
 			{ label: '点击模板跳转地址', name: 'visitUrl', index: 'visit_url', width: 80 }, 			
 			{ label: '消息发送处理器', name: 'dealZclass', index: 'deal_zclass', width: 80 },
@@ -21,7 +21,7 @@ $(function () {
                                                                   (value == '1' ?'<span class="label label-success">启用</span>' :
                                                                   (value == '2' ?'<span class="label label-success">未知</span>' :'未知'))
                                                                                     }},
-            {header:'操作', name:'操作', width:90, sortable:false, title:false, align:'center', formatter: function(val, obj, row, act){
+            {header:'操作', name:'操作', width:150, sortable:false, title:false, align:'center', formatter: function(val, obj, row, act){
                             var actions = [];
                                 actions.push('<a class="btn btn-primary" onclick="vm.sendMessage('+row.id+')" style="padding: 3px 8px;"><i class="fa fa-pencil-square-o"></i>&nbsp;发送消息</a>&nbsp;');
                             return actions.join('');
@@ -37,6 +37,8 @@ $(function () {
         rownumWidth: 25, 
         autowidth:true,
         multiselect: true,
+        shrinkToFit:false,
+                autoScroll: true,
         pager: "#jqGridPager",
         jsonReader : {
             root: "page.list",
@@ -51,7 +53,8 @@ $(function () {
         },
         gridComplete:function(){
         	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+//        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
+        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "scroll" });
         }
     });
 });

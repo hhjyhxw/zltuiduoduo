@@ -27,12 +27,23 @@ $(function () {
 			{ label: '职务名称', name: 'officeName', index: 'office_name', width: 80 }, 			
 			{ label: '携带同伴人数', name: 'takeNum', index: 'take_num', width: 80 }, 			
 			{ label: '报名状态', name: 'verifyStatus', width: 60, formatter: function(value, options, row){
-                                                                             return value == '0' ?'<span class="label label-success">未报名</span>' :
+                                                                             return (value == '0' || value==null) ?'<span class="label label-success">待审核</span>' :
                                                                               (value == '1' ?'<span class="label label-success">已报名</span>' :
                                                                               (value == '2' ?'<span class="label label-success">审核中或者取消</span>' :
                                                                               (value == '3' ?'<span class="label label-success">审核失败</span>' :'未知')))
                                                                                                 }},
-			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 }
+			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 },
+			{header:'操作', name:'操作', width:350, sortable:false, title:false, align:'center', formatter: function(val, obj, row, act){
+                                        var actions = [];
+                                            if(row.verifyStatus==null || row.verifyStatus=='0'){
+                                                 actions.push('<a class="btn btn-primary" onclick="vm.upateVerifyStatus('+row.id+',1)" style="padding: 3px 8px;"><i class="fa fa-pencil-square-o"></i>&nbsp;审核通过</a>&nbsp;');
+                                                 actions.push('<a class="btn btn-primary" onclick="vm.upateVerifyStatus('+row.id+',3)" style="padding: 3px 8px;"><i class="fa fa-pencil-square-o"></i>&nbsp;审核失败</a>&nbsp;');
+                                             }
+                                            if(row.verifyStatus=='1'){
+                                                  actions.push('<a class="btn btn-primary" onclick="vm.upateVerifyStatus('+row.id+',2)" style="padding: 3px 8px;"><i class="fa fa-pencil-square-o"></i>&nbsp;取消报名</a>&nbsp;');
+                                             }
+                                        return actions.join('');
+                                    }}
         ],
 		viewrecords: true,
         height: 385,
@@ -42,6 +53,8 @@ $(function () {
         rownumWidth: 25, 
         autowidth:true,
         multiselect: true,
+        shrinkToFit:false,
+        autoScroll: true,
         pager: "#jqGridPager",
         jsonReader : {
             root: "page.list",
@@ -56,7 +69,8 @@ $(function () {
         },
         gridComplete:function(){
         	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+//        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
+        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "scroll" });
         }
     });
 });
@@ -87,6 +101,52 @@ var vm = new Vue({
             
             vm.getInfo(id)
 		},
+		upateVerifyStatus: function (id,verifyStatus) {
+            if(id == null){
+                return ;
+            }
+            var crowbActivitySign = {
+                id:id,
+                verifyStatus:verifyStatus
+            };
+            var content = "";
+            var url = "";
+            if(verifyStatus==1){
+                content = "确定要审核通过?";
+                url = baseURL + "crowb/crowbactivitysign/signPass";
+            }
+            if(verifyStatus==3){
+                content = "确定要审核失败?";
+                url = baseURL + "crowb/crowbactivitysign/signFair";
+            }
+             if(verifyStatus==2){
+                    content = "确定取消?";
+                    url = baseURL + "crowb/crowbactivitysign/cancelSign";
+                }
+            var lock = false;
+            layer.confirm(content, {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+               if(!lock) {
+                    lock = true;
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        contentType: "application/json",
+                        data: JSON.stringify(crowbActivitySign),
+                        success: function(r){
+                            if(r.code == 0){
+                                layer.msg("操作成功", {icon: 1});
+                                $("#jqGrid").trigger("reloadGrid");
+                            }else{
+                                layer.alert(r.msg);
+                            }
+                        }
+                    });
+                }
+             }, function(){
+             });
+        },
 		saveOrUpdate: function (event) {
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
                 var url = vm.crowbActivitySign.id == null ? "crowb/crowbactivitysign/save" : "crowb/crowbactivitysign/update";

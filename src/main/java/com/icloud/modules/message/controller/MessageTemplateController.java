@@ -11,6 +11,7 @@ import com.icloud.basecommon.model.Query;
 import com.icloud.basecommon.service.LockComponent;
 import com.icloud.common.RandomValidateCodeUtil;
 import com.icloud.common.SpringContextHolder;
+import com.icloud.common.util.RandomUtil;
 import com.icloud.common.util.StringUtil;
 import com.icloud.modules.message.service.BaseMessageSendService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -79,7 +80,7 @@ public class MessageTemplateController extends AbstractController{
     @RequiresPermissions("message:messagetemplate:save")
     public R save(@RequestBody MessageTemplate messageTemplate){
         if(!StringUtil.checkStr(messageTemplate.getTemplateCode())){
-            String templateCode = new RandomValidateCodeUtil().getRandomString(6);
+            String templateCode = new RandomUtil().getRandomString(6);
             templateCode = getAbleTemplateCode(templateCode);
             messageTemplate.setTemplateCode(templateCode);
         }
@@ -90,7 +91,7 @@ public class MessageTemplateController extends AbstractController{
 
     private String getAbleTemplateCode(String templateCode){
         if(!StringUtil.checkStr(templateCode)){
-            templateCode = new RandomValidateCodeUtil().getRandomString(6);
+            templateCode = RandomUtil.getRandomString(6);
         }
         List<MessageTemplate> list = messageTemplateService.list(new QueryWrapper<MessageTemplate>().eq("template_code",templateCode));
         if(list!=null && list.size()>0){
