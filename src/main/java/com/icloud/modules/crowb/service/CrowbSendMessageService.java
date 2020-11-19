@@ -37,6 +37,7 @@ public class CrowbSendMessageService {
 
     //报名成功
    public void sendSignSuccessMessage(CrowbActivitySign crowbActivitySign){
+       crowbActivitySign = (CrowbActivitySign) crowbActivitySignService.getById(crowbActivitySign.getId());
        List<MessageTemplate> messageTemplateList = messageTemplateService.list(new QueryWrapper<MessageTemplate>()
                .eq("template_code","signsuccess"));
        MessageTemplate  messageTemplate = messageTemplateList.get(0);
@@ -168,6 +169,7 @@ public class CrowbSendMessageService {
 
     //取消报名
     public void sendCancelSignMessage(CrowbActivitySign crowbActivitySign){
+        crowbActivitySign = (CrowbActivitySign) crowbActivitySignService.getById(crowbActivitySign.getId());
         List<MessageTemplate> messageTemplateList = messageTemplateService.list(new QueryWrapper<MessageTemplate>()
                 .eq("template_code","cancelsign"));
         MessageTemplate  messageTemplate = messageTemplateList.get(0);

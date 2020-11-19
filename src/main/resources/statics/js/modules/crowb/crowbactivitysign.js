@@ -29,7 +29,7 @@ $(function () {
 			{ label: '报名状态', name: 'verifyStatus', width: 60, formatter: function(value, options, row){
                                                                              return (value == '0' || value==null) ?'<span class="label label-success">待审核</span>' :
                                                                               (value == '1' ?'<span class="label label-success">已报名</span>' :
-                                                                              (value == '2' ?'<span class="label label-success">审核中或者取消</span>' :
+                                                                              (value == '2' ?'<span class="label label-success">取消</span>' :
                                                                               (value == '3' ?'<span class="label label-success">审核失败</span>' :'未知')))
                                                                                                 }},
 			{ label: '修改时间', name: 'modifyTime', index: 'modify_time', width: 80 },
