@@ -148,7 +148,7 @@ $(function () {
                 console.log("file=="+file);
                 if(r.code == 0){
                     alert("上传成功!");
-//                    vm.crowbActivity.bgImg = r.url;
+                    vm.crowbActivity.bgImg = r.url;
                     // vm.goodsimgshow = imgURL + r.url;
                       console.log("vm.crowbActivity.bgImg=="+vm.crowbActivity.bgImg);
                     //vm.reload();
