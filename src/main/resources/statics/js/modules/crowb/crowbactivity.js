@@ -130,6 +130,33 @@ $(function () {
         	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "scroll" });
         }
     });
+
+
+     new AjaxUpload('#upload', {
+            action: baseURL + "local/localUplaod/upload2",
+            name: 'file',
+            autoSubmit:true,
+            responseType:"json",
+            onSubmit:function(file, extension){
+                if (!(extension && /^(jpg|jpeg|png|gif)$/.test(extension.toLowerCase()))){
+                    alert('只支持jpg、png、gif格式的图片！');
+                    return false;
+                }
+            },
+            onComplete : function(file, r){
+                console.log("r=="+JSON.stringify(r));
+                console.log("file=="+file);
+                if(r.code == 0){
+                    alert("上传成功!");
+//                    vm.crowbActivity.bgImg = r.url;
+                    // vm.goodsimgshow = imgURL + r.url;
+                      console.log("vm.crowbActivity.bgImg=="+vm.crowbActivity.bgImg);
+                    //vm.reload();
+                }else{
+                    alert(r.msg);
+                }
+            }
+    });
 });
 
 var vm = new Vue({
@@ -137,7 +164,9 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		crowbActivity: {}
+		crowbActivity: {
+		    bgImg:null,
+		}
 	},
 	methods: {
 		query: function () {

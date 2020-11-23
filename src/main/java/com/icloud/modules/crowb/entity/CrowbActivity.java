@@ -75,7 +75,9 @@ public class CrowbActivity implements Serializable {
    	   	   /* 是否需要积分支付积分(0不需要 1需要 默认1) */
        @TableField("isneed_score")
        private String isneedScore;
-
+        /* 背景图片 */
+        @TableField("bg_img")
+        private String bgImg;
         /*活动状态 0未开始 1、进行中 2、成功结束 3 失败结束 4活动结束 状态未更新 5活动已停止*/
         @TableField(exist = false)
         private String activityStatus;
