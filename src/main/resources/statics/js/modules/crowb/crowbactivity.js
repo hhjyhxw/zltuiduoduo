@@ -187,6 +187,8 @@ var vm = new Vue({
             vm.getInfo(id)
 		},
 		saveOrUpdate: function (event) {
+		    vm.crowbActivity.description=editor1.html();
+		    vm.crowbActivity.rule=editor2.html();
 		    $('#btnSaveOrUpdate').button('loading').delay(1000).queue(function() {
                 var url = vm.crowbActivity.id == null ? "crowb/crowbactivity/save" : "crowb/crowbactivity/update";
                 $.ajax({
@@ -321,6 +323,8 @@ var vm = new Vue({
 		getInfo: function(id){
 			$.get(baseURL + "crowb/crowbactivity/info/"+id, function(r){
                 vm.crowbActivity = r.crowbActivity;
+                editor1.html( vm.crowbActivity.description);
+                editor2.html(vm.crowbActivity.rule);
             });
 		},
 		reload: function (event) {
