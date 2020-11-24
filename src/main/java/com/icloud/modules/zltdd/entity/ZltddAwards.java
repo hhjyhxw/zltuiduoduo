@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 中奖记录表
+ * 中奖记录表 测试github上传
  * 
  * @author zdh
  * @email yyyyyy@cm.com
