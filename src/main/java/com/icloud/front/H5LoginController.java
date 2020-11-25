@@ -39,6 +39,7 @@ public class H5LoginController {
             }
             WxUser user = (WxUser)request.getSession().getAttribute("wx_user");
             String h5token = new RandomGenerator(12).generate();
+//            String h5token = new RandomGenerator(12).generate();
             redisService.set(h5token,user,600L);//兼容h5、APP 前端服务 登陆
             log.info("redirect_url=="+ redirect_url);
             //如果历史连接带上token,去掉
